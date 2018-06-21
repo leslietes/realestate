@@ -1,5 +1,5 @@
 class Developer < ApplicationRecord
-  #has_many :properties
+  has_many :properties
 
   #has_attached_file :image, :styles => { :medium => "155x165>"},
   #                    :url => "/:class/:attachment/:id/:style_:basename.:extension"
