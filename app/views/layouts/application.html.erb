@@ -11,6 +11,14 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+
+    <% if user_signed_in? %>
+      <%= current_user.email %>
+      <%= link_to_unless_current 'Logout', destroy_user_session_url, method: 'delete' %>
+    <% else %>
+      <%= link_to 'Log In', new_user_session_url %>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
