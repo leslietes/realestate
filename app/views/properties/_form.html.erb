@@ -7,7 +7,7 @@
 
 	    <ul>
 		  <% @property.errors.full_messages.each do |msg| %>
-	 	    <li><%= msg %></li>		
+	 	    <li><%= msg %></li>
 	  	  <% end %>
 	    </ul>
 	  </div>
@@ -39,7 +39,7 @@
 	</p>
 
 	<p>
-		<%= f.label :location %><%#= select("property","location", @locations, {:include_blank => true}) %>
+		<%= f.label :location %><%= select("property","location", @locations, {:include_blank => true}) %>
 	</p>
 
 	<%# f.label :price_range %><%# select("property","price_range", @price_range, :include_blank => true) %>
@@ -109,31 +109,31 @@
 </div>
 
 <div class="two">
-	<%# f.label :unit_types %><%# select("property","unit_types", @unit_types, {:include_blank => true}) %>
+	<% f.label :unit_types %><% select("property","unit_types", @unit_types, {:include_blank => true}) %>
 
 	<p>
 		<%= f.label :unit_types %><br>
 		<div style="margin-left:63px;margin-top:-0.5em;">
-		<%#= f.check_box :studio %> Studio<br>
-		<%#= f.check_box :one_bedroom %> 1 Bedroom<br>
-		<%#= f.check_box :two_bedroom %> 2 Bedroom<br>
-		<%#= f.check_box :three_bedroom %> 3 Bedroom<br>
-		<%#= f.check_box :penthouse%> Penthouse
+		<%= f.check_box :studio %> Studio<br>
+		<%= f.check_box :one_bedroom %> 1 Bedroom<br>
+		<%= f.check_box :two_bedroom %> 2 Bedroom<br>
+		<%= f.check_box :three_bedroom %> 3 Bedroom<br>
+		<%= f.check_box :penthouse%> Penthouse
 		</div>
 	</p>
 
 	<p>
-		<%# f.label :unit_sizes %><%# f.text_field :unit_sizes %>
+		<% f.label :unit_sizes %><% f.text_field :unit_sizes %>
 	</p>
 
 	<p>
 		<%= label_tag :sizes %><br>
 		<div style="padding-left:4px;margin-top:-0.5em;text-align:right;width:280px;">
-		Studio: <%#= f.text_field :studio_size %><br>
-		1 Bedroom: <%#= f.text_field :one_bedroom_size %><br>
-		2 Bedroom: <%#= f.text_field :two_bedroom_size %><br>
-		3 Bedroom: <%#= f.text_field :three_bedroom_size %><br>
-		Penthouse: <%#= f.text_field :penthouse_size %>
+		Studio: <%= f.text_field :studio_size %><br>
+		1 Bedroom: <%= f.text_field :one_bedroom_size %><br>
+		2 Bedroom: <%= f.text_field :two_bedroom_size %><br>
+		3 Bedroom: <%= f.text_field :three_bedroom_size %><br>
+		Penthouse: <%= f.text_field :penthouse_size %>
 		</div>
 	</p>
 
@@ -143,11 +143,11 @@
 	<p>
 		<%= label_tag :prices %><br>
 		<div style="padding-left:4px;margin-top:-0.5em;text-align:right;width:280px;">
-		Studio: <%#= f.text_field :studio_price %><br>
-		1 Bedroom: <%#= f.text_field :one_bedroom_price %><br>
-		2 Bedroom: <%#= f.text_field :two_bedroom_price %><br>
-		3 Bedroom: <%#= f.text_field :three_bedroom_price %><br>
-		Penthouse: <%#= f.text_field :penthouse_price %>
+		Studio: <%= f.text_field :studio_price %><br>
+		1 Bedroom: <%= f.text_field :one_bedroom_price %><br>
+		2 Bedroom: <%= f.text_field :two_bedroom_price %><br>
+		3 Bedroom: <%= f.text_field :three_bedroom_price %><br>
+		Penthouse: <%= f.text_field :penthouse_price %>
 		</div>
 	</p>
 
@@ -156,11 +156,11 @@
 	<p>
 		<%= label_tag :monthly %><br>
 		<div style="padding-left:4px;margin-top:-0.5em;text-align:right;width:280px;">
-		Studio:    <%#= f.text_field :studio_monthly %><br>
-		1 Bedroom: <%#= f.text_field :one_bedroom_monthly %><br>
-		2 Bedroom: <%#= f.text_field :two_bedroom_monthly %><br>
-		3 Bedroom: <%#= f.text_field :three_bedroom_monthly %><br>
-		Penthouse: <%#= f.text_field :penthouse_monthly %>
+		Studio:    <%= f.text_field :studio_monthly %><br>
+		1 Bedroom: <%= f.text_field :one_bedroom_monthly %><br>
+		2 Bedroom: <%= f.text_field :two_bedroom_monthly %><br>
+		3 Bedroom: <%= f.text_field :three_bedroom_monthly %><br>
+		Penthouse: <%= f.text_field :penthouse_monthly %>
 		</div>
 	</p>
 

@@ -1,9 +1,11 @@
 class PropertiesController < ApplicationController
-  
+
   before_filter :select_property_types, :only => [:new,:create,:edit,:update]
+  before_filter :select_locations,      :only => [:new, :create, :edit, :update]
+  before_filter :select_unit_types,     :only => [:new, :create, :edit, :update]
   before_filter :developers,            :only => [:new,:create,:edit,:update]
   before_filter :inquiry_form,          :only => [:show]
-  
+
   def index
   	#_projects = Property.show_all_visible
   	#proj = _projects.collect{|p| p.name }.join(', ')
@@ -15,11 +17,11 @@ class PropertiesController < ApplicationController
     #  @properties = Property.show_all_visible
     #end
   end
-  
+
   def new
     @property = Property.new
   end
-  
+
   def create
     @property = Property.new(property_params)
     if @property.save
@@ -30,11 +32,11 @@ class PropertiesController < ApplicationController
       render :action => 'new'
     end
   end
-  
+
   def edit
     @property = Property.find_by_permalink(params[:id])
   end
-  
+
   def update
     @property = Property.find_by_permalink(params[:id])
     if @property.update_attributes(property_params)
@@ -45,13 +47,13 @@ class PropertiesController < ApplicationController
       render :action => 'edit'
     end
   end
-  
+
   def show
     @partial  = 'information'
     @property = Property.find_by_permalink(params[:id])
     #@page_title = "CebuCondoListings | Cebu Condominium Listings - #{@property.name}, #{@property.developer_name}, #{@property.location}, Cebu"
   end
-  
+
   def destroy
     @property = Property.find_by_permalink(params[:id])
     if @property.destroy
@@ -61,22 +63,39 @@ class PropertiesController < ApplicationController
     end
     redirect_to properties_url
   end
-  
+
   private
-  
+
   def select_property_types
     @property_types = Property.property_types
   end
-  
+
+  def select_locations
+    @locations = Location.all.collect{|a| a.area }
+  end
+
+  def select_unit_types
+    #@unit_types = []
+    #@unit_types << ['studio']
+    #@unit_types << ['1 bedroom']
+    #@unit_types << ['2 bedroom']
+    #@unit_types << ['3 bedroom']
+    #@unit_types << ['loft']
+    #@unit_types << ['penthouse']
+    #@unit_types
+    @unit_types = ['studio','1 bedroom','2 bedroom','3 bedroom','loft','penthouse']
+  end
+
+
   def developers
     developers = Developer.all
     @developers = developers.map{|d| [d.developer,d.id]}
   end
-  
+
   def inquiry_form
     #@contact = Contact.new
   end
-  
+
   def property_params
     params.require(:property).permit(:developer_id,:name,:permalink,:address,:location,
     :completed,:target_completion_date,:description,
@@ -85,5 +104,5 @@ class PropertiesController < ApplicationController
     :reservation_fee,:property_type,:featured,:hidden
     )
   end
-  
+
 end
