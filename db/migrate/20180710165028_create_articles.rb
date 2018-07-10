@@ -11,7 +11,7 @@ class CreateArticles < ActiveRecord::Migration[5.0]
       t.datetime "updated_at"
       t.date     "published_date"
       t.string   "published_at"
-      
+
       t.string   "article_photo_caption"
       t.timestamps
     end

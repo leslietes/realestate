@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   get 'home/index'
   resources :developers
   resources :properties
+  resources :articles
   root 'home#index'
 end

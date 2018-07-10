@@ -1,0 +1,44 @@
+<div class="blue">
+
+	<div class="main_content">
+
+		<h1>News/Events</h1>
+		<div class="left">
+			<div class="articles">
+				<h2><%= @article.title %></h2>
+				<p class="teaser"><%= @article.teaser %></p>
+				<p class="published_on">
+				<% if @article.published_date? %>
+					<span>On <%= format_date(@article.published_date) %>
+				<% end %>
+				<% if @article.published_at? %>
+				In <%= @article.published_at %></span>
+				<% end %>
+				</p>
+
+				<% if @article.article_photo? %>
+				<p class="image">
+					<%= image_tag @article.article_photo.url(:medium) %><br>
+					<span><%= @article.article_photo_caption %></span>
+				</p>
+				<% end %>
+
+				<p class="body">
+					<%= @article.body %>
+				</p>
+			</div>
+		</div>
+
+		<div class="right">
+			<%#= render :partial => 'shared/featured_news' %><br/>
+			<%#= render :partial => 'shared/search_form' %>
+		</div>
+
+	<% if user_signed_in? %>
+		<div class="links">
+			<%= link_to 'Edit', edit_article_url(@article) %> <%= link_to 'Delete', article_url(@article), :method => :delete, :confirm => 'Are you sure?' %>
+		</div>
+	<% end %>
+</div></div>
+
+<br>
