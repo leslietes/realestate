@@ -2,7 +2,7 @@ class DevelopersController < ApplicationController
   #before_filter :login_required, :except => [:index, :show]
 
   def index
-  	#developers = Developer.show_all_visible    	
+  	#developers = Developer.show_all_visible
   	#_dev = developers.collect{|d| d.developer}.join(', ')
 
 
@@ -11,7 +11,7 @@ class DevelopersController < ApplicationController
       #@developers = Developer.show_all
       @developers = Developer.all.to_a
     #else
-      #@developers = Developer.show_all_visible  
+      #@developers = Developer.show_all_visible
     #end
   end
 
@@ -24,7 +24,7 @@ class DevelopersController < ApplicationController
   end
 
   def create
-    @developer = Developer.new(developer_params)    
+    @developer = Developer.new(developer_params)
     if @developer.save
       flash[:notice] = "Successfully created developer"
       redirect_to developers_url
@@ -58,10 +58,10 @@ class DevelopersController < ApplicationController
     end
     redirect_to developers_url
   end
-  
+
   private
-  
+
     def developer_params
-      params.require(:developer).permit(:developer,:permalink,:description,:hidden)
+      params.require(:developer).permit(:developer,:permalink,:description,:hidden,:image)
     end
 end

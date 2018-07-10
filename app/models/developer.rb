@@ -1,15 +1,15 @@
 class Developer < ApplicationRecord
   has_many :properties
 
-  #has_attached_file :image, :styles => { :medium => "155x165>"},
-  #                    :url => "/:class/:attachment/:id/:style_:basename.:extension"
-  
-  validates_presence_of   :developer, :permalink
+  has_attached_file :image, :styles => { :medium => "155x165>"}
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
+
+  validates_presence_of   :developer, :permalink, :image
   validates_uniqueness_of :permalink
-  
+
   # including hidden
   def self.show_all
-    Developer.find(:all, :order => "developer ASC")  
+    Developer.find(:all, :order => "developer ASC")
   end
 
   # not including hidden
@@ -21,9 +21,9 @@ class Developer < ApplicationRecord
    properties.find(:all, :conditions => ["hidden = ?", false], :order => "name ASC")
   #Property.find(:all, :conditions => ["developer = ? and hidden = ?", self.id, false], :order => "name ASC")
   end
-  
+
   def to_param
     permalink
   end
-  
+
 end

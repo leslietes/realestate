@@ -3,10 +3,10 @@
     <h2>
     	<%= pluralize(@developer.errors.count, "error") %> prohibited this developer from being saved:
     </h2>
-	
+
     <ul>
 	  <% @developer.errors.full_messages.each do |msg| %>
- 	    <li><%= msg %></li>		
+ 	    <li><%= msg %></li>
   	  <% end %>
     </ul>
   </div>
@@ -19,11 +19,11 @@
 
 <p>
 	<%= f.label :permalink %><%= f.text_field :permalink %>
-</p>	
+</p>
 
 <p>
 	<%= f.label :photo %><%= f.file_field :image %>
-</p>	
+</p>
 
 <p>
 	<%= f.label :description %>

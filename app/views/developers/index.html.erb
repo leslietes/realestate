@@ -1,12 +1,12 @@
 <div class="blue">
 <div class="main_content developers">
 	<h1>Developers</h1>
-	
+
 	<div class="left">
 		<% @developers.each do |d| %>
 		<ul>
 			<li class="developer">
-				<%#= image_tag(d.image.url)	%>	
+				<%= image_tag(d.image.url(:medium))	%>
 				<div class="projects">
 					<h3>Projects</h3>
 					<%# d.show_all_projects.each do |property| %>
@@ -17,25 +17,25 @@
 				<%# if logged_in? %>
 				<div class="links">
 				<%= link_to 'Edit', edit_developer_url(d) %>&nbsp;|&nbsp;<%= link_to 'Delete', developer_url(d), :method => :delete, :confirm => "Are you sure?" %>
-				</div>	
+				</div>
 				<%# end %>
 				<div class="clear"></div>
 			</li>
-		</ul>				
+		</ul>
 		<% end %>
-			
+
 		<%# if logged_in? %>
 			<div class="links">
 				<%= link_to 'New', new_developer_url %>
 			</div>
 		<%# end %>
 	</div>
-	
+
 	<div class="right">
 		<%#= render :partial => 'shared/featured_news' %><br/>
 		<%#= render :partial => 'shared/search_form' %>
 	</div>
-		
+
 </div>
 </div>
 <br>

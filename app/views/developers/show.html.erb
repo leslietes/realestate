@@ -1,7 +1,7 @@
 <div class="blue">
 <div class="developer main_content">
 
-<%#= image_tag @developer.image.url(:medium) %>
+<%= image_tag @developer.image.url(:medium) %>
 
 <h1><%= @developer.developer%></h1>
 
@@ -26,7 +26,7 @@
 	<div class="links">
 		<%= link_to 'Edit', edit_developer_url(@developer) %> |
 		<%= link_to 'Delete', developer_url(@developer), :method => :delete, :confirm => "Are you sure?" %>
-	</div>	
+	</div>
 <%# end %>
 <div class="clear"/>
 <p><%= link_to 'Back', developers_url %></p>
