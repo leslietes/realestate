@@ -101,7 +101,8 @@ class PropertiesController < ApplicationController
     :completed,:target_completion_date,:description,
     :unit_types,:unit_sizes,:price_range,:amenities,:features,
     :unit_specifications,:payment_terms,:as_low_as,:as_low_as_label,
-    :reservation_fee,:property_type,:featured,:hidden
+    :reservation_fee,:property_type,:featured,:hidden, :photo, :logo, :location_map, :studio_layout,
+   :one_bedroom_layout, :two_bedroom_layout, :three_bedroom_layout, :penthouse_layout, :loft_layout
     )
   end
 

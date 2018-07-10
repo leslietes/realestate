@@ -6,44 +6,44 @@
 <div class="blue">
 <div class="properties main_content">
 	<h1><%= @property.name %></h1>
-	
+
 	<% if @property.has_tagline? %>
 		<p id="tagline">Own a unit for as low as <%= number_to_currency(@property.as_low_as, :unit => "P ", :precision => 0) %><%= @property.as_low_as_label %></p>
 	<% end %>
-	
+
 	<div id="left">
 		<div id="gallery1">
-			<%# if @property.logo? %>
-			    <%#= image_tag(@property.logo.url(:medium)) %>
-			<%# end %>
-			<%# if @property.photo? %>
-			    <%#= image_tag(@property.photo.url(:medium)) %>
-			<%# end %>
-			<%# if @property.location_map? %>
-			    <%#= image_tag(@property.location_map.url(:medium)) %>
-			<%# end %>
-			<%# if @property.studio_layout? %>
-			    <%#= image_tag(@property.studio_layout.url(:medium)) %>
-			<%# end %>
-			<%# if @property.one_bedroom_layout? %>
-			    <%#= image_tag(@property.one_bedroom_layout.url(:medium))  %>
-			<%# end %>
-			<%# if @property.two_bedroom_layout? %>
-			    <%#= image_tag(@property.two_bedroom_layout.url(:medium)) %>
-			<%# end %>
-			<%# if @property.penthouse_layout? %>
-			    <%#= image_tag(@property.penthouse_layout.url(:medium)) %>
-			<%# end %>
-			
+			<% if @property.logo? %>
+			    <%= image_tag(@property.logo.url(:medium)) %>
+			<% end %>
+			<% if @property.photo? %>
+			    <%= image_tag(@property.photo.url(:medium)) %>
+			<% end %>
+			<% if @property.location_map? %>
+			    <%= image_tag(@property.location_map.url(:medium)) %>
+			<% end %>
+			<% if @property.studio_layout? %>
+			    <%= image_tag(@property.studio_layout.url(:medium)) %>
+			<% end %>
+			<% if @property.one_bedroom_layout? %>
+			    <%= image_tag(@property.one_bedroom_layout.url(:medium))  %>
+			<% end %>
+			<% if @property.two_bedroom_layout? %>
+			    <%= image_tag(@property.two_bedroom_layout.url(:medium)) %>
+			<% end %>
+			<% if @property.penthouse_layout? %>
+			    <%= image_tag(@property.penthouse_layout.url(:medium)) %>
+			<% end %>
+
 			<%# @property.galleries.each do |g| %>
 			    <%#= image_tag(g.gallery_photo.url(:medium)) %>
 			<%# end %>
 		</div>
-		
+
 		<br/>
-		
+
 		<%#= display_unit_info(@property.all_unit_info) %>
-		
+
 		<div class="disclaimer">
 			<p>* Denotes lowest available price</p>
 		</div>
@@ -54,30 +54,30 @@
 		  <h3>Payment Terms</h3>
 		  <%= @property.payment_terms %>
 		<% end %>
-		
+
 		<br/>
-		
+
 		<h3>Location</h3>
 	    <%= image_tag "http://maps.google.com/maps/api/staticmap?size=600x405&sensor=false&zoom=16&markers=#{@property.latitude}%2C#{@property.longitude}" %>
-		
+
 		<%#= Property.near([@property.latitude,@property.longitude],10) %>
 		<%#= @property.nearbys %>
 		  <%#= location.address%>
-		<%# end %>  
+		<%# end %>
     </div>
-    
+
 	<div id="right">
 		<%= render :partial => "#{@partial}" %>
-		
+
 		<br/>
-		
+
 		<h3>Contact Us</h3>
 		<div class="inquiry" id="inquiry">
 		<%# form_for @contact do |f| %>
 			<%#= f.radio_button :reason, "Financing"%>Inquire about easy financing scheme<br>
 			<%#= f.radio_button :reason, "Schedule" %>Schedule viewing of model/scale unit<br>
 			<%#= f.radio_button :reason, "Inquire" %>Inquire about this property
-	
+
 			<%#= f.error_messages %>
 			<%#= f.hidden_field :subject, :value => @property.name %>
 			<%#= hidden_field_tag :from,  "#{@property.permalink}" %>
