@@ -1,0 +1,20 @@
+<h2>Agents</h2>
+
+<ul>
+  <% @agents.each do |agent| %>
+  <li>
+    Agent: <%= agent.agent_name %>
+    Avatar:<%= image_tag agent.avatar.url(:medium) %><br>
+    Mobile No: <%= agent.mobile_no %>
+    Email Address: <%= agent.email_address %>
+    Facebook: <%= agent.facebook %>
+    Twitter:  <%= agent.twitter %>
+    Instagram:<%= agent.instagram %>
+    Linked In:<%= agent.linked_in %>
+    <%= link_to 'Edit', edit_agent_url(agent) %>
+    <%= link_to 'Delete', agent_url(agent), :method => :delete, :confirm => "Are you sure?" %>
+  </li>
+  <% end %>
+</ul>
+
+<%= link_to 'New', new_agent_url %>

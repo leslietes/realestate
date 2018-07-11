@@ -1,0 +1,49 @@
+<% if @agent.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+    	<%= pluralize(@agent.errors.count, "error") %> prohibited this agent from being saved:
+    </h2>
+
+    <ul>
+	  <% @Agent.errors.full_messages.each do |msg| %>
+ 	    <li><%= msg %></li>
+  	  <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<p>
+	<%= f.label :agent_name %><%= f.text_field :agent_name %>
+</p>
+
+<p>
+	<%= f.label :avatar %><%= f.file_field :avatar %>
+</p>
+
+<p>
+	<%= f.label :email_address %><%= f.text_field :email_address %>
+</p>
+
+<p>
+	<%= f.label :mobile_no %><%= f.text_field :mobile_no %>
+</p>
+
+<p>
+	<%= f.label :facebook %><%= f.text_field :facebook %>
+</p>
+
+<p>
+	<%= f.label :twitter %><%= f.text_field :twitter %>
+</p>
+
+<p>
+	<%= f.label :instagram %><%= f.text_field :instagram %>
+</p>
+
+<p>
+	<%= f.label :linked_in %><%= f.text_field :linked_in %>
+</p>
+
+<p>
+	<%= f.submit 'Save' %>
+</p>

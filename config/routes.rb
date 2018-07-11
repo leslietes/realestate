@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   resources :developers
   resources :properties
   resources :articles
+  resources :agents
   root 'home#index'
 end
