@@ -1,44 +1,103 @@
-<div class="blue">
+<section class="ct-u-paddingBoth60 ct-blog ct-post--single">
+<div class="container">
+<div class="row">
+<div class="col-md-8">
+    <div class="ct-articleBox ct-u-marginBottom60">
+        <div class="ct-articleBox-media pull-left ct-u-marginBottom30">
+            <div class="ct-calendar--day text-center ct-calendar--mini hidden-lg">
+                <div class="ct-day">
+                    <span>09</span>
+                </div>
+                <div class="ct-month">
+                    <span class="text-uppercase">jan</span>
+                </div>
+            </div>
+            <img src="content/blog-image-1.jpg" alt="">
+        </div>
+        <div class="ct-articleBox--body">
+            <div class="ct-u-displayTableVertical">
+                <div class="ct-calendar--day text-center visible-lg-inline-block ct-u-displayTableCell">
+                    <div class="ct-day">
+                        <span>09</span>
+                    </div>
+                    <div class="ct-month">
+                        <span class="text-uppercase">jan</span>
+                    </div>
+                </div>
+                <div class="ct-articleBox-titleBox text-uppercase ct-u-displayTableCell">
 
-	<div class="main_content">
+                    <a href="blog-single.html"><%= @article.title %></a>
+                    <div class="ct-articleBox-meta">
+                        <span>Posted on <%= @article.published_date %> In <%= @article.published_at %></span>
+                    </div>
 
-		<h1>News/Events</h1>
-		<div class="left">
-			<div class="articles">
-				<h2><%= @article.title %></h2>
-				<p class="teaser"><%= @article.teaser %></p>
-				<p class="published_on">
-				<% if @article.published_date? %>
-					<span>On <%= format_date(@article.published_date) %>
-				<% end %>
-				<% if @article.published_at? %>
-				In <%= @article.published_at %></span>
-				<% end %>
-				</p>
 
-				<% if @article.article_photo? %>
-				<p class="image">
-					<%= image_tag @article.article_photo.url(:medium) %><br>
-					<span><%= @article.article_photo_caption %></span>
-				</p>
-				<% end %>
+                </div>
+            </div>
+            <div class="ct-divider ct-u-marginTop10 ct-u-marginBottom20"></div>
+            <div class="ct-articleBox-description">
+                <%= @article.body %>
+            </div>
+        </div>
+        <div class="ct-divider ct-u-marginBoth30"></div>
 
-				<p class="body">
-					<%= @article.body %>
-				</p>
-			</div>
-		</div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<div class="col-md-4">
+    <div class="ct-js-sidebar">
+        <div class="row">
 
-		<div class="right">
-			<%#= render :partial => 'shared/featured_news' %><br/>
-			<%#= render :partial => 'shared/search_form' %>
-		</div>
+            <div class="col-sm-6 col-md-12">
+                <section class="widget ct-widget-latestPosts">
+                    <div class="widget-inner">
+                        <h4 class="text-uppercase">Latest Posts</h4>
+                        <ul class="list-unstyled">
+                            <li>
+                                <div class="widget-latest-posts-left">
+                                    <a href="blog-single.html">
+                                        <img src="assets/images/content/latest-post-widget.jpg" alt="">
+                                    </a>
+                                </div>
+                                <div class="widget-latest-posts-content">
+                                    <a href="blog-single.html">
+                                        Expectations for 2015
+                                    </a>
+                                    <span class="text-uppercase">Posted on january 9th, 2015</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="widget-latest-posts-content">
+                                    <a href="blog-single.html">
+                                        Real Estate market most probably going to bloom in early 2016
+                                    </a>
+                                    <span class="text-uppercase">Posted on january 5th, 2015</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+            <div class="col-sm-6 col-md-12">
+                <section class="widget">
+                    <div class="widget-inner">
+                        <div class="ct-widget-categories">
+                            <h4 class="text-uppercase">Archive</h4>
+                            <ul class="list-unstyled">
+                                <li><a href=""><i class="fa fa-angle-right"></i>January 2015<span class="pull-right">(1)</span></a></li>
+                                <li><a href=""><i class="fa fa-angle-right"></i>December 2014<span class="pull-right">(2)</span></a></li>
+                                <li><a href=""><i class="fa fa-angle-right"></i>November 2014<span class="pull-right">(3)</span></a></li>
+                                <li><a href=""><i class="fa fa-angle-right"></i>October 2014<span class="pull-right">(1)</span></a></li>
+                                <li><a href=""><i class="fa fa-angle-right"></i>August 2014<span class="pull-right">(5)</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </div>
 
-	<% if user_signed_in? %>
-		<div class="links">
-			<%= link_to 'Edit', edit_article_url(@article) %> <%= link_to 'Delete', article_url(@article), :method => :delete, :confirm => 'Are you sure?' %>
-		</div>
-	<% end %>
-</div></div>
-
-<br>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</section>

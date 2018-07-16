@@ -1,44 +1,101 @@
-<div class="blue">
-	<div class="main_content">
-		<h1>News/Events</h1>
-
-		<div class="left">
-		<% @articles.each do |article |%>
-			<div class="articles">
-				<h2><%= link_to article.title, article_url(article) %></h2>
-				<%= image_tag article.article_photo.url(:medium) %><br>
-				<% if article.teaser? %>
-					<p class="teaser"><%= article.teaser %> <%= link_to '...', article_url(article) %></p>
-				<% end %>
-				<p class="published_on">
-				<% if article.published_date? %>
-				<span>On <%= format_date(article.published_date) %>
-				<% end %>
-				<% if article.published_at? %>
-				 In <%= article.published_at %></span>
-				<% end %>
-				</p>
-				<% if user_signed_in? %>
-				<div class="links">
-					<%= link_to 'Edit', edit_article_url(article) %>
-					<%= link_to 'Delete', article_url(article), :method => :delete, :confirm => "Are you sure?" %>
-				</div>
-				<% end %>
-			</div>
-		<% end %>
-
-		<% if user_signed_in? %>
-			<div class="links">
-				<%= link_to 'New', new_article_url %>
-			</div>
-		<% end %>
-		</div>
-
-		<div class="right">
-			<%#= render :partial => 'shared/featured_news' %><br/>
-			<%#= render :partial => 'shared/search_form' %>
-		</div>
-
-
+<div class="ct-site--map">
+    <div class="container">
+        <a href="index.html">Home</a>
+        <a href="faq.html">Blog</a>
+    </div>
 </div>
-</div></div>
+<header class="ct-mediaSection" data-stellar-background-ratio="0.3" data-height="140" data-type="parallax" data-bg-image="content/agency-parallax.jpg" data-bg-image-mobile="content/agency-parallax.jpg">
+    <div class="ct-mediaSection-inner">
+        <div class="container">
+            <div class="ct-heading--main text-center">
+                <h3 class="text-uppercase ct-u-text--white">Blog</h3>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="ct-u-paddingBoth60 ct-blog">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+
+								<% @articles.each do |article| %>
+								<div class="ct-articleBox ct-u-marginBottom80 ct-articleBox--noImage">
+                    <div class="ct-articleBox-media ct-u-marginBottom30">
+                        <div class="ct-calendar--day text-center ct-calendar--mini hidden-lg">
+                            <div class="ct-day">
+                                <span>15</span>
+                            </div>
+                            <div class="ct-month">
+                                <span class="text-uppercase">jan</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ct-articleBox--body">
+                        <div class="ct-u-displayTableVertical">
+                            <div class="ct-calendar--day text-center ct-u-displayTableCell visible-lg-inline-block">
+                                <div class="ct-day">
+                                    <span>15</span>
+                                </div>
+                                <div class="ct-month">
+                                    <span class="text-uppercase">jan</span>
+                                </div>
+                            </div>
+                            <div class="ct-articleBox-titleBox text-uppercase ct-u-displayTableCell">
+
+                                <a href="blog-single.html"><%= link_to article.title, article_url(article) %></a>
+                                <div class="ct-articleBox-meta">
+                                    <span>Posted on <%= article.published_date %> In <%= article.published_at %></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ct-divider ct-u-marginTop10 ct-u-marginBottom20"></div>
+                        <div class="ct-articleBox-description">
+                            <%= article.teaser %>
+                            <a href="blog-single.html">Read more.</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <% end %>
+
+                <div class="ct-pagination text-center">
+                    <ul class="pagination">
+                        <li><a href="#" aria-label="Previous"><span aria-hidden="true"><i class="fa fa-angle-left"></i></span></a></li>
+                        <li class="active"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#" aria-label="Next"><span aria-hidden="true"><i class="fa fa-angle-right"></i></span></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="ct-js-sidebar">
+                    <div class="row">
+
+                        <div class="col-sm-6 col-md-12">
+                            <section class="widget">
+                                <div class="widget-inner">
+                                    <div class="ct-widget-categories">
+                                        <h4 class="text-uppercase">Archive</h4>
+                                        <ul class="list-unstyled">
+                                            <li><a href=""><i class="fa fa-angle-right"></i>January 2015<span class="pull-right">(1)</span></a></li>
+                                            <li><a href=""><i class="fa fa-angle-right"></i>December 2014<span class="pull-right">(2)</span></a></li>
+                                            <li><a href=""><i class="fa fa-angle-right"></i>November 2014<span class="pull-right">(3)</span></a></li>
+                                            <li><a href=""><i class="fa fa-angle-right"></i>October 2014<span class="pull-right">(1)</span></a></li>
+                                            <li><a href=""><i class="fa fa-angle-right"></i>August 2014<span class="pull-right">(5)</span></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
