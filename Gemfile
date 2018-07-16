@@ -32,6 +32,23 @@ gem 'jbuilder', '~> 2.5'
 gem 'paperclip', '~> 6.0.0'
 gem 'devise'
 
+# start estato theme
+# for bootstrap.min.css
+gem 'railties'
+gem 'therubyracer'
+gem 'less-rails-bootstrap'
+# for font-awesome.min.css`
+gem 'modernizr-rails'
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-OwlCarousel'
+  gem 'rails-assets-html5shiv'
+  gem 'rails-assets-respond'
+  gem 'rails-assets-jquery.stellar'
+  gem 'rails-assets-select2', '3.5.2'
+  gem 'rails-assets-jqueryjs'
+end
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri

@@ -1,24 +1,40 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Realestate</title>
-    <%= csrf_meta_tags %>
+<!--[if IE 8 ]>
+<html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]>
+<html class="no-js ie9" lang="en"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html class="no-js" lang="en"> <!--<![endif]-->
+<head lang="en">
+  <meta charset="UTF-8">
+  <meta name="description" content="Estato is HTML5 Template for houses, apartmanents and vacation rentals. If you have houses for rent - you need to check our template!">
+  <meta name="author" content="CreateIT">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="keywords" content="real estate template, real estate agency, html5">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1, shrink-to-fit=no">
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <title> Estato - HTML5 Template for Real Estate Agencies</title>
 
-  <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+  <link rel="icon" href="<%= image_url('content/estato-favicon.png') %>">
 
-    <% if user_signed_in? %>
-      <%= current_user.email %>
-      <%= link_to_unless_current 'Logout', destroy_user_session_url, method: 'delete' %>
-    <% else %>
-      <%= link_to 'Log In', new_user_session_url %>
-    <% end %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
 
-    <%= yield %>
-  </body>
+  <!--[if lt IE 9]>
+
+  <%= javascript_include_tag 'html5shiv' %>
+  <%= javascript_include_tag 'respond' %>
+  <![endif]-->
+
+  <%= javascript_include_tag :modernizr %>
+</head>
+<body class="ct-headroom--scrollUpMenu cssAnimate">
+
+  <%= render partial: "layouts/header" %>
+
+  <%= yield %>
+
+  <%= render partial: "layouts/footer" %>
+</div>
+<!-- JavaScripts -->
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+</body>
 </html>
