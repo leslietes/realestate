@@ -1,0 +1,280 @@
+<form class="ct-searchFormMobile ct-u-marginBottom50" role="form">
+    <div class="form-group ">
+        <div class="ct-form--label--type1">
+            <div class="ct-u-displayTableVertical">
+                <div class="ct-u-displayTableCell">
+                    <div class="ct-input-group-btn">
+                        <button class="btn btn-primary">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="ct-u-displayTableCell text-center">
+                    <span class="text-uppercase">Search for property</span>
+                </div>
+            </div>
+        </div>
+        <div class="ct-u-displayTableVertical ct-u-marginBottom20">
+            <div class="ct-u-displayTableCell">
+                <div class="ct-form--item">
+                    <label>Property id</label>
+                    <input type="text" required class="form-control input-lg" placeholder="Any">
+                </div>
+            </div>
+            <div class="ct-u-displayTableCell">
+                <div class="ct-form--item">
+                    <label>Location</label>
+                    <select class="ct-js-select ct-select-lg">
+                        <option value="any">Any</option>
+                        <option value="1">New York</option>
+                        <option value="2">New Jersey</option>
+                        <option value="3">Newark</option>
+                        <option value="4">Philadelphia</option>
+                    </select>
+                </div>
+            </div>
+            <div class="ct-u-displayTableCell">
+                <div class="ct-form--item">
+                    <label>Sub-Location</label>
+                    <select class="ct-js-select ct-select-lg">
+                        <option value="any">Any</option>
+                        <option value="1">New York</option>
+                        <option value="2">Jersey</option>
+                        <option value="3">Newark</option>
+                        <option value="4">Philadelphia</option>
+                    </select>
+                </div>
+            </div>
+            <div class="ct-u-displayTableCell">
+                <div class="ct-form--item">
+                    <label>Property Status</label>
+                    <select class="ct-js-select ct-select-lg">
+                        <option value="any">Any</option>
+                        <option value="1">Sale</option>
+                        <option value="2">New</option>
+                        <option value="3">Loan</option>
+                    </select>
+                </div>
+            </div>
+            <div class="ct-u-displayTableCell">
+                <div class="ct-form--item">
+                    <label>Property type </label>
+                    <select class="ct-js-select ct-select-lg">
+                        <option value="any">Any</option>
+                        <option value="1">Houses</option>
+                        <option value="2">Industrial</option>
+                        <option value="3">Retail</option>
+                        <option value="4">Apartments</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="ct-u-displayTableVertical ct-slider--row">
+            <div class="ct-u-displayTableCell">
+                <div class="ct-form--item">
+                    <label>Bedrooms</label>
+                    <select class="ct-js-select ct-select-lg">
+                        <option value="any">Any</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3+</option>
+                    </select>
+                </div>
+            </div>
+            <div class="ct-u-displayTableCell">
+                <div class="ct-form--item">
+                    <label>Bathrooms</label>
+                    <select class="ct-js-select ct-select-lg">
+                        <option value="any">Any</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3+</option>
+                    </select>
+                </div>
+            </div>
+            <div class="ct-u-displayTableCell ct-u-marginBottom40">
+                <div class="ct-form--item ct-sliderAmount">
+                    <label>Price ($)</label>
+                    <input type="text" value="1000000" required class="form-control input-lg ct-js-slider-min ct-u-marginBottom20" placeholder="">
+                    <input type="text" class="slider ct-js-sliderAmount" value="" data-slider-tooltip="hide" data-slider-handle="square" data-slider-min="5000" data-slider-max="5000000" data-slider-step="5000" data-slider-value="[1000000,2000000]">
+                    <label class="pull-left">Min</label>
+                    <label class="pull-right">Max</label>
+                    <input type="text" value="2000000" required class="form-control input-lg ct-js-slider-max" placeholder="">
+                </div>
+            </div>
+            <div class="ct-u-displayTableCell">
+                <input type="text" class="slider ct-js-sliderTicks" value="" data-slider-handle="square" data-slider-min="0" data-slider-max="200" data-slider-step="20" data-slider-value="[60,120]"/>
+                <label class="text-center center-block">Area (m2)</label>
+            </div>
+            <div class="ct-u-displayTableCell">
+                <button type="submit" class="btn btn-warning text-capitalize pull-right">search now</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<div id="ct-js-wrapper" class="ct-pageWrapper">
+
+<div class="ct-navbarMobile">
+    <button type="button" class="navbar-toggle">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="index.html"><img src="assets/images/content/logo.png" alt="Estato"> </a>
+    <button type="button" class="searchForm-toggle">
+        <span class="sr-only">Toggle navigation</span>
+        <span><i class="fa fa-search"></i></span>
+    </button>
+</div>
+
+<div class="ct-topBar ">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-7 col-md-8">
+                <div class="ct-panel--contact ct-panel--left">
+                    <div class="ct-panel--item ct-email">
+                        <a href="#"><i class="fa fa-envelope-o"></i> example@example.com</a>
+                    </div>
+                    <ul class="nav navbar-nav ct-switcher--language">
+                        <li class="dropdown">
+                            <a href="#">
+                                <i class="fa fa-globe"></i>
+                                English
+                                <i class="fa fa-angle-down"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="#">
+                                        English
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        Spanish
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        German
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div id="ct-js-navSearch">
+                        <i class="fa fa-search"></i>
+                        <input placeholder="Search ..." required type="text" name="field[]" class="form-control input-lg ct-input--search">
+                    </div>
+                    <div class="ct-navbar-search">
+                        <form role="form">
+                            <button class="ct-navbar-search-button" type="submit">
+                                <i class="fa fa-search fa-fw"></i>
+                            </button>
+                            <div class="form-group">
+                                <input id="search" placeholder="Search ..." required type="text" class="form-control input-lg">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-5 col-md-4">
+                <div class="ct-panel--user ct-panel--right text-right">
+                    <div class="ct-panel--item ct-email">
+                        <a href="properties.html"><i class="fa fa-home"></i> My Properties</a>
+                    </div>
+                    <div class="ct-panel--item ct-email">
+                        <a href="login.html"><i class="fa fa-user"></i> Login</a>
+                    </div>
+                    <div class="ct-panel--item ct-email">
+                        <a href="registration.html"><i class="fa fa-plus-square"></i> Register</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="ct-site--map">
+    <div class="container">
+        <a href="index.html">Home</a>
+        <a href="contact.html">Contact Us</a>
+    </div>
+</div>
+<header>
+    <div class="container">
+        <div class="ct-navigationGmaps">
+            <div class="ct-navigationGmaps--container">
+                <div class="ct-zoomNav">
+                    <div id="zoomin" class='ct-zoom--in pull-left'><i class='fa fa-plus'></i></div>
+                    <div id="zoomout" class='ct-zoom--out'><i class='fa fa-minus'></i></div>
+                </div>
+                <div class="ct-search--container">
+                    <i class="fa fa-search"></i>
+                    <input id="searchGmaps" type="text" required class="ct-searchGmaps input-lg" placeholder="Google Maps Search">
+                </div>
+                <div id="geolocation" class="ct-geolocationButton btn btn-default"><i class="fa fa-map-marker"></i>My Position</div>
+            </div>
+        </div>
+    </div>
+    <div class="successMessage alert alert-success" style="display: none">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        Thank You!
+    </div>
+    <div class="errorMessage alert alert-danger" style="display: none">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        Ups! An error occured. Please try again later.
+    </div>
+    <div class="ct-js-googleMap ct-googleMap ct-js-googleMap--single" data-location="Richmond" data-icon="assets/images/marker-house.png" data-display-desc="false" data-zoom="14" data-height="640" id="map"></div>
+    <form role="form" action="assets/form/send.php" method="post" class="contactForm validateIt ct-formContact--map ct-formSearch--right ct-form--darkStyle" data-email-subject="Contact Form" data-show-errors="true">
+        <div class="form-group">
+            <div class="ct-form--label--type2">
+                <div class="ct-u-displayTableVertical">
+                    <div class="ct-u-displayTableCell">
+                        <div class="ct-input-group-btn">
+                            <button class="btn btn-primary">
+                                <i class="fa fa-envelope-o"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="ct-u-displayTableCell text-center">
+                        <span class="text-uppercase">Send us a message</span>
+                    </div>
+                </div>
+            </div>
+            <div class="ct-form--item ct-u-marginBottom20">
+                <label>Your Name</label>
+                <input id="contact_name" name="field[]" type="text" required class="form-control input-lg" placeholder="">
+            </div>
+            <div class="ct-u-displayTableVertical">
+                <div class="ct-u-displayTableCell">
+                    <div class="ct-form--item ct-u-marginBottom20">
+                        <label>Phone</label>
+                        <input id="contact_phone" type="tel" required class="form-control input-lg" placeholder="">
+                    </div>
+                </div>
+                <div class="ct-u-displayTableCell">
+                    <div class="ct-form--item ct-u-marginBottom20">
+                        <label>Email</label>
+                        <input id="contact_email" name="field[]" type="email" required class="form-control input-lg" placeholder="">
+                    </div>
+                </div>
+            </div>
+            <div class="ct-form--item ct-u-marginBottom20">
+                <label>Choose Topic</label>
+                <select class="ct-js-select ct-select-lg">
+                    <option value="general">General Inquiries</option>
+                    <option value="misc">Misc</option>
+                </select>
+            </div>
+            <div class="ct-form--item ct-u-marginBottom20">
+                <label>Message</label>
+                <textarea id="contact_message" placeholder="How can we help you?" class="form-control input-lg" rows="4" name="field[]" required=""></textarea>
+            </div>
+            <div class="ct-form--item">
+                <button type="submit" class="btn btn-warning center-block">Send Message</button>
+            </div>
+        </div>
+    </form>
