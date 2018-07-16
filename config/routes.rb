@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get 'remove_featured5', to: 'admin#remove_featured5', as: 'remove_featured5'
 
   get 'contact_us', to: 'home#contact_us', as: 'contact_us'
+  get 'about_us',   to: 'home#about_us',   as: 'about_us'
 
   root 'home#index'
 end
