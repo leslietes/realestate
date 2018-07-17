@@ -1,13 +1,13 @@
 class ArticlesController < ApplicationController
 
   def index
-    @articles = Article.all.to_a
-    render :layout => "application"
+    @articles = Article.select("title, permalink, teaser, published_date, published_at").order("published_date DESC")
+    @article_months = @articles.group_by { |a| a.published_date.beginning_of_month}
   end
 
   def show
     @article = Article.find_by_permalink(params[:id])
-    render :layout => "application"
+    @latest  = Article.limit(5)
   end
 
   def new

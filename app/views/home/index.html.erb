@@ -536,127 +536,32 @@
     <div class="row">
       <div class="col-md-8">
         <div class="ct-heading ct-u-marginBottom30">
-          <h3 class="text-uppercase">lately on blog</h3>
+          <h3 class="text-uppercase">latest posts</h3>
         </div>
         <div class="ct-u-marginBottom30">
+          <% @articles.each do |article| %>
           <div class="ct-articleBox ct-articleBox--list">
             <div class="ct-calendar--day text-center">
               <div class="ct-day">
-                <span>09</span>
+                <span><%= get_day(article.published_date) %></span>
               </div>
               <div class="ct-month">
-                <span class="text-uppercase">jan</span>
+                <span class="text-uppercase"><%= get_month(article.published_date) %></span>
               </div>
             </div>
-            <div class="ct-articleBox-media">
-              <%= image_tag 'content/blog-image-small-1.jpg' %>
-            </div>
+
             <div class="ct-articleBox-titleBox text-uppercase">
 
-              <a href="#">Expectations for 2015</a>
+              <%= link_to article.title, article_url(article) %>
               <div class="ct-articleBox-meta">
-                <span>Posted on January 9th, 2015 In Loans, Real Estate</span>
+                <span>Posted on <%= format_date(article.published_date) %> In <%= article.published_at %></span>
               </div>
-              <div class="ct-articleComments">
-                <a href="#">2 comments</a>
-              </div>
-
             </div>
             <div class="clearfix"></div>
           </div>
-          <div class="ct-articleBox ct-articleBox--list">
-            <div class="ct-calendar--day text-center">
-              <div class="ct-day">
-                <span>05</span>
-              </div>
-              <div class="ct-month">
-                <span class="text-uppercase">jan</span>
-              </div>
-            </div>
-            <div class="ct-articleBox-titleBox text-uppercase">
-
-              <a href="">Real Estate market most probably going to bloom in early 2016</a>
-              <div class="ct-articleBox-meta">
-                <span>Posted on January 5th, 2015 In Loans, Real Estate</span>
-              </div>
-              <div class="ct-articleComments">
-                <a href="#">2 comments</a>
-              </div>
-
-            </div>
-            <div class="clearfix"></div>
-          </div>
-          <div class="ct-articleBox ct-articleBox--list">
-            <div class="ct-calendar--day text-center">
-              <div class="ct-day">
-                <span>03</span>
-              </div>
-              <div class="ct-month">
-                <span class="text-uppercase">jan</span>
-              </div>
-            </div>
-            <div class="ct-articleBox-media">
-              <%= image_tag 'content/blog-image-small-2.jpg' %>
-            </div>
-            <div class="ct-articleBox-titleBox text-uppercase">
-
-              <a href="#">Trending in architecture leads us towards better standards</a>
-              <div class="ct-articleBox-meta">
-                <span>Posted on January 3th, 2015 In Loans, Real Estate</span>
-              </div>
-              <div class="ct-articleComments">
-                <a href="#">2 comments</a>
-              </div>
-
-            </div>
-            <div class="clearfix"></div>
-          </div>
-          <div class="ct-articleBox ct-articleBox--list">
-            <div class="ct-calendar--day text-center">
-              <div class="ct-day">
-                <span>31</span>
-              </div>
-              <div class="ct-month">
-                <span class="text-uppercase">dec</span>
-              </div>
-            </div>
-            <div class="ct-articleBox-titleBox text-uppercase">
-
-              <a href="#"><i class="fa fa-long-arrow-right"></i> John Doe</a>
-              <div class="ct-articleBox-meta">
-                <span>Posted on January 3th, 2015 In Loans, Real Estate</span>
-              </div>
-              <div class="ct-articleComments">
-                <a href="#">2 comments</a>
-              </div>
-
-            </div>
-            <div class="clearfix"></div>
-          </div>
-          <div class="ct-articleBox ct-articleBox--list">
-            <div class="ct-calendar--day text-center">
-              <div class="ct-day">
-                <span>16</span>
-              </div>
-              <div class="ct-month">
-                <span class="text-uppercase">dec</span>
-              </div>
-            </div>
-            <div class="ct-articleBox-titleBox text-uppercase">
-
-              <a href="#">Pre-Christmas Slowdown</a>
-              <div class="ct-articleBox-meta">
-                <span>Posted on January 3th, 2015 In Loans, Real Estate</span>
-              </div>
-              <div class="ct-articleComments">
-                <a href="#">2 comments</a>
-              </div>
-
-            </div>
-            <div class="clearfix"></div>
-          </div>
+          <% end %>
         </div>
-        <a href="#" class="btn btn-primary btn-transparent--border ct-u-text--motive ct-u-marginBottom30">Read More On Blog</a>
+        <%= link_to "Read More On Blog", articles_url, class: "btn btn-primary btn-transparent--border ct-u-text--motive ct-u-marginBottom30" %>
       </div>
       <div class="col-md-4">
         <div class="ct-heading ct-u-marginBottom30">

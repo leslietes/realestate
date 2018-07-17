@@ -4,4 +4,12 @@ module ApplicationHelper
     date.strftime("%b %d, %Y")
     #date.strftime("#{abbreviated ? '%b' : '%B'} %d, %Y")
   end
+
+  def get_month(date)
+    date.strftime("%b")
+  end
+
+  def get_day(date)
+    date.strftime("%d")
+  end
 end

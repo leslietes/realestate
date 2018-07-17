@@ -6,31 +6,34 @@
         <div class="ct-articleBox-media pull-left ct-u-marginBottom30">
             <div class="ct-calendar--day text-center ct-calendar--mini hidden-lg">
                 <div class="ct-day">
-                    <span>09</span>
+                    <span><%= get_day(@article.published_date) %></span>
                 </div>
                 <div class="ct-month">
-                    <span class="text-uppercase">jan</span>
+                    <span class="text-uppercase"><%= get_month(@article.published_date) %></span>
                 </div>
             </div>
-            <img src="content/blog-image-1.jpg" alt="">
+            <%= image_tag @article.article_photo.url(:medium) if @article.has_article_photo? %>
         </div>
         <div class="ct-articleBox--body">
             <div class="ct-u-displayTableVertical">
                 <div class="ct-calendar--day text-center visible-lg-inline-block ct-u-displayTableCell">
                     <div class="ct-day">
-                        <span>09</span>
+                        <span><%= get_day(@article.published_date) %></span>
                     </div>
                     <div class="ct-month">
-                        <span class="text-uppercase">jan</span>
+                        <span class="text-uppercase"><%= get_month(@article.published_date) %></span>
                     </div>
                 </div>
                 <div class="ct-articleBox-titleBox text-uppercase ct-u-displayTableCell">
 
                     <a href="blog-single.html"><%= @article.title %></a>
                     <div class="ct-articleBox-meta">
-                        <span>Posted on <%= @article.published_date %> In <%= @article.published_at %></span>
+                        <span>Posted on <%= format_date(@article.published_date) %> In <%= @article.published_at %></span>
                     </div>
-
+                    <div class="ct-articleComments">
+                      <%= link_to 'Edit', edit_article_url(@article) %>
+                      <%= link_to 'Delete', article_url(@article), :method => :delete, :confirm => "Are you sure?" %>
+                    </div>
 
                 </div>
             </div>
@@ -53,27 +56,14 @@
                     <div class="widget-inner">
                         <h4 class="text-uppercase">Latest Posts</h4>
                         <ul class="list-unstyled">
-                            <li>
-                                <div class="widget-latest-posts-left">
-                                    <a href="blog-single.html">
-                                        <img src="assets/images/content/latest-post-widget.jpg" alt="">
-                                    </a>
-                                </div>
-                                <div class="widget-latest-posts-content">
-                                    <a href="blog-single.html">
-                                        Expectations for 2015
-                                    </a>
-                                    <span class="text-uppercase">Posted on january 9th, 2015</span>
-                                </div>
-                            </li>
+                          <% @latest.each do |l| %>
                             <li>
                                 <div class="widget-latest-posts-content">
-                                    <a href="blog-single.html">
-                                        Real Estate market most probably going to bloom in early 2016
-                                    </a>
-                                    <span class="text-uppercase">Posted on january 5th, 2015</span>
+                                    <%= link_to l.title, article_url(l) %>
+                                    <span class="text-uppercase">Posted on <%= format_date(l.published_date) %> In <%= l.published_at %></span>
                                 </div>
                             </li>
+                            <% end %>
                         </ul>
                     </div>
                 </section>

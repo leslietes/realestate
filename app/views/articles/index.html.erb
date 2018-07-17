@@ -1,14 +1,9 @@
-<div class="ct-site--map">
-    <div class="container">
-        <a href="index.html">Home</a>
-        <a href="faq.html">Blog</a>
-    </div>
-</div>
+
 <header class="ct-mediaSection" data-stellar-background-ratio="0.3" data-height="140" data-type="parallax" data-bg-image="content/agency-parallax.jpg" data-bg-image-mobile="content/agency-parallax.jpg">
     <div class="ct-mediaSection-inner">
         <div class="container">
             <div class="ct-heading--main text-center">
-                <h3 class="text-uppercase ct-u-text--white">Blog</h3>
+                <h3 class="text-uppercase ct-u-text--white">Articles</h3>
             </div>
         </div>
     </div>
@@ -24,10 +19,10 @@
                     <div class="ct-articleBox-media ct-u-marginBottom30">
                         <div class="ct-calendar--day text-center ct-calendar--mini hidden-lg">
                             <div class="ct-day">
-                                <span>15</span>
+                                <span><%= get_day(article.published_date) %></span>
                             </div>
                             <div class="ct-month">
-                                <span class="text-uppercase">jan</span>
+                                <span class="text-uppercase"><%= get_month(article.published_date) %></span>
                             </div>
                         </div>
                     </div>
@@ -35,17 +30,17 @@
                         <div class="ct-u-displayTableVertical">
                             <div class="ct-calendar--day text-center ct-u-displayTableCell visible-lg-inline-block">
                                 <div class="ct-day">
-                                    <span>15</span>
+                                    <span><%= get_day(article.published_date) %></span>
                                 </div>
                                 <div class="ct-month">
-                                    <span class="text-uppercase">jan</span>
+                                    <span class="text-uppercase"><%= get_month(article.published_date) %></span>
                                 </div>
                             </div>
                             <div class="ct-articleBox-titleBox text-uppercase ct-u-displayTableCell">
 
                                 <a href="blog-single.html"><%= link_to article.title, article_url(article) %></a>
                                 <div class="ct-articleBox-meta">
-                                    <span>Posted on <%= article.published_date %> In <%= article.published_at %></span>
+                                    <span>Posted on <%= format_date(article.published_date) %> In <%= article.published_at %></span>
                                 </div>
                             </div>
                         </div>
@@ -53,7 +48,7 @@
                         <div class="ct-divider ct-u-marginTop10 ct-u-marginBottom20"></div>
                         <div class="ct-articleBox-description">
                             <%= article.teaser %>
-                            <a href="blog-single.html">Read more.</a>
+                            <%= link_to 'Read more', article_url(article.permalink) %>
                         </div>
                     </div>
                 </div>
@@ -75,18 +70,15 @@
             <div class="col-md-4">
                 <div class="ct-js-sidebar">
                     <div class="row">
-
                         <div class="col-sm-6 col-md-12">
                             <section class="widget">
                                 <div class="widget-inner">
                                     <div class="ct-widget-categories">
                                         <h4 class="text-uppercase">Archive</h4>
                                         <ul class="list-unstyled">
-                                            <li><a href=""><i class="fa fa-angle-right"></i>January 2015<span class="pull-right">(1)</span></a></li>
-                                            <li><a href=""><i class="fa fa-angle-right"></i>December 2014<span class="pull-right">(2)</span></a></li>
-                                            <li><a href=""><i class="fa fa-angle-right"></i>November 2014<span class="pull-right">(3)</span></a></li>
-                                            <li><a href=""><i class="fa fa-angle-right"></i>October 2014<span class="pull-right">(1)</span></a></li>
-                                            <li><a href=""><i class="fa fa-angle-right"></i>August 2014<span class="pull-right">(5)</span></a></li>
+                                          <% @article_months.sort.reverse.each do |month, articles| %>
+                                            <li><a href=""><i class="fa fa-angle-right"></i><%=h month.strftime("%B %Y") %><span class="pull-right">(<%= articles.size %>)</span></a></li>
+                                          <% end %>
                                         </ul>
                                     </div>
                                 </div>
