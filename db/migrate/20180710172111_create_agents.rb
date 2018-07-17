@@ -4,11 +4,13 @@ class CreateAgents < ActiveRecord::Migration[5.0]
       t.string "agent_name"
       t.string "mobile_no"
       t.string "email_address"
-      
+
       t.string "linked_in"
       t.string "facebook"
       t.string "twitter"
       t.string "instagram"
+
+      t.string "position"
 
       t.timestamps
     end

@@ -11,30 +11,30 @@
             </div>
             <div class="ct-personContent">
                 <div class="ct-personName ct-u-paddingBoth10 text-uppercase">
-                    <h2>Agency Name</h2>
-                    <a href="">154 properties on estato <i class="fa fa-external-link"></i></a>
+                    <h2><%= @setting.agency_name %></h2>
+                    <a href=""><%= @count %> properties <i class="fa fa-external-link"></i></a>
                 </div>
                 <div class="ct-personDescription pull-right ct-u-paddingBoth20">
                     <ul class="list-unstyled ct-contactPerson pull-right">
                         <li>
                             <i class="fa fa-phone"></i>
-                            <span>(123) 456 7890</span>
+                            <span><%= @setting.office_no %></span>
                         </li>
                         <li>
                             <a href=""><i class="fa fa-skype"></i> kristine.black</a>
                         </li>
                         <li>
                             <i class="fa fa-mobile"></i>
-                            <span>888 999 000</span>
+                            <span><%= @setting.mobile_no %></span>
                         </li>
                         <li>
-                            <a href=""><i class="fa fa-envelope-o"></i> kristine.black@example.com</a>
+                            <a href=""><i class="fa fa-envelope-o"></i> <%= @setting.production_email %></a>
                         </li>
                     </ul>
                 </div>
                 <div class="ct-buttonPanel text-capitalize ct-u-paddingBoth20 pull-right">
-                    <a href="index.html" class="btn btn-default btn-transparent--border ct-u-text--white btn-hoverWhite">Visit Our Website</a>
-                    <a href="properties.html" class="btn btn-default btn-transparent--border ct-u-text--white btn-hoverWhite">View Properties</a>
+                    <%= link_to 'Visit Our Website', root_url, class: 'btn btn-default btn-transparent--border ct-u-text--white btn-hoverWhite' %>
+                    <%= link_to 'View Properties', properties_url, class: 'btn btn-default btn-transparent--border ct-u-text--white btn-hoverWhite' %>
                 </div>
             </div>
         </div>
@@ -46,11 +46,11 @@
             <h3 class="text-uppercase">Our agents</h3>
         </div>
         <div class="row">
-           <% 2.times do %>
+           <% @agents.each do |agent| %>
              <div class="col-sm-6 col-md-3">
                 <div class="ct-personBox text-left">
                     <div class="ct-imagePerson">
-                        <img src="assets/images/content/agents-1.jpg" alt="">
+                        <%= image_tag agent.avatar.url(:medium) %>
                         <ul class="ct-panel--socials list-inline list-unstyled">
                             <li><a href="https://www.facebook.com/createITpl"><div class="ct-socials ct-socials--circle"><i class="fa fa-facebook"></i></div></a></li>
                             <li><a href="https://twitter.com/createitpl"><div class="ct-socials ct-socials--circle"><i class="fa fa-twitter"></i></div></a></li>
@@ -59,24 +59,21 @@
                     </div>
                     <div class="ct-personContent">
                         <div class="ct-personName ct-u-paddingBottom10 ct-u-marginBottom20">
-                            <h5 class="ct-fw-600">Kristine Black</h5>
-                            <a href="">15 Properties</a>
+                            <h5 class="ct-fw-600"><%= agent.agent_name %></h5>
+                            <a href=""><%= agent.position %></a>
                         </div>
                         <div class="ct-personDescription">
                             <ul class="list-unstyled ct-contactPerson">
                                 <li>
                                     <i class="fa fa-phone"></i>
-                                    <span>(123) 456 7890</span>
+                                    <span><%= @setting.office_no %></span>
                                 </li>
                                 <li>
                                     <i class="fa fa-mobile"></i>
-                                    <span>888 999 000</span>
+                                    <span><%= agent.mobile_no %></span>
                                 </li>
                                 <li>
-                                    <a href=""><i class="fa fa-skype"></i> kristine.black</a>
-                                </li>
-                                <li>
-                                    <a href=""><i class="fa fa-envelope-o"></i> kristine.black@example.com</a>
+                                    <a href=""><i class="fa fa-envelope-o"></i> <%= agent.email_address %></a>
                                 </li>
                             </ul>
                         </div>

@@ -37,6 +37,7 @@ class Property < ApplicationRecord
 
   # do not include hidden - index page
   def self.show_all_visible
+    self.all
     #Property.find(:all,  :select => "name, permalink, location, target_completion_date, developer_id, completed,
     #                studio, one_bedroom, two_bedroom, three_bedroom, penthouse, loft,
     #                studio_size, one_bedroom_size, two_bedroom_size, three_bedroom_size, penthouse_size, loft_size,

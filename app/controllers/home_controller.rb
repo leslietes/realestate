@@ -6,4 +6,10 @@ class HomeController < ApplicationController
 
   def contact_us
   end
+
+  def about_us
+    @setting  = Setting.first
+    @count    = Property.show_all_visible.count
+    @agents   = Agent.all
+  end
 end
