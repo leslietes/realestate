@@ -14,7 +14,9 @@ Article.create(title: 'Manhattan Real Estate Feels Summer Slump',
   published_at: 'www.mansionglobal.com')
 
 Setting.create(agency_name: "Cebu Condo",
-  production_email: 'sales@cebucondo.ph',
+  agent_name: 'Mickey Mouse',
+  production_email: 'inquiries@cebucondo.ph',
+  sales_email: 'sales@cebucondo.ph',
   office_no: '032-123-4567',
   mobile_no: '0917-123-4567',
   office_address: 'Cebu City',

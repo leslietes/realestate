@@ -21,7 +21,7 @@
                             <span><%= @setting.office_no %></span>
                         </li>
                         <li>
-                            <a href=""><i class="fa fa-skype"></i> kristine.black</a>
+                            <a href=""><i class="fa fa-user"></i> <%= @setting.agent_name %></a>
                         </li>
                         <li>
                             <i class="fa fa-mobile"></i>
@@ -40,47 +40,3 @@
         </div>
     </div>
 </header>
-<section class="ct-u-paddingTop60 ct-u-paddingBottom30 text-center">
-    <div class="container">
-        <div class="ct-heading ct-u-marginBottom60">
-            <h3 class="text-uppercase">Our agents</h3>
-        </div>
-        <div class="row">
-           <% @agents.each do |agent| %>
-             <div class="col-sm-6 col-md-3">
-                <div class="ct-personBox text-left">
-                    <div class="ct-imagePerson">
-                        <%= image_tag agent.avatar.url(:medium) %>
-                        <ul class="ct-panel--socials list-inline list-unstyled">
-                            <li><a href="https://www.facebook.com/createITpl"><div class="ct-socials ct-socials--circle"><i class="fa fa-facebook"></i></div></a></li>
-                            <li><a href="https://twitter.com/createitpl"><div class="ct-socials ct-socials--circle"><i class="fa fa-twitter"></i></div></a></li>
-                            <li><a href="#"><div class="ct-socials ct-socials--circle"><i class="fa fa-instagram"></i></div></a></li>
-                        </ul>
-                    </div>
-                    <div class="ct-personContent">
-                        <div class="ct-personName ct-u-paddingBottom10 ct-u-marginBottom20">
-                            <h5 class="ct-fw-600"><%= agent.agent_name %></h5>
-                            <a href=""><%= agent.position %></a>
-                        </div>
-                        <div class="ct-personDescription">
-                            <ul class="list-unstyled ct-contactPerson">
-                                <li>
-                                    <i class="fa fa-phone"></i>
-                                    <span><%= @setting.office_no %></span>
-                                </li>
-                                <li>
-                                    <i class="fa fa-mobile"></i>
-                                    <span><%= agent.mobile_no %></span>
-                                </li>
-                                <li>
-                                    <a href=""><i class="fa fa-envelope-o"></i> <%= agent.email_address %></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-           <% end %>
-        </div>
-    </div>
-</section>

@@ -2,9 +2,9 @@
     <ul class="ct-menuMobile-navbar">
         <li class="onepage"><%= link_to "Home", root_url %></li>
         <li class="onepage"><%= link_to "About Us", about_us_url %></li>
+        <li class="onepage"><%= link_to "Developers", developers_url %></li>
         <li class="onepage"><%= link_to "Properties", properties_url %></li>
-        <li class="onepage"><a href="#whyus">Why us?</a></li>
-        <li class="onepage"><%= link_to "Articles", articles_url %></li>
+        <li class="onepage"><a href="#whyus">Pre-Owned</a></li>
         <li class="onepage"><%= link_to "Contact Us", contact_us_url %></li>
     </ul>
 </nav>
@@ -37,7 +37,7 @@
               </a>
           </div>
           <div class="ct-panelBox">
-              <div class="ct-panel--text ct-panel--navbar ct-fw-600"><a href="#">0 800 123 4567</a></div>
+              <div class="ct-panel--text ct-panel--navbar ct-fw-600"><a href="#"><%= @setting.office_no %></a></div>
               <ul class="ct-panel--socials ct-panel--navbar list-inline list-unstyled">
                   <li><a href="https://www.facebook.com/createITpl"><div class="ct-socials ct-socials--circle"><i class="fa fa-facebook"></i></div></a></li>
                   <li><a href="https://twitter.com/createitpl"><div class="ct-socials ct-socials--circle"><i class="fa fa-twitter"></i></div></a></li>
@@ -48,9 +48,9 @@
               <ul class="nav navbar-nav ct-navbar--fadeInUp">
                   <li class="onepage active"><%= link_to "Home", root_url %></li>
                   <li class="onepage"><%= link_to "About Us", about_us_url %></li>
+                  <li class="onepage"><%= link_to "Developers", developers_url %></li>
                   <li class="onepage"><%= link_to "Properties", properties_url %></li>
-                  <li class="onepage"><a href="#testimonials">Pre-Owned</a></li>
-                  <li class="onepage"><%= link_to "Articles", articles_url %></li>
+                  <li class="onepage"><a href="#testimonials">Pre-Owned</a></li>                
                   <li class="onepage"><%= link_to "Contact Us", contact_us_url %></li>
               </ul>
           </div>
