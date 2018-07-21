@@ -28,14 +28,14 @@
           <label class="control-label sale">
               <%= property.status %>
           </label>
-          <a href="product-single.html">
+
               <div class="ct-main-content">
                   <div class="ct-imageBox">
-                      <%= image_tag property.photo.url(:medium) %>
+                      <%= link_to (image_tag property.photo.url(:medium)), property_url(property) %>
                   </div>
                   <div class="ct-main-text">
                       <div class="ct-product--tilte">
-                          <%= property.name %>
+                          <%= link_to property.name, property_url(property) %>
                       </div>
                       <div class="ct-product--price">
                           <span><%= property.price_range %></span>
@@ -56,7 +56,7 @@
                   </div>
                   <div class="clearfix"></div>
               </div>
-          </a>
+          
       </div>
   </div>
 
