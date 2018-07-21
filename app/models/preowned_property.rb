@@ -1,0 +1,2 @@
+class PreownedProperty < ApplicationRecord
+end

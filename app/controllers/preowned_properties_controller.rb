@@ -1,0 +1,2 @@
+class PreownedPropertiesController < ApplicationController
+end
