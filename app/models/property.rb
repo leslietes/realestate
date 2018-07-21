@@ -19,14 +19,16 @@ class Property < ApplicationRecord
   validates_attachment_content_type :penthouse_layout, content_type: /\Aimage\/.*\z/
   validates_attachment_content_type :loft_layout, content_type: /\Aimage\/.*\z/
 
-  validates_presence_of   :developer_id, :name, :permalink
+  validates_presence_of   :developer_id, :name, :permalink, :location, :address, :status
+  validates_presence_of   :unit_types, :unit_sizes, :price_range
+
   validates_uniqueness_of :permalink
 
   belongs_to :developer
 
   # include hidden - index page logged in user
   def self.show_all
-    Property.all.to_a
+    self.all.to_a
     #Property.find(:all, :select => "name, permalink, location, target_completion_date, developer_id, completed,
     #                studio, one_bedroom, two_bedroom, three_bedroom, penthouse, loft,
     #                studio_size, one_bedroom_size, two_bedroom_size, three_bedroom_size, penthouse_size, loft_size,
@@ -47,6 +49,13 @@ class Property < ApplicationRecord
     #                :include => :developer)
   end
 
+  def self.show_latest_listings
+    self.limit(5).order(created_at: :desc).to_a
+  end
+
+  def self.show_featured_listings
+    self.where(featured: true).limit(6).order(created_at: :desc)
+  end
 
   def self.property_types
     [[''],['Condominium'],['Condotel']]

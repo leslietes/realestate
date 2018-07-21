@@ -102,7 +102,10 @@ class PropertiesController < ApplicationController
     :unit_types,:unit_sizes,:price_range,:amenities,:features,
     :unit_specifications,:payment_terms,:as_low_as,:as_low_as_label,
     :reservation_fee,:property_type,:featured,:hidden, :photo, :logo, :location_map, :studio_layout,
-   :one_bedroom_layout, :two_bedroom_layout, :three_bedroom_layout, :penthouse_layout, :loft_layout
+    :one_bedroom_layout, :two_bedroom_layout, :three_bedroom_layout, :penthouse_layout, :loft_layout,
+    :elevators, :swimming_pool, :fitness_gym, :parking, :function_room, :retail_area, :childrens_play_area,
+    :garden, :shooting_court, :laundry_room, :mail_room, :security, :lobby, :property_management_services,
+    :clubhouse, :back_up_power
     )
   end
 
