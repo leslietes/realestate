@@ -62,57 +62,27 @@
         </div>
         <div class="col-sm-6 col-md-6 col-lg-3">
           <h4 class="text-uppercase ct-u-marginBottom30">Latest Listings</h4>
+
+          <% @latest_footer.each do |latest_footer| %>
           <div class="ct-itemProducts--small ct-itemProducts--small-type2">
-            <a href="product-single.html">
+
+
               <div class="ct-main-content">
                 <div class="ct-imageBox">
                   <%= image_tag 'content/recently-reduced-thumbnail-4.jpg' %>
                 </div>
                 <div class="ct-main-text">
                   <div class="ct-product--tilte">
-                    1856 Misty Concession, Colonsay
+                    <%= link_to latest_footer.name, property_url(latest_footer) %>
                   </div>
                   <div class="ct-product--price">
-                    <span>$ 650/month</span>
+                    <span><%= latest_footer.price_range %></span>
                   </div>
                 </div>
               </div>
-            </a>
+
           </div>
-          <div class="ct-itemProducts--small ct-itemProducts--small-type2">
-            <a href="product-single.html">
-              <div class="ct-main-content">
-                <div class="ct-imageBox">
-                  <%= image_tag 'content/recently-reduced-thumbnail-5.jpg' %>
-                </div>
-                <div class="ct-main-text">
-                  <div class="ct-product--tilte">
-                    3046 Merry Landing, High Lonesome Wells
-                  </div>
-                  <div class="ct-product--price">
-                    <span>$ 650/month</span>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-          <div class="ct-itemProducts--small ct-itemProducts--small-type2">
-            <a href="product-single.html">
-              <div class="ct-main-content">
-                <div class="ct-imageBox">
-                  <%= image_tag 'content/recently-reduced-thumbnail-6.jpg' %>
-                </div>
-                <div class="ct-main-text">
-                  <div class="ct-product--tilte">
-                    5454 Fallen Deer Wood, Flat Nose
-                  </div>
-                  <div class="ct-product--price">
-                    <span>$ 650/month</span>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
+<% end %>
         </div>
       </div>
     </div>
