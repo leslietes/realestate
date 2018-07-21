@@ -17,6 +17,7 @@ class DevelopersController < ApplicationController
 
   def show
     @developer = Developer.find_by_permalink(params[:id])
+    @properties= @developer.properties
   end
 
   def new

@@ -1,10 +1,10 @@
 class Developer < ApplicationRecord
   has_many :properties
 
-  has_attached_file :image, :styles => { :medium => "155x165>"}
+  has_attached_file :image, :styles => { :medium => "264x194#"}
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
-  validates_presence_of   :developer, :permalink, :image
+  validates_presence_of   :developer, :permalink
   validates_uniqueness_of :permalink
 
   # including hidden
