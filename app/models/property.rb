@@ -1,13 +1,13 @@
 class Property < ApplicationRecord
-  has_attached_file :photo, :styles => { :medium => "155x165>"}
-  has_attached_file :logo,  :styles => { :medium => "155x165>"}
-  has_attached_file :location_map, :styles => { :medium => "155x165>"}
-  has_attached_file :studio_layout, :styles => { :medium => "155x165>"}
-  has_attached_file :one_bedroom_layout, :styles => { :medium => "155x165>"}
-  has_attached_file :two_bedroom_layout, :styles => { :medium => "155x165>"}
-  has_attached_file :three_bedroom_layout, :styles => { :medium => "155x165>"}
-  has_attached_file :penthouse_layout, :styles => { :medium => "155x165>"}
-  has_attached_file :loft_layout, :styles => { :medium => "155x165>"}
+  has_attached_file :photo, :styles => { :medium => "264x194#", :large => "870x441#"}
+  has_attached_file :logo,  :styles => { :medium => "264x194#"}
+  has_attached_file :location_map, :styles => { :medium => "264x194#", :large => "870x441#"}
+  has_attached_file :studio_layout, :styles => { :medium => "264x194#", :large => "870x441#"}
+  has_attached_file :one_bedroom_layout, :styles => { :medium => "264x194#", :large => "870x441#"}
+  has_attached_file :two_bedroom_layout, :styles => { :medium => "264x194#", :large => "870x441#"}
+  has_attached_file :three_bedroom_layout, :styles => { :medium => "264x194#", :large => "870x441#"}
+  has_attached_file :penthouse_layout, :styles => { :medium => "264x194#", :large => "870x441#"}
+  has_attached_file :loft_layout, :styles => { :medium => "264x194#", :large => "870x441#"}
 
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\z/
   validates_attachment_content_type :logo, content_type: /\Aimage\/.*\z/

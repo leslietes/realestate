@@ -17,14 +17,18 @@
 
             <div class="ct-main-content">
                 <div class="ct-imageBox">
-									<%= link_to (image_tag developer.image.url(:medium)), developer_url(developer)	 %>
+                  <% if developer.image? %>
+									  <%= link_to (image_tag developer.image.url(:medium)), developer_url(developer)	 %>
+                  <% else %>
+                    <%= image_tag 'content/property-1.jpg' %>
+                  <% end %>
                 </div>
                 <div class="ct-main-text">
                     <div class="ct-product--tilte">
                         <%= link_to developer.developer, developer_url(developer) %>
                     </div>
                     <div class="ct-product--description">
-                        <%= pluralize(developer.properties.size, 'property') %> 
+                        <%= pluralize(developer.properties.size, 'property') %>
 												<br/><br/>
 												<%= link_to 'Edit', edit_developer_url(developer) %>
 												<%= link_to 'Delete', developer_url(developer), :method => :delete, :confirm => "Are you sure?" %>

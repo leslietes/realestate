@@ -3,7 +3,28 @@
 
 <%= render partial: "/properties/search_form_mobile" %>
 
+<div id="ct-js-wrapper" class="ct-pageWrapper">
 
+  <div class="ct-navbarMobile">
+      <button type="button" class="navbar-toggle">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"><img src="assets/images/content/logo.png" alt="Estato"> </a>
+      <button type="button" class="searchForm-toggle">
+          <span class="sr-only">Toggle navigation</span>
+          <span><i class="fa fa-search"></i></span>
+      </button>
+  </div>
+
+
+  <div class="ct-site--map">
+      <div class="container">
+
+      </div>
+  </div>
 <section class="ct-u-paddingTop50 ct-u-paddingBottom60">
 <div class="container">
 <div class="ct-section--products">
@@ -24,7 +45,7 @@
 <div class="col-md-8 col-lg-9">
 <div class="ct-sortingBar ct-u-paddingRight10 ct-u-paddingLeft10 ct-u-marginBottom30">
     <div class="ct-sortingTitle pull-left">
-        <h4 class="text-uppercase">Search Results<span> (231)</span></h4>
+        <h4 class="text-uppercase">Search Results<span> (<%= @properties.size %>)</span></h4>
     </div>
     <ul class="list-inline list-unstyled pull-right ct-u-paddingBoth15">
         <li>
@@ -73,7 +94,11 @@
 
                 <div class="ct-main-content">
                     <div class="ct-imageBox">
-                      <%= link_to (image_tag property.photo.url(:medium)), property_url(property) %>
+                      <% if property.photo? %>
+                        <%= link_to (image_tag property.photo.url(:medium)), property_url(property) %>
+                      <% else %>
+                        <%= image_tag 'content/property-1.jpg' %>
+                      <% end %>
                     </div>
                     <div class="ct-main-text">
                         <div class="ct-product--tilte">

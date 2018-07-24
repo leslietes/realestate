@@ -47,15 +47,93 @@
                 <div class="col-md-8 col-lg-9">
                     <div class="ct-gallery ct-u-marginBottom30">
                         <div class="ct-owl-controls--type2" data-single="true" data-pagination="false" data-navigation="false" data-snap-ignore="true" id="sync1">
+                          <% if @property.logo? %>
                             <div class="item">
-                                <%= image_tag @property.photo.url(:medium) %>
+                                <%= image_tag @property.logo.url(:large) %>
                             </div>
+                          <% end %>
+                          <% if @property.photo? %>
+                            <div class="item">
+                                <%= image_tag @property.photo.url(:large) %>
+                            </div>
+                            <% else %>
+                            <div class="item">
+                                <%= image_tag 'content/property-1.jpg' %>
+                            </div>
+                          <% end %>
+                          <% if @property.location_map? %>
+                            <div class="item">
+                                <%= image_tag @property.location_map.url(:large) %>
+                            </div>
+                          <% end %>
+                          <% if @property.studio_layout? %>
+                            <div class="item">
+                                <%= image_tag @property.studio_layout.url(:large) %>
+                            </div>
+                          <% end %>
+                          <% if @property.one_bedroom_layout? %>
+                            <div class="item">
+                                <%= image_tag @property.one_bedroom_layout.url(:large) %>
+                            </div>
+                          <% end %>
+                          <% if @property.two_bedroom_layout? %>
+                            <div class="item">
+                                <%= image_tag @property.two_bedroom_layout.url(:large) %>
+                            </div>
+                          <% end %>
+                          <% if @property.three_bedroom_layout? %>
+                            <div class="item">
+                                <%= image_tag @property.three_bedroom_layout.url(:large) %>
+                            </div>
+                          <% end %>
+                          <% if @property.penthouse_layout? %>
+                            <div class="item">
+                                <%= image_tag @property.penthouse_layout.url(:large) %>
+                            </div>
+                          <% end %>
                         </div>
                         <div class="ct-navigationThumbnail">
                             <div class="ct-owl-controls--type3" data-single="false" data-items="5" data-pagination="false" data-snap-ignore="true" id="sync2">
+                              <% if @property.logo? %>
+                                <div class="item">
+                                    <%= image_tag @property.logo.url(:medium) %>
+                                </div>
+                              <% end %>
+                              <% if @property.photo? %>
                                 <div class="item">
                                     <%= image_tag @property.photo.url(:medium) %>
                                 </div>
+                              <% end %>
+                              <% if @property.location_map? %>
+                                <div class="item">
+                                    <%= image_tag @property.location_map.url(:medium) %>
+                                </div>
+                              <% end %>
+                              <% if @property.studio_layout? %>
+                                <div class="item">
+                                    <%= image_tag @property.studio_layout.url(:medium) %>
+                                </div>
+                              <% end %>
+                              <% if @property.one_bedroom_layout? %>
+                                <div class="item">
+                                    <%= image_tag @property.one_bedroom_layout.url(:medium) %>
+                                </div>
+                              <% end %>
+                              <% if @property.two_bedroom_layout? %>
+                                <div class="item">
+                                    <%= image_tag @property.two_bedroom_layout.url(:medium) %>
+                                </div>
+                              <% end %>
+                              <% if @property.three_bedroom_layout? %>
+                                <div class="item">
+                                    <%= image_tag @property.three_bedroom_layout.url(:medium) %>
+                                </div>
+                              <% end %>
+                              <% if @property.penthouse_layout? %>
+                                <div class="item">
+                                    <%= image_tag @property.penthouse_layout.url(:medium) %>
+                                </div>
+                              <% end %>
                             </div>
                         </div>
                     </div>
@@ -75,7 +153,7 @@
                               </div>
                                 <div class="ct-u-displayTableRow">
                                     <div class="ct-u-displayTableCell">
-                                        <span class="ct-fw-600">Price Range</span>
+                                        <span class="ct-fw-600">Price</span>
                                     </div>
                                     <div class="ct-u-displayTableCell text-right">
                                         <span class="ct-price"><%= @property.price_range %></span>
@@ -311,7 +389,7 @@
                                         <h4 class="text-uppercase">Contact Us</h4>
                                         <div class="ct-personBox text-left">
                                             <div class="ct-imagePerson">
-                                                <img src="assets/images/content/agents-1.jpg" alt="">
+                                                <%= image_tag 'content/agents-1.jpg' %>
                                                 <ul class="ct-panel--socials list-inline list-unstyled">
                                                     <li><a href="https://www.facebook.com/createITpl"><div class="ct-socials ct-socials--circle"><i class="fa fa-facebook"></i></div></a></li>
                                                     <li><a href="https://twitter.com/createitpl"><div class="ct-socials ct-socials--circle"><i class="fa fa-twitter"></i></div></a></li>
