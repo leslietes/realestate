@@ -40,7 +40,7 @@ Developer.create!(developer: 'Primary Properties', permalink: 'primary-propertie
 
 Property.create!(developer_id: 1, name: 'Avida Land', permalink: 'avida-land', address: 'I.T. Park, Lahug, Cebu City',
   location: 'Lahug', status: 'Completed',
-  unit_types: 'Studio, 1-Bedroom, 2-Bedroom',
+  unit_types: 'Studio, 1-br, 2-br',
   unit_sizes: '16-30 sq. m.',
   price_range: 'P1.5 - 4.5 M')
 Property.create!(developer_id: 3, name: 'La Guardia Flats 2', permalink: 'la-guardia-2', address: 'I.T. Park, Lahug, Cebu City',
