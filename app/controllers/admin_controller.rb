@@ -115,7 +115,8 @@ class AdminController < ApplicationController
   private
 
   def settings_params
-    params.require(:setting).permit(:production_email,:office_no,:office_address,:facebook,:twitter,:instagram,:about_us,:featured1,:featured2,:featured3,:featured4,:featured5)
+    params.require(:setting).permit(:production_email,:office_no,:office_address,:facebook,:twitter,:instagram,:about_us,:featured1,:featured2,:featured3,:featured4,:featured5,
+    :featured1_caption,:featured2_caption,:featured3_caption,:featured4_caption,:featured5_caption)
   end
 
   def location_params
