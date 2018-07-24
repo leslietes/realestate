@@ -1,0 +1,244 @@
+<section class="ct-u-paddingTop50 ct-u-paddingBottom60">
+<div class="container">
+<div class="ct-section--products">
+<div class="row">
+<div class="col-md-4 col-lg-3">
+<div class="ct-js-sidebar ct-mobileMarginTopFix">
+<div class="row">
+<div class="col-sm-6 col-md-12">
+    <div class="widget">
+        <div class="widget-inner">
+            <form class="ct-formSearch--extended" role="form">
+                <div class="ct-form--label--type3">
+                    <div class="ct-u-displayTableVertical">
+                        <div class="ct-u-displayTableCell">
+                            <div class="ct-input-group-btn">
+                                <button class="btn btn-primary">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="ct-u-displayTableCell text-center">
+                            <span class="text-uppercase">Search for property</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group ">
+
+                    <div class="ct-form--item ct-u-marginBottom10">
+                        <label>Location</label>
+                        <select class="ct-js-select ct-select-lg">
+                            <option value="any">Any</option>
+                            <option value="1">New York</option>
+                            <option value="2">New Jersey</option>
+                            <option value="3">Newark</option>
+                            <option value="4">Philadelphia</option>
+                        </select>
+                    </div>
+
+                    <div class="ct-form--item ct-u-marginBottom10">
+                        <label>Property Status</label>
+                        <select class="ct-js-select ct-select-lg">
+                            <option value="any">Any</option>
+                            <option value="1">Sale</option>
+                            <option value="2">New</option>
+                            <option value="3">Loan</option>
+                        </select>
+                    </div>
+                    <div class="ct-form--item ct-u-marginBottom10">
+                        <label>Property type </label>
+                        <select class="ct-js-select ct-select-lg">
+                            <option value="any">Any</option>
+                            <option value="1">Houses</option>
+                            <option value="2">Industrial</option>
+                            <option value="3">Retail</option>
+                            <option value="4">Apartments</option>
+                        </select>
+                    </div>
+                    <div class="ct-u-displayTableVertical ct-slider--row ct-u-marginBottom10">
+                        <div class="ct-u-displayTableCell">
+                            <div class="ct-form--item">
+                                <label>Bedrooms</label>
+                                <select class="ct-js-select ct-select-lg">
+                                    <option value="any">Any</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3+</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="ct-u-displayTableCell">
+                            <div class="ct-form--item">
+                                <label>Bathrooms</label>
+                                <select class="ct-js-select ct-select-lg">
+                                    <option value="any">Any</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3+</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ct-form--item ct-sliderAmount">
+                        <label>Price ($)</label>
+                        <input type="text" class="slider ct-js-sliderAmount" value="" data-slider-tooltip="hide" data-slider-handle="square" data-slider-min="5000" data-slider-max="5000000" data-slider-step="5000" data-slider-value="[1000000,2000000]">
+                        <div class="ct-u-displayTableVertical ct-slider--row ct-u-marginBottom10">
+                            <div class="ct-u-displayTableCell">
+                                <div class="ct-form--item">
+                                    <label>Min</label>
+                                    <input type="text" value="1000000" required class="form-control input-lg ct-js-slider-min" placeholder="">
+                                </div>
+                            </div>
+                            <div class="ct-u-displayTableCell">
+                                <div class="ct-form--item">
+                                    <label class="pull-right">Max</label>
+                                    <input type="text" value="2000000" required class="form-control input-lg ct-js-slider-max" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ct-form--item ct-sliderAmount">
+                        <label>Area (m2)</label>
+                        <input type="text" class="slider ct-js-sliderAmount" value="" data-slider-tooltip="hide" data-slider-handle="square" data-slider-min="20" data-slider-max="200" data-slider-step="10" data-slider-value="[30,120]">
+                        <div class="ct-u-displayTableVertical ct-slider--row ct-u-marginBottom20">
+                            <div class="ct-u-displayTableCell">
+                                <div class="ct-form--item">
+                                    <label>Min</label>
+                                    <input type="text" value="10" required class="form-control input-lg ct-js-slider-min" placeholder="">
+                                </div>
+                            </div>
+                            <div class="ct-u-displayTableCell">
+                                <div class="ct-form--item">
+                                    <label class="pull-right">Max</label>
+                                    <input type="text" value="120" required class="form-control input-lg ct-js-slider-max" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-warning">Search or Filter Now</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+</div>
+</div>
+</div>
+<div class="col-md-8 col-lg-9">
+<div class="ct-sortingBar ct-u-paddingRight10 ct-u-paddingLeft10 ct-u-marginBottom30">
+    <div class="ct-sortingTitle pull-left">
+        <h4 class="text-uppercase">Search Results<span> (<%= @count %>)</span></h4>
+    </div>
+    <ul class="list-inline list-unstyled pull-right ct-u-paddingBoth15">
+        <li>
+            <form>
+                <select class="ct-js-select">
+                    <option value="price">Sort by</option>
+                    <option value="price">Price</option>
+                    <option value="newness">Newness</option>
+                </select>
+            </form>
+        </li>
+        <li>
+            <form>
+                <select class="ct-js-select">
+                    <option value="nine">12 items</option>
+                    <option value="eighteen">15 items</option>
+                    <option value="eighteen">21 items</option>
+                    <option value="twentyseven">36 items</option>
+                    <option value="fourtyfive">45 items</option>
+                    <option value="ninety">90 items</option>
+                </select>
+            </form>
+        </li>
+    </ul>
+    <ul class="ct-showPages list-inline list-unstyled pull-right ct-u-paddingBoth15">
+        <li class="ct-showElements" id="ct-js-showTiles">
+            <a href="#">
+                <i class="fa fa-th fa-fw"></i>
+            </a>
+        </li>
+        <li class="ct-showElements is-active" id="ct-js-showList">
+            <a href="#">
+                <i class="fa fa-th-list fa-fw"></i>
+            </a>
+        </li>
+    </ul>
+    <div class="clearfix"></div>
+</div>
+<div class="row ct-js-search-results ct-showProducts--list">
+  <% @preowned.each do |preowned| %>
+    <div class="col-sm-6 col-md-6 col-lg-4">
+    <div class="ct-itemProducts ct-u-marginBottom30 ct-hover">
+        <% if preowned.status == 'Sold' %>
+          <label class="control-label sale">Sale</label>
+        <% elsif preowned.status == 'New' %>
+          <label class="control-label new">New</label>
+        <% end %>
+        <a href="product-single.html">
+            <div class="ct-main-content">
+                <div class="ct-imageBox">
+                  
+                  <%= image_tag "content/property-10.jpg" %>
+                </div>
+                <div class="ct-main-text">
+                    <div class="ct-product--tilte">
+                        <%= link_to preowned.name, preowned_property_url(preowned) %>
+                    </div>
+                    <div class="ct-product--price">
+                        <span class="ct-price--Old"></span>
+                        <span><%= preowned.price %></span>
+                    </div>
+                    <div class="ct-product--description">
+                        <%= preowned.project_name %> | <%= preowned.address %>
+                    </div>
+                </div>
+            </div>
+            <div class="ct-product--meta">
+                <div class="ct-icons">
+                        <span>
+                            <i class="fa fa-bed"></i> <%= preowned.bedrooms %>
+                        </span>
+                        <span>
+                            <i class="fa fa-shower"></i> <%= preowned.bathrooms %>
+                        </span>
+                        <span>
+                            <i class="fa fa-car"></i> <%= preowned.parking_slot %>
+                        </span>
+                </div>
+                <div class="ct-text">
+                    <span> Area: <span><%= preowned.unit_size %></span></span>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+  <% end %>
+
+</div>
+
+</div>
+<div class="ct-pagination text-center">
+    <ul class="pagination">
+        <li><a href="#" aria-label="Previous"><span aria-hidden="true"><i class="fa fa-angle-left"></i></span></a></li>
+        <li class="active"><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#" aria-label="Next"><span aria-hidden="true"><i class="fa fa-angle-right"></i></span></a></li>
+    </ul>
+
+</div>
+<%= link_to 'New Preowned Property', new_preowned_property_url %>
+
+</div>
+
+</div>
+</div>
+</div>
+</section>

@@ -1,0 +1,3 @@
+<%= form_for :preowned_property, :url => preowned_property_url(@preowned_property), :html => {:method => :put, :multipart => true} do |f| %>
+	<%= render :partial => 'form', :locals => {:f => f} %>
+<% end %>

@@ -6,6 +6,5 @@ class ApplicationController < ActionController::Base
 
   def get_settings
     @setting = Setting.first
-    @latest_footer = Property.show_latest_listings
   end
 end

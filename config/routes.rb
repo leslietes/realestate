@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   resources :developers
   resources :properties
   resources :articles
-  resources :agents
+  #resources :agents - not used
+  resources :preowned_properties
 
   match 'admin', to: 'admin#settings', via: [:get,:post,:put]
   match 'add_location', to: 'admin#add_location', via: [:post]

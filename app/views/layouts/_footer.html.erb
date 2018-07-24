@@ -61,28 +61,7 @@
           </div>
         </div>
         <div class="col-sm-6 col-md-6 col-lg-3">
-          <h4 class="text-uppercase ct-u-marginBottom30">Latest Listings</h4>
-
-          <% @latest_footer.each do |latest_footer| %>
-          <div class="ct-itemProducts--small ct-itemProducts--small-type2">
-
-
-              <div class="ct-main-content">
-                <div class="ct-imageBox">
-                  <%= image_tag 'content/recently-reduced-thumbnail-4.jpg' %>
-                </div>
-                <div class="ct-main-text">
-                  <div class="ct-product--tilte">
-                    <%= link_to latest_footer.name, property_url(latest_footer) %>
-                  </div>
-                  <div class="ct-product--price">
-                    <span><%= latest_footer.price_range %></span>
-                  </div>
-                </div>
-              </div>
-
-          </div>
-<% end %>
+          
         </div>
       </div>
     </div>
