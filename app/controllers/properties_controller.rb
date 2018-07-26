@@ -64,6 +64,28 @@ class PropertiesController < ApplicationController
     redirect_to properties_url
   end
 
+  def search
+    #developer, location, property status, unit type, price range
+    if params[:status] == "Preowned"
+      @preowned = PreownedProperty.where(nil)
+      @preowned = @preowned.where("developer_id = ?", params[:developer_id]) if params[:developer_id].present?
+      @preowned = @preowned.where("location = ?", params[:location]) if params[:location].present?
+      @preowend = @preowned.where("price_range = ?", params[:price_range]) if params[:price_range].present?
+
+      render "preowned_properties/index"
+
+    else
+
+      @properties = Property.where(nil)
+      @properties = @properties.where("developer_id = ?", params[:developer_id]) if params[:developer_id].present?
+      @properties = @properties.where("location = ?", params[:location]) if params[:location].present?
+      @properties = @properties.where("status = ?", params[:status]) if params[:status].present?
+      @properties = @properties.where("price_range = ?", params[:price_range]) if params[:price_range].present?
+
+      render "index"
+    end
+  end
+
   private
 
   def select_property_types
@@ -75,14 +97,6 @@ class PropertiesController < ApplicationController
   end
 
   def select_unit_types
-    #@unit_types = []
-    #@unit_types << ['studio']
-    #@unit_types << ['1 bedroom']
-    #@unit_types << ['2 bedroom']
-    #@unit_types << ['3 bedroom']
-    #@unit_types << ['loft']
-    #@unit_types << ['penthouse']
-    #@unit_types
     @unit_types = ['studio','1 bedroom','2 bedroom','3 bedroom','loft','penthouse']
   end
 

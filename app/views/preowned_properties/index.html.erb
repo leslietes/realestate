@@ -26,98 +26,28 @@
                 <div class="form-group ">
 
                     <div class="ct-form--item ct-u-marginBottom10">
+                        <label>Developer</label>
+                        <%= select_tag "developer_id", options_for_select(@option_developers.collect{ |d| [d.developer, d.id] }), {class:'ct-js-select ct-select-lg', include_blank: true,  multiple: false} %>
+                    </div>
+
+                    <div class="ct-form--item ct-u-marginBottom10">
                         <label>Location</label>
-                        <select class="ct-js-select ct-select-lg">
-                            <option value="any">Any</option>
-                            <option value="1">New York</option>
-                            <option value="2">New Jersey</option>
-                            <option value="3">Newark</option>
-                            <option value="4">Philadelphia</option>
-                        </select>
-                    </div>
-
-                    <div class="ct-form--item ct-u-marginBottom10">
-                        <label>Property Status</label>
-                        <select class="ct-js-select ct-select-lg">
-                            <option value="any">Any</option>
-                            <option value="1">Sale</option>
-                            <option value="2">New</option>
-                            <option value="3">Loan</option>
-                        </select>
+                        <%= select_tag "location", options_for_select(@locations.collect{ |l| [l.area, l.area] }), {class:'ct-js-select ct-select-lg', include_blank: true,  multiple: false} %>
                     </div>
                     <div class="ct-form--item ct-u-marginBottom10">
-                        <label>Property type </label>
-                        <select class="ct-js-select ct-select-lg">
-                            <option value="any">Any</option>
-                            <option value="1">Houses</option>
-                            <option value="2">Industrial</option>
-                            <option value="3">Retail</option>
-                            <option value="4">Apartments</option>
-                        </select>
+                        <label>Property Status </label>
+                        <%= select_tag "status", options_for_select(['Completed','Preselling','Preowned'], 'Preowned'), class: "ct-js-select ct-select-lg", include_blank: true, multiple: false %>
                     </div>
-                    <div class="ct-u-displayTableVertical ct-slider--row ct-u-marginBottom10">
-                        <div class="ct-u-displayTableCell">
-                            <div class="ct-form--item">
-                                <label>Bedrooms</label>
-                                <select class="ct-js-select ct-select-lg">
-                                    <option value="any">Any</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3+</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="ct-u-displayTableCell">
-                            <div class="ct-form--item">
-                                <label>Bathrooms</label>
-                                <select class="ct-js-select ct-select-lg">
-                                    <option value="any">Any</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3+</option>
-                                </select>
-                            </div>
-                        </div>
+                    <div class="ct-form--item ct-u-marginBottom10">
+                        <label>Unit Type</label>
+                        <%= select_tag "unit_type", options_for_select(['Studio','1 bedroom','2 bedroom','3 bedroom','Loft','Penthouse']), class: "ct-js-select ct-select-lg", include_blank: true, multiple: false %>
                     </div>
-                    <div class="ct-form--item ct-sliderAmount">
-                        <label>Price ($)</label>
-                        <input type="text" class="slider ct-js-sliderAmount" value="" data-slider-tooltip="hide" data-slider-handle="square" data-slider-min="5000" data-slider-max="5000000" data-slider-step="5000" data-slider-value="[1000000,2000000]">
-                        <div class="ct-u-displayTableVertical ct-slider--row ct-u-marginBottom10">
-                            <div class="ct-u-displayTableCell">
-                                <div class="ct-form--item">
-                                    <label>Min</label>
-                                    <input type="text" value="1000000" required class="form-control input-lg ct-js-slider-min" placeholder="">
-                                </div>
-                            </div>
-                            <div class="ct-u-displayTableCell">
-                                <div class="ct-form--item">
-                                    <label class="pull-right">Max</label>
-                                    <input type="text" value="2000000" required class="form-control input-lg ct-js-slider-max" placeholder="">
-                                </div>
-                            </div>
-                        </div>
+                    <div class="ct-form--item ct-u-marginBottom10">
+                        <label>Price Range</label>
+                        <%= select_tag "price", options_for_select(@price_range.collect{ |d| [d.range, d.id] }), {class:'ct-js-select ct-select-lg', include_blank: true,  multiple: false} %>
                     </div>
 
-                    <div class="ct-form--item ct-sliderAmount">
-                        <label>Area (m2)</label>
-                        <input type="text" class="slider ct-js-sliderAmount" value="" data-slider-tooltip="hide" data-slider-handle="square" data-slider-min="20" data-slider-max="200" data-slider-step="10" data-slider-value="[30,120]">
-                        <div class="ct-u-displayTableVertical ct-slider--row ct-u-marginBottom20">
-                            <div class="ct-u-displayTableCell">
-                                <div class="ct-form--item">
-                                    <label>Min</label>
-                                    <input type="text" value="10" required class="form-control input-lg ct-js-slider-min" placeholder="">
-                                </div>
-                            </div>
-                            <div class="ct-u-displayTableCell">
-                                <div class="ct-form--item">
-                                    <label class="pull-right">Max</label>
-                                    <input type="text" value="120" required class="form-control input-lg ct-js-slider-max" placeholder="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <button type="submit" class="btn btn-warning">Search or Filter Now</button>
+                    <button type="submit" class="btn btn-warning">Search Now</button>
                 </div>
             </form>
         </div>
@@ -182,7 +112,7 @@
         <a href="product-single.html">
             <div class="ct-main-content">
                 <div class="ct-imageBox">
-                  
+
                   <%= image_tag "content/property-10.jpg" %>
                 </div>
                 <div class="ct-main-text">
