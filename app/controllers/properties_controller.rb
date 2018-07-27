@@ -16,6 +16,8 @@ class PropertiesController < ApplicationController
     #if logged_in?
       @properties = Property.show_all
       @properties = @properties.paginate(page: params[:page], per_page: 1)
+
+      @preselling = Property.show_preselling
     #else
     #  @properties = Property.show_all_visible
     #end
@@ -122,7 +124,7 @@ class PropertiesController < ApplicationController
     :one_bedroom_layout, :two_bedroom_layout, :three_bedroom_layout, :penthouse_layout, :loft_layout,
     :elevators, :swimming_pool, :fitness_gym, :parking, :function_room, :retail_area, :childrens_play_area,
     :garden, :shooting_court, :laundry_room, :mail_room, :security, :lobby, :property_management_services,
-    :clubhouse, :back_up_power
+    :clubhouse, :back_up_power, :preselling
     )
   end
 

@@ -3,19 +3,19 @@
         <div class="widget-inner">
             <h4 class="text-uppercase">Pre-selling</h4>
 
-            <% 2.times do %>
+            <% @preselling.each do |preselling| %>
             <div class="ct-itemProducts--small ct-itemProducts--small-type1">
                 <a href="product-single.html">
                     <div class="ct-main-content">
                         <div class="ct-imageBox">
-                            <img src="assets/images/content/recently-reduced-thumbnail-1.jpg" alt="">
+                            <%= image_tag "content/recently-reduced-thumbnail-1.jpg" %>
                         </div>
                         <div class="ct-main-text">
                             <div class="ct-product--tilte">
-                                8553 Fallen Creek Bend, North Carolina
+                                <%= preselling.name %>
                             </div>
                             <div class="ct-product--price">
-                                <span>$ 450,000</span>
+                                <span><%= preselling.price_range %></span>
                             </div>
                         </div>
                     </div>

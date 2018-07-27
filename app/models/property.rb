@@ -57,6 +57,10 @@ class Property < ApplicationRecord
     self.where(featured: true).limit(6).order(created_at: :desc)
   end
 
+  def self.show_preselling
+    self.where(preselling: true).limit(5).order(created_at: :desc)
+  end
+
   def self.property_types
     [[''],['Condominium'],['Condotel']]
   end
