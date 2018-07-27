@@ -19,7 +19,7 @@ class Property < ApplicationRecord
   validates_attachment_content_type :penthouse_layout, content_type: /\Aimage\/.*\z/
   validates_attachment_content_type :loft_layout, content_type: /\Aimage\/.*\z/
 
-  validates_presence_of   :developer_id, :name, :permalink, :location, :address, :status
+  validates_presence_of   :developer_id, :name, :permalink, :location, :address
   validates_presence_of   :unit_types, :unit_sizes, :price_range
 
   validates_uniqueness_of :permalink
