@@ -9,7 +9,19 @@
             <div class="col-md-6">
                 <form role="form" class="ct-formSubmission">
                     <div class="form-group ">
+                      <% if @preowned.errors.any? %>
+                        <div id="error_explanation">
+                          <h2>
+                            <%= pluralize(@preowend.errors.count, "error") %> prohibited this preowned property from being saved:
+                          </h2>
 
+                          <ul>
+                          <% @preowned.errors.full_messages.each do |msg| %>
+                            <li><%= msg %></li>
+                            <% end %>
+                          </ul>
+                        </div>
+                      <% end %>
 
                         <label class="ct-fw-600 text-uppercase ct-u-marginBottom10">Name</label>
                         <%= f.text_field :name %>
@@ -19,6 +31,9 @@
 
                         <label class="ct-fw-600 text-uppercase ct-u-marginBottom10">Address</label><br/>
                         <%= f.text_field :address %>
+
+                        <label class="ct-fw-600 text-uppercase ct-u-marginBottom10">Location</label><br/>
+                        <%= select_tag "location", options_for_select(@locations.collect{ |l| [l.area, l.area] }), {class:'ct-js-select ct-select-lg', include_blank: true,  multiple: false} %>
 
                         <label class="ct-fw-600 text-uppercase ct-u-marginBottom10">Project Name</label><br/>
                         <%= f.text_field :project_name %>

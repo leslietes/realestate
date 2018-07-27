@@ -4,6 +4,7 @@ class HomeController < ApplicationController
     @articles = Article.show_latest
     @featured = Property.show_featured_listings
     @latest   = Property.show_latest_listings
+    @preowned = PreownedProperty.limit(5)
   end
 
   def contact_us
