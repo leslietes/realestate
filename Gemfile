@@ -40,6 +40,7 @@ gem 'therubyracer'
 gem 'less-rails-bootstrap'
 # for font-awesome.min.css`
 gem 'modernizr-rails'
+gem 'will_paginate-bootstrap'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-OwlCarousel'

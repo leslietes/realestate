@@ -1,3 +1,5 @@
+require 'will_paginate/array'
+
 class PropertiesController < ApplicationController
 
   before_filter :select_property_types, :only => [:new,:create,:edit,:update]
@@ -13,6 +15,7 @@ class PropertiesController < ApplicationController
   	#@page_title = "CebuCondoListings | Cebu Condominium Listings - #{proj}"
     #if logged_in?
       @properties = Property.show_all
+      @properties = @properties.paginate(page: params[:page], per_page: 1)
     #else
     #  @properties = Property.show_all_visible
     #end

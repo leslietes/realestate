@@ -1,11 +1,14 @@
+require 'will_paginate/array'
+
 class PreownedPropertiesController < ApplicationController
 
   before_filter :select_locations,      :only => [:new, :create, :edit, :update]
 
   def index
     @preowned = PreownedProperty.show_all
-    @count    = @preowned.size
+    @preowned = @preowned.paginate(page: params[:page], per_page: 1)
 
+    @count    = @preowned.size
   end
 
   def show
