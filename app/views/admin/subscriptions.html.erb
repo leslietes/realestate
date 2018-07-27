@@ -1,0 +1,29 @@
+
+<section class="ct-u-paddingBoth70">
+    <div class="container">
+        <div class="ct-heading text-center ct-u-marginBottom60">
+            <h3 class="text-uppercase">Newsletter Subscription</h3>
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Email Address</th>
+                <th>Active?</th>
+            </tr>
+            </thead>
+            <tbody>
+              <% @subscriptions.each_with_index do |s, index| %>
+                <tr>
+                  <td><%= index   %></td>
+                  <td><%= s.name  %></td>
+                  <td><%= s.email %></td>
+                  <td><%= s.active%></td>
+                </tr>
+              <% end %>
+            </tbody>
+        </table>
+    </div>
+</section>

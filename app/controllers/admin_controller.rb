@@ -112,6 +112,10 @@ class AdminController < ApplicationController
     redirect_to admin_url
   end
 
+  def subscriptions
+    @subscriptions = NewsletterSubscription.all
+  end
+
   private
 
   def settings_params

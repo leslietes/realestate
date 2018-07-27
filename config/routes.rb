@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :preowned_properties
 
   match 'admin', to: 'admin#settings', via: [:get,:post,:put]
+  match 'admin/subscriptions', to: 'admin#subscriptions', via: [:get]
   match 'add_location', to: 'admin#add_location', via: [:post]
   match 'add_price_range', to: 'admin#add_price_range', via: [:post]
   get 'remove_location/:id', to: 'admin#remove_location', as: 'remove_location'
