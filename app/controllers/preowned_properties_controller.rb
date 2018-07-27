@@ -1,5 +1,6 @@
 class PreownedPropertiesController < ApplicationController
 
+  before_filter :select_locations,      :only => [:new, :create, :edit, :update]
 
   def index
     @preowned = PreownedProperty.show_all
@@ -12,14 +13,14 @@ class PreownedPropertiesController < ApplicationController
   end
 
   def new
-    @preowned = PreownedProperty.new
+    @preowned_property = PreownedProperty.new
   end
 
   def create
-    @preowned = PreownedProperty.new(preowned_params)
-    if @preowned.save
+    @preowned_property = PreownedProperty.new(preowned_params)
+    if @preowned_property.save
       flash[:notice] = "Successfully created preowned property"
-      redirect_to preowned_property_url(@preowned)
+      redirect_to preowned_property_url(@preowned_property)
     else
       flash[:error] = "Unable to create preowned property. Please check your entries"
       render :action => 'new'
@@ -55,11 +56,15 @@ class PreownedPropertiesController < ApplicationController
   private
 
     def preowned_params
-      params.require(:preowned_property).permit(:name, :permalink, :address, :project_name, :developer, :view, :orientation,
+      params.require(:preowned_property).permit(:name, :permalink, :address, :location, :project_name, :developer, :view, :orientation,
         :unit_type, :unit_size, :bedrooms, :bathrooms, :parking, :furnished, :monthly_dues, :price, :latitude, :longitude,
         :elevators, :swimming_pool, :fitness_gym, :parking, :function_room, :retail_area, :childrens_play_area, :garden,
         :shooting_court, :laundry_room, :mail_room, :security, :lobby, :property_management_services, :clubhouse, :back_up_power,
         :status, :hidden )
+    end
+
+    def select_locations
+      @locations = Location.all.collect{|a| a.area }
     end
 
 end

@@ -4,6 +4,7 @@ class CreatePreownedProperties < ActiveRecord::Migration[5.0]
       t.string :name
       t.string :permalink
       t.string :address
+      t.string :location
       t.string :project_name
       t.string :developer
       t.string :view #mountain/sea/city

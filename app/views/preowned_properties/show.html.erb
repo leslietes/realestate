@@ -4,7 +4,7 @@
             <div class="ct-u-displayTableVertical">
                 <div class="ct-textBox ct-u-text--white ct-u-displayTableCell text-left">
                     <h2 class="text-uppercase"><%= @property.name %></h2>
-                    <h4 class="text-uppercase"><%= @property.address %></h4>
+                    <h4 class="text-uppercase"><%= @property.address %> <%= @property.location %></h4>
                     <span class="ct-productID ct-fw-600">
                       <% if @property.status == 'New' %>
                         New
@@ -105,6 +105,14 @@
                                     </div>
                                     <div class="ct-u-displayTableCell text-right">
                                         <span><%= @property.address %></span>
+                                    </div>
+                                </div>
+                                <div class="ct-u-displayTableRow">
+                                    <div class="ct-u-displayTableCell">
+                                        <span class="ct-fw-600">Location</span>
+                                    </div>
+                                    <div class="ct-u-displayTableCell text-right">
+                                        <span><%= @property.location %></span>
                                     </div>
                                 </div>
                                 <div class="ct-u-displayTableRow">
