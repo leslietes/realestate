@@ -22,7 +22,7 @@
                 </div>
                 <div class="ct-form--item ct-u-marginBottom10">
                     <label>Location</label>
-                    <%= select_tag "location", options_for_select(@locations.collect{ |l| [l.area, l.area] }), {class:'ct-js-select ct-select-lg', include_blank: true,  multiple: false} %>
+                    <%= select_tag "location", options_for_select(@option_locations.collect{ |l| [l.area, l.area] }), {class:'ct-js-select ct-select-lg', include_blank: true,  multiple: false} %>
                 </div>
 
                 <div class="ct-form--item ct-u-marginBottom10">
@@ -37,7 +37,7 @@
                     <div class="ct-u-displayTableCell">
                         <div class="ct-form--item">
                             <label>Price Range</label>
-                            <%= select_tag "price", options_for_select(@price_range.collect{ |d| [d.range, d.id] }), {class:'ct-js-select ct-select-lg', include_blank: true,  multiple: false} %>
+                            <%= select_tag "price", options_for_select(@option_price_range.collect{ |d| [d.range, d.id] }), {class:'ct-js-select ct-select-lg', include_blank: true,  multiple: false} %>
                         </div>
                     </div>
 

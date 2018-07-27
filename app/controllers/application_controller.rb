@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   def search_form
     @option_developers = Developer.select("id,developer")
     #@option_properties = Property.select("id,name")
-    @locations  = Location.select("id,area")
-    @price_range= PriceRange.select("id,range")
+    @option_locations  = Location.select("id,area")
+    @option_price_range= PriceRange.select("id,range")
   end
 end
