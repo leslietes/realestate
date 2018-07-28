@@ -6,9 +6,8 @@ class PreownedPropertiesController < ApplicationController
 
   def index
     @preowned = PreownedProperty.show_all
-    @preowned = @preowned.paginate(page: params[:page], per_page: 1)
-
     @count    = @preowned.size
+    @preowned = @preowned.paginate(page: params[:page], per_page: 1)
   end
 
   def show
@@ -56,6 +55,22 @@ class PreownedPropertiesController < ApplicationController
     redirect_to preowned_properties_url
   end
 
+  def search
+    #developer, location, property status, unit type, price range
+
+
+      @preowned = PreownedProperty.where(nil)
+      @preowned = @preowned.where("developer_id = ?", params[:developer_id]) if params[:developer_id].present?
+      @preowned = @preowned.where("location = ?", params[:location]) if params[:location].present?
+      @preowend = @preowned.where("price_range = ?", params[:price_range]) if params[:price_range].present?
+      @preowned = @preowned.where("rent_or_sale = ?", params[:rent_or_sale]) if params[:rent_or_sale].present?
+
+      @count    = @preowned.size
+      @preowned = @preowned.paginate(page: params[:page], per_page: 1)
+
+      render "preowned_properties/index"
+    end
+
   private
 
     def preowned_params
@@ -63,11 +78,12 @@ class PreownedPropertiesController < ApplicationController
         :unit_type, :unit_size, :bedrooms, :bathrooms, :parking, :furnished, :monthly_dues, :price, :latitude, :longitude,
         :elevators, :swimming_pool, :fitness_gym, :parking, :function_room, :retail_area, :childrens_play_area, :garden,
         :shooting_court, :laundry_room, :mail_room, :security, :lobby, :property_management_services, :clubhouse, :back_up_power,
-        :status, :hidden )
+        :status, :hidden, :rent_or_sale )
     end
 
     def select_locations
       @locations = Location.all.collect{|a| a.area }
+      @rent_or_sale = ["Rent","Sale"]
     end
 
 end

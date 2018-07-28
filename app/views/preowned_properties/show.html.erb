@@ -6,12 +6,11 @@
                     <h2 class="text-uppercase"><%= @property.name %></h2>
                     <h4 class="text-uppercase"><%= @property.address %> <%= @property.location %></h4>
                     <span class="ct-productID ct-fw-600">
-                      <% if @property.status == 'New' %>
-                        New
-                      <% elsif @property.status == 'Sold`' %>
-                        Sold
-                        <% else %>
-                        Preowned
+
+                      <% if @property.rent_or_sale == 'Sale' %>
+                        Sale
+                      <% elsif @property.rent_or_sale == 'Rent' %>
+                        Rent
                       <% end %>
                     </span>
                 </div>
@@ -71,7 +70,7 @@
                                       <span class="ct-fw-600">Status</span>
                                   </div>
                                   <div class="ct-u-displayTableCell text-right">
-                                      <span><%= @property.status %></span>
+                                      <span><%= @property.rent_or_sale %></span>
                                   </div>
                               </div>
 
