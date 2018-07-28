@@ -10,7 +10,7 @@ default: &default
   port: 5432
   pool: 5
   timeout: 5000
-  
+
 
 development:
   <<: *default
@@ -25,4 +25,7 @@ test:
 
 production:
   <<: *default
+  
+  username: cvvtwdnnazwhdm
+  password: cb3f65f046c8f7c9fca360608fd4402b3df4dff4e1eb2dd7598bb96316c39186
   database: realestate_production
