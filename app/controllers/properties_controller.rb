@@ -8,6 +8,8 @@ class PropertiesController < ApplicationController
   before_filter :developers,            :only => [:new,:create,:edit,:update]
   before_filter :inquiry_form,          :only => [:show]
 
+  before_filter :show_preselling,       :only => [:index,:search]
+
   def index
   	#_projects = Property.show_all_visible
   	#proj = _projects.collect{|p| p.name }.join(', ')
@@ -15,9 +17,10 @@ class PropertiesController < ApplicationController
   	#@page_title = "CebuCondoListings | Cebu Condominium Listings - #{proj}"
     #if logged_in?
       @properties = Property.show_all
+      @count      = @properties.size
       @properties = @properties.paginate(page: params[:page], per_page: 1)
 
-      @preselling = Property.show_preselling
+
     #else
     #  @properties = Property.show_all_visible
     #end
@@ -71,27 +74,23 @@ class PropertiesController < ApplicationController
 
   def search
     #developer, location, property status, unit type, price range
-    if params[:status] == "Preowned"
-      @preowned = PreownedProperty.where(nil)
-      @preowned = @preowned.where("developer_id = ?", params[:developer_id]) if params[:developer_id].present?
-      @preowned = @preowned.where("location = ?", params[:location]) if params[:location].present?
-      @preowend = @preowned.where("price_range = ?", params[:price_range]) if params[:price_range].present?
-
-      render "preowned_properties/index"
-
-    else
-
       @properties = Property.where(nil)
       @properties = @properties.where("developer_id = ?", params[:developer_id]) if params[:developer_id].present?
       @properties = @properties.where("location = ?", params[:location]) if params[:location].present?
       @properties = @properties.where("status = ?", params[:status]) if params[:status].present?
       @properties = @properties.where("price_range = ?", params[:price_range]) if params[:price_range].present?
 
+      @count      = @properties.size
+      @properties = @properties.paginate(page: params[:page], per_page: 1)
+
       render "index"
-    end
   end
 
   private
+
+  def show_preselling
+    @preselling = Property.show_preselling
+  end
 
   def select_property_types
     @property_types = Property.property_types
@@ -119,9 +118,12 @@ class PropertiesController < ApplicationController
     params.require(:property).permit(:developer_id,:name,:permalink,:address,:location,
     :completed,:target_completion_date,:description,
     :unit_types,:unit_sizes,:price_range,:amenities,:features,
-    :unit_specifications,:payment_terms,:as_low_as,:as_low_as_label,
+    :unit_specifications,:payment_terms,:as_low_as,:as_low_as_label, :no_of_floors, :no_of_bldgs, :no_of_units,
     :reservation_fee,:property_type,:featured,:hidden, :photo, :logo, :location_map, :studio_layout,
     :one_bedroom_layout, :two_bedroom_layout, :three_bedroom_layout, :penthouse_layout, :loft_layout,
+    :studio, :one_bedroom, :two_bedroom, :three_bedroom, :penthouse, :loft,
+    :studio_size, :one_bedroom_size, :two_bedroom_size, :three_bedroom_size, :penthouse_size, :loft_size,
+    :studio_price, :one_bedroom_price, :two_bedroom_price, :three_bedroom_price, :penthouse_price, :loft_price,
     :elevators, :swimming_pool, :fitness_gym, :parking, :function_room, :retail_area, :childrens_play_area,
     :garden, :shooting_court, :laundry_room, :mail_room, :security, :lobby, :property_management_services,
     :clubhouse, :back_up_power, :preselling

@@ -45,7 +45,7 @@
 <div class="col-md-8 col-lg-9">
 <div class="ct-sortingBar ct-u-paddingRight10 ct-u-paddingLeft10 ct-u-marginBottom30">
     <div class="ct-sortingTitle pull-left">
-        <h4 class="text-uppercase">Search Results<span> (<%= @properties.size %>)</span></h4>
+        <h4 class="text-uppercase">Search Results<span> (<%= @count %>)</span></h4>
     </div>
     <ul class="list-inline list-unstyled pull-right ct-u-paddingBoth15">
         <li>
@@ -110,8 +110,6 @@
                         <div class="ct-product--description">
                             <%= property.address %><br/>
                             <%= property.location %><br/>
-                            <%= link_to 'Edit', edit_property_url(property) %>
-    												<%= link_to 'Delete', property_url(property), :method => :delete, :confirm => "Are you sure?" %>
                         </div>
                     </div>
                 </div>
