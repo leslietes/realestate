@@ -23,7 +23,8 @@
         Ups! An error occured. Please try again later.
     </div>
     <div class="ct-js-googleMap ct-googleMap ct-js-googleMap--single" data-location="Richmond" data-icon="marker-house.png" data-display-desc="false" data-zoom="14" data-height="640" id="map"></div>
-    <form role="form" action="assets/form/send.php" method="post" class="contactForm validateIt ct-formContact--map ct-formSearch--right ct-form--darkStyle" data-email-subject="Contact Form" data-show-errors="true">
+    <%= form_tag contact_us_url, method: :post, class: "contactForm validateIt ct-formContact--map ct-formSearch--right ct-form--darkStyle" %>
+
         <div class="form-group">
             <div class="ct-form--label--type2">
                 <div class="ct-u-displayTableVertical">
@@ -41,35 +42,32 @@
             </div>
             <div class="ct-form--item ct-u-marginBottom20">
                 <label>Your Name</label>
-                <input id="contact_name" name="field[]" type="text" required class="form-control input-lg" placeholder="">
+                <%= text_field_tag "contact_name", nil, { class: "form-control input-lg", required: true } %>
             </div>
             <div class="ct-u-displayTableVertical">
                 <div class="ct-u-displayTableCell">
                     <div class="ct-form--item ct-u-marginBottom20">
                         <label>Phone</label>
-                        <input id="contact_phone" type="tel" required class="form-control input-lg" placeholder="">
+                        <%= text_field_tag "contact_phone", nil, { class: "form-control input-lg", required: true } %>
                     </div>
                 </div>
                 <div class="ct-u-displayTableCell">
                     <div class="ct-form--item ct-u-marginBottom20">
                         <label>Email</label>
-                        <input id="contact_email" name="field[]" type="email" required class="form-control input-lg" placeholder="">
+                        <%= text_field_tag "contact_email", nil, { class: "form-control input-lg", required: true } %>
                     </div>
                 </div>
             </div>
             <div class="ct-form--item ct-u-marginBottom20">
                 <label>Choose Topic</label>
-                <select class="ct-js-select ct-select-lg">
-                    <option value="general">General Inquiries</option>
-                    <option value="misc">Misc</option>
-                </select>
+                <%= select_tag 'topic', options_for_select(["General Inquiries","Misc"]), class: "ct-js-select ct-select-lg" %>
             </div>
             <div class="ct-form--item ct-u-marginBottom20">
                 <label>Message</label>
-                <textarea id="contact_message" placeholder="How can we help you?" class="form-control input-lg" rows="4" name="field[]" required=""></textarea>
+                <%= text_area_tag "contact_message", nil, {placeholder: "How can we help you?", class: "form-control input-lg", reqired: true, rows: 4 } %>
             </div>
             <div class="ct-form--item">
-                <button type="submit" class="btn btn-warning center-block">Send Message</button>
+              <%= submit_tag "Send Message", class: "btn btn-warning center-block" %>
             </div>
         </div>
     </form>
