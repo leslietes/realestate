@@ -35,7 +35,9 @@
               <%= form_for :setting, :url => admin_url(@setting), :html => {:method => :put, :multipart => true} do |f| %>
                 <label class="ct-fw-600 text-uppercase ct-u-marginBottom10">Featured 1</label>
                 <br/><%= image_tag @setting.featured1.url(:thumb) %><%= link_to 'Delete', remove_featured1_url(f) %><br/>
-                <%= f.text_field :featured1_caption %>
+                Caption: <%= f.text_field :featured1_caption %>
+                Text: <%= f.text_field :featured1_link_text %>
+                URL: <%= f.text_field  :featured1_link_url %>
                 <%= f.file_field :featured1 %>
 
                 <label class="ct-fw-600 text-uppercase ct-u-marginBottom10">Featured 2</label>

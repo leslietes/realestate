@@ -9,7 +9,12 @@
         <div class="ct-owl--description--inner">
           <div class="ct-owl--descriptionItem">
             <div class="container">
-              <h1 class="text-capitalize ct-u-marginBottom30 animated" data-fx="fadeInDown"><%= @setting.featured1_caption %></h1>
+              <div class="ct-textHeader">
+                <h1 class="text-capitalize ct-u-marginBottom30 " data-fx="fadeInDown"><%= @setting.featured1_caption %></h1>
+                <% if @setting.featured1_link_text && @setting.featured1_link_url %>
+                  <%= link_to (@setting.featured1_link_text), "#{eval(@setting.featured1_link_url)}", class: "btn btn-default btn-transparent--border ct-u-text--white " %>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>
@@ -26,7 +31,10 @@
           <div class="ct-owl--descriptionItem">
             <div class="container">
               <div class="ct-textHeader">
-                <h1 class="text-capitalize ct-u-marginBottom30 animated" data-fx="fadeInDown"><%= @setting.featured2_caption %></h1>
+                <h1 class="text-capitalize ct-u-marginBottom30 " data-fx="fadeInDown"><%= @setting.featured2_caption %></h1>
+                <% if @setting.featured2_link_text && @setting.featured2_link_url %>
+                  <%= link_to (@setting.featured2_link_text), "#{eval(@setting.featured2_link_url)}", class: "btn btn-default btn-transparent--border ct-u-text--white " %>
+                <% end %>
               </div>
             </div>
           </div>
@@ -44,7 +52,10 @@
           <div class="ct-owl--descriptionItem">
             <div class="container">
               <div class="ct-textHeader">
-                <h1 class="text-capitalize ct-u-marginBottom30 animated" data-fx="fadeInDown"><%= @setting.featured3_caption %></h1>
+                <h1 class="text-capitalize ct-u-marginBottom30 " data-fx="fadeInDown"><%= @setting.featured3_caption %></h1>
+                <% if @setting.featured3_link_text && @setting.featured3_link_url %>
+                  <%= link_to (@setting.featured3_link_text), "#{eval(@setting.featured3_link_url)}", class: "btn btn-default btn-transparent--border ct-u-text--white " %>
+                <% end %>
               </div>
             </div>
           </div>
@@ -62,7 +73,10 @@
           <div class="ct-owl--descriptionItem">
             <div class="container">
               <div class="ct-textHeader">
-                <h1 class="text-capitalize ct-u-marginBottom30 animated" data-fx="fadeInDown"><%= @setting.featured4_caption %></h1>
+                <h1 class="text-capitalize ct-u-marginBottom30" data-fx="fadeInDown"><%= @setting.featured4_caption %></h1>
+                <% if @setting.featured4_link_text && @setting.featured4_link_url %>
+                  <%= link_to (@setting.featured4_link_text), "#{eval(@setting.featured4_link_url)}", class: "btn btn-default btn-transparent--border ct-u-text--white " %>
+                <% end %>
               </div>
             </div>
           </div>
@@ -80,7 +94,10 @@
           <div class="ct-owl--descriptionItem">
             <div class="container">
               <div class="ct-textHeader ">
-                <h1 class="text-capitalize ct-u-marginBottom30 animated" data-fx="fadeInDown"><%= @setting.featured5_caption %></h1>
+                <h1 class="text-capitalize ct-u-marginBottom30" data-fx="fadeInDown"><%= @setting.featured5_caption %></h1>
+                <% if @setting.featured5_link_text && @setting.featured5_link_url %>
+                  <%= link_to (@setting.featured5_link_text), "#{eval(@setting.featured5_link_url)}", class: "btn btn-default btn-transparent--border ct-u-text--white " %>
+                <% end %>
               </div>
             </div>
           </div>
@@ -257,7 +274,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-8">
-        
+
       </div>
       <div class="col-md-4">
         <div class="ct-heading ct-u-marginBottom30">
