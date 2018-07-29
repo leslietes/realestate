@@ -222,113 +222,121 @@
 
 <section class="ct-u-paddingBoth60 ct-js-section" data-bg-color="#f3f3f3">
     <div class="container">
-        <div class="ct-heading ct-u-marginBottom30">
-            <h3 class="text-uppercase">latest listings</h3>
-            <a href="/properties" class="pull-right"><i class="fa fa-angle-right"></i>View More</a>
-        </div>
-        <div class="ct-js-owl ct-owl-controls--type2" data-single="false" data-items="4" data-pagination="false">
-          <% @latest.each do |latest| %>
-            <div class="item">
-                <div class="ct-itemProducts ct-u-marginBottom30 ct-hover">
-                    <label class="control-label new">
-                        New
-                    </label>
 
-                        <div class="ct-main-content">
-                            <div class="ct-imageBox">
-                              <%= link_to (image_tag('content/property-7.jpg')), property_url(latest) %>
-                            </div>
-                            <div class="ct-main-text">
-                                <div class="ct-product--tilte">
-                                    <%= link_to latest.name, property_url(latest) %>
-                                </div>
-                                <div class="ct-product--price">
-                                    <span><%= latest.price_range %></span>
-                                </div>
-                                <div class="ct-product--description">
-                                  <%= latest.address %><br/>
-                                    <%= latest.location %>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ct-product--meta">
-                            <div class="ct-icons">
-                                <span>
-                                    <i class="fa fa-bed"></i> <%= latest.unit_types %>
-                                </span>
-                            </div>
-                            <div class="ct-text">
-                                <span><%= latest.unit_sizes %></span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="ct-heading ct-u-marginBottom30">
+                <h3 class="text-uppercase">latest listings</h3>
+                <a href="/properties" class="pull-right"><i class="fa fa-angle-right"></i>View More</a>
             </div>
-          <% end %>
-        </div>
+            <div class="ct-js-owl ct-owl-controls--type2" data-single="false" data-items="4" data-pagination="false">
+              <% @latest.each do |latest| %>
+                <div class="item">
+                    <div class="ct-itemProducts ct-u-marginBottom30 ct-hover">
+                        <label class="control-label new">
+                            New
+                        </label>
+
+                            <div class="ct-main-content">
+                                <div class="ct-imageBox">
+                                  <%= link_to (image_tag('content/property-7.jpg')), property_url(latest) %>
+                                </div>
+                                <div class="ct-main-text">
+                                    <div class="ct-product--tilte">
+                                        <%= link_to latest.name, property_url(latest) %>
+                                    </div>
+                                    <div class="ct-product--price">
+                                        <span><%= latest.price_range %></span>
+                                    </div>
+                                    <div class="ct-product--description">
+                                      <%= latest.address %><br/>
+                                        <%= latest.location %>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ct-product--meta">
+                                <div class="ct-icons">
+                                    <span>
+                                        <i class="fa fa-bed"></i> <%= latest.unit_types %>
+                                    </span>
+                                </div>
+                                <div class="ct-text">
+                                    <span><%= latest.unit_sizes %></span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="ct-heading ct-u-marginBottom30">
+              <h3 class="text-uppercase">Questions ?</h3>
+            </div>
+            <div class="successMessage alert alert-success" style="display: none">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+              Thank You!
+            </div>
+            <div class="errorMessage alert alert-danger" style="display: none">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+              Ups! An error occured. Please try again later.
+            </div>
+            <form role="form" action="#" method="post" class="contactForm validateIt ct-contactForm--small" data-email-subject="Contact Form" data-show-errors="true">
+              <div class="form-group">
+                <div class="ct-form--label--type2">
+                  <div class="ct-u-displayTableVertical">
+                    <div class="ct-u-displayTableCell">
+                      <div class="ct-input-group-btn">
+                        <button class="btn btn-primary">
+                          <i class="fa fa-envelope-o"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="ct-u-displayTableCell text-center">
+                      <span class="text-uppercase">Feel free to contact us</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="ct-image--section">
+                  <%= image_tag 'content/questions.jpg' %>
+                </div>
+                <div class="ct-form--item">
+                  <label>Name</label>
+                  <input id="contact_name" type="text" required class="form-control input-lg" name="field[]" placeholder="">
+                </div>
+                <div class="ct-form--item">
+                  <label>Email</label>
+                  <input id="contact_email" type="email" class="form-control input-lg" name="field[]">
+                </div>
+                <div class="ct-form--item">
+                  <label>Phone</label>
+                  <input id="contact_phone" type="tel" required class="form-control input-lg" name="field[]" placeholder="">
+                </div>
+                <div class="ct-form--item">
+                  <label>Message</label>
+                  <textarea id="contact_message" placeholder="" class="form-control input-lg" rows="4" name="field[]" required=""></textarea>
+                </div>
+                <div class="ct-form--item last">
+                  <button type="submit" class="btn btn-warning text-capitalize center-block">Send Message</button>
+                </div>
+              </div>
+            </form>
+          </div>
     </div>
 </section>
 
 
-<section class="ct-u-paddingBoth60 ct-blog--small">
+<!--section class="ct-u-paddingBoth60 ct-blog--small">
   <div class="container">
     <div class="row">
       <div class="col-md-8">
 
       </div>
       <div class="col-md-4">
-        <div class="ct-heading ct-u-marginBottom30">
-          <h3 class="text-uppercase">Questions ?</h3>
-        </div>
-        <div class="successMessage alert alert-success" style="display: none">
-          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-          Thank You!
-        </div>
-        <div class="errorMessage alert alert-danger" style="display: none">
-          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-          Ups! An error occured. Please try again later.
-        </div>
-        <form role="form" action="#" method="post" class="contactForm validateIt ct-contactForm--small" data-email-subject="Contact Form" data-show-errors="true">
-          <div class="form-group">
-            <div class="ct-form--label--type2">
-              <div class="ct-u-displayTableVertical">
-                <div class="ct-u-displayTableCell">
-                  <div class="ct-input-group-btn">
-                    <button class="btn btn-primary">
-                      <i class="fa fa-envelope-o"></i>
-                    </button>
-                  </div>
-                </div>
-                <div class="ct-u-displayTableCell text-center">
-                  <span class="text-uppercase">Feel free to contact us</span>
-                </div>
-              </div>
-            </div>
-            <div class="ct-image--section">
-              <%= image_tag 'content/questions.jpg' %>
-            </div>
-            <div class="ct-form--item">
-              <label>Name</label>
-              <input id="contact_name" type="text" required class="form-control input-lg" name="field[]" placeholder="">
-            </div>
-            <div class="ct-form--item">
-              <label>Email</label>
-              <input id="contact_email" type="email" class="form-control input-lg" name="field[]">
-            </div>
-            <div class="ct-form--item">
-              <label>Phone</label>
-              <input id="contact_phone" type="tel" required class="form-control input-lg" name="field[]" placeholder="">
-            </div>
-            <div class="ct-form--item">
-              <label>Message</label>
-              <textarea id="contact_message" placeholder="" class="form-control input-lg" rows="4" name="field[]" required=""></textarea>
-            </div>
-            <div class="ct-form--item last">
-              <button type="submit" class="btn btn-warning text-capitalize center-block">Send Message</button>
-            </div>
-          </div>
-        </form>
+
       </div>
     </div>
   </div>
-</section>
+</section-->
