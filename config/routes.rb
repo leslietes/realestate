@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :developers
   resources :properties
   resources :articles
+  resources :feedbacks, only: :create
   #resources :agents - not used
   resources :preowned_properties
 
