@@ -26,8 +26,37 @@
                 <label class="ct-fw-600 text-uppercase ct-u-marginBottom10">Instagram</label>
               	<%= f.text_field :instagram %>
 
-                <label class="ct-fw-600 text-uppercase ct-u-marginBottom10">About Us  </label><br/0vvvv. .. .  . ...0>
+                <label class="ct-fw-600 text-uppercase ct-u-marginBottom10">About Us  </label><br/>
               	<%= f.text_area :about_us %>
+
+                <br/><label class="ct-fw-600 text-uppercase ct-u-marginBottom10">Property Management  </label><br/>
+              	<%= f.text_area :management_text %>
+
+                <br/><label class="ct-fw-600 text-uppercase ct-u-marginBottom10">Property Management Topic 1  </label><br/>
+                <%= f.check_box  :show_topic1 %>
+                <%= f.text_field :topic1 %>
+                <%= f.text_area  :answer1 %>
+
+                <br/><label class="ct-fw-600 text-uppercase ct-u-marginBottom10">Property Management Topic 2  </label><br/>
+                <%= f.check_box  :show_topic2 %>
+                <%= f.text_field :topic2 %>
+                <%= f.text_area  :answer2 %>
+
+                <br/><label class="ct-fw-600 text-uppercase ct-u-marginBottom10">Property Management Topic 3  </label><br/>
+                <%= f.check_box  :show_topic3 %>
+                <%= f.text_field :topic3 %>
+                <%= f.text_area  :answer3 %>
+
+                <br/><label class="ct-fw-600 text-uppercase ct-u-marginBottom10">Property Management Topic 4  </label><br/>
+                <%= f.check_box  :show_topic4 %>
+                <%= f.text_field :topic4 %>
+                <%= f.text_area  :answer4 %>
+
+                <br/><label class="ct-fw-600 text-uppercase ct-u-marginBottom10">Property Management Topic 5  </label><br/>
+                <%= f.check_box  :show_topic5 %>
+                <%= f.text_field :topic5 %>
+                <%= f.text_area  :answer5 %>
+
               	<%= f.submit 'Update' %>
               <% end %>
             </div>

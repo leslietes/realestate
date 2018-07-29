@@ -122,7 +122,11 @@ class AdminController < ApplicationController
     params.require(:setting).permit(:production_email,:office_no,:office_address,:facebook,:twitter,:instagram,:about_us,:featured1,:featured2,:featured3,:featured4,:featured5,
     :featured1_caption,:featured2_caption,:featured3_caption,:featured4_caption,:featured5_caption,
     :featured1_link_text, :featured2_link_text, :featured3_link_text, :featured4_link_text, :featured5_link_text,
-    :featured1_link_url, :featured2_link_url, :featured3_link_url, :featured4_link_url, :featured5_link_url)
+    :featured1_link_url, :featured2_link_url, :featured3_link_url, :featured4_link_url, :featured5_link_url,
+    :management_text, :topic1, :topic2, :topic3, :topic4, :topic5,
+    :answer1, :answer2, :answer3, :answer4, :answer5,
+    :show_topic1, :show_topic2, :show_topic3, :show_topic4, :show_topic5
+  )
   end
 
   def location_params

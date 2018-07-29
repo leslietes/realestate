@@ -26,7 +26,8 @@ Rails.application.routes.draw do
   post 'home/subscribe',    to: 'home#subscribe',    as: 'subscribe'
 
   #get 'contact_us', to: 'home#contact_us', as: 'contact_us'
-  get 'about_us',   to: 'home#about_us',   as: 'about_us'
+  get 'about_us',            to: 'home#about_us',            as: 'about_us'
+  get 'property_management', to: 'home#property_management', as: 'property_management'
 
   root 'home#index'
 end

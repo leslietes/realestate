@@ -1,0 +1,73 @@
+
+<header class="ct-mediaSection" data-stellar-background-ratio="0.3" data-height="140" data-type="parallax" data-bg-image="assets/images/content/agency-parallax.jpg" data-bg-image-mobile="assets/images/content/agency-parallax.jpg">
+    <div class="ct-mediaSection-inner">
+        <div class="container">
+            <div class="ct-heading--main text-center">
+                <h3 class="text-uppercase ct-u-text--white">Property Management</h3>
+            </div>
+        </div>
+    </div>
+</header>
+<section class="ct-u-paddingBoth60">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 col-md-3">
+                <div class="ct-navigation nav ct-js-navigation text-capitalize">
+                    <ul class="nav nav-tabs" role="tablist">
+                      <% if @setting.show_topic1? %>
+                        <li class="active"><a class="ct-js-btnScroll" href="#one"><%= @setting.topic1 %></a></li>
+                      <% end %>
+                      <% if @setting.show_topic2? %>
+                        <li><a class="ct-js-btnScroll" href="#two"><%= @setting.topic2   %></a></li>
+                      <% end %>
+                      <% if @setting.show_topic3? %>
+                        <li><a class="ct-js-btnScroll" href="#three"><%= @setting.topic3 %></a></li>
+                      <% end %>
+                      <% if @setting.show_topic4? %>
+                        <li><a class="ct-js-btnScroll" href="#four"><%= @setting.topic4  %></a></li>
+                      <% end %>
+                      <% if @setting.show_topic5? %>
+                        <li><a class="ct-js-btnScroll" href="#five"><%= @setting.topic5  %></a></li>
+                      <% end %>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-8 col-md-9">
+              <% if @setting.show_topic1? %>
+                <div class="ct-heading ct-u-marginBottom20">
+                    <h3 class="text-uppercase" id="one"><%= @setting.topic1 %></h3>
+                </div>
+                <p class="ct-u-marginBottom50"><%= @setting.answer1 %></p>
+             <% end %>
+
+             <% if @setting.show_topic2? %>
+                <div class="ct-heading ct-u-marginBottom20">
+                    <h3 class="text-uppercase" id="two"><%= @setting.topic2 %></h3>
+                </div>
+                <p class="ct-u-marginBottom50"><%= @setting.answer2 %></p>
+             <% end %>
+
+            <% if @setting.show_topic3? %>
+                <div class="ct-heading ct-u-marginBottom20">
+                    <h3 class="text-uppercase" id="three"><%= @setting.topic3 %></h3>
+                </div>
+                <p class="ct-u-marginBottom50"><%= @setting.answer3 %></p>
+            <% end %>
+
+            <% if @setting.show_topic4? %>
+                <div class="ct-heading ct-u-marginBottom20">
+                    <h3 class="text-uppercase" id="four"><%= @setting.topic4 %></h3>
+                </div>
+                <p class="ct-u-marginBottom50"><%= @setting.answer4 %></p>
+            <% end %>
+
+            <% if @setting.show_topic5? %>
+                <div class="ct-heading ct-u-marginBottom20">
+                    <h3 class="text-uppercase" id="five"><%= @setting.topic5 %></h3>
+                </div>
+                <p class="ct-u-marginBottom50"><%= @setting.answer5 %></p>
+            </div>
+            <% end %>
+        </div>
+    </div>
+</section>
