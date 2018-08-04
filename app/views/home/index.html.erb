@@ -1,4 +1,4 @@
-<esction>
+<section style="padding-top: 70px;">
   <div class="ct-js-owl" data-items="1" data-navigation="NJJtrue" data-autoPlay="true" data-lazyLoad="true" data-animations="true">
     <% if @setting.featured1? %>
     <div class="item">
@@ -272,57 +272,7 @@
             </div>
           </div>
           <div class="col-md-4">
-            <div class="ct-heading ct-u-marginBottom30">
-              <h3 class="text-uppercase">Questions ?</h3>
-            </div>
-            <div class="successMessage alert alert-success" style="display: none">
-              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-              Thank You!
-            </div>
-            <div class="errorMessage alert alert-danger" style="display: none">
-              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-              Ups! An error occured. Please try again later.
-            </div>
-            <form role="form" action="#" method="post" class="contactForm validateIt ct-contactForm--small" data-email-subject="Contact Form" data-show-errors="true">
-              <div class="form-group">
-                <div class="ct-form--label--type2">
-                  <div class="ct-u-displayTableVertical">
-                    <div class="ct-u-displayTableCell">
-                      <div class="ct-input-group-btn">
-                        <button class="btn btn-primary">
-                          <i class="fa fa-envelope-o"></i>
-                        </button>
-                      </div>
-                    </div>
-                    <div class="ct-u-displayTableCell text-center">
-                      <span class="text-uppercase">Feel free to contact us</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="ct-image--section">
-                  <%= image_tag 'content/questions.jpg' %>
-                </div>
-                <div class="ct-form--item">
-                  <label>Name</label>
-                  <input id="contact_name" type="text" required class="form-control input-lg" name="field[]" placeholder="">
-                </div>
-                <div class="ct-form--item">
-                  <label>Email</label>
-                  <input id="contact_email" type="email" class="form-control input-lg" name="field[]">
-                </div>
-                <div class="ct-form--item">
-                  <label>Phone</label>
-                  <input id="contact_phone" type="tel" required class="form-control input-lg" name="field[]" placeholder="">
-                </div>
-                <div class="ct-form--item">
-                  <label>Message</label>
-                  <textarea id="contact_message" placeholder="" class="form-control input-lg" rows="4" name="field[]" required=""></textarea>
-                </div>
-                <div class="ct-form--item last">
-                  <button type="submit" class="btn btn-warning text-capitalize center-block">Send Message</button>
-                </div>
-              </div>
-            </form>
+            <%= render "shared/feedback" %>
           </div>
     </div>
 </section>
