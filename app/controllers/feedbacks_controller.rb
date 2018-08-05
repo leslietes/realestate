@@ -12,7 +12,7 @@ class FeedbacksController < ApplicationController
   private
 
   def feedback_params
-    params.require(:feedback).permit(:name,:email,:phone,:message)
+    params.require(:feedback).permit(:name,:email,:phone,:message,:property_id)
   end
 
 end

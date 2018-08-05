@@ -320,15 +320,16 @@
                             </div>
                         </div>
                         <div class="ct-personContact">
-                            <div class="successMessage alert alert-success" style="display: none">
+                            <div id="feedback_success" class="successMessage alert alert-success" style="display: none">
                                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                                 Thank You!
                             </div>
-                            <div class="errorMessage alert alert-danger" style="display: none">
+                            <div id="feedback_errors" class="errorMessage alert alert-danger" style="display: none">
                                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                                 Ups! An error occured. Please try again later.
                             </div>
-                            <form role="form" action="assets/form/send.php" method="post" class="contactForm validateIt" data-email-subject="Contact Form" data-show-errors="true">
+                            <form role="form" id="feedback_form" action="/feedbacks.json" method="post" class="contactForm validateIt" data-email-subject="Contact Form" data-show-errors="true">
+                              <input type="hidden" name="feedback_property_id" id="contact_property_id" value="<%= @property.id %>">
                                 <div class="form-group">
                                     <div class="ct-form--item ct-u-marginBottom20">
                                         <input id="contact_name" type="text" required class="form-control input-lg ct-u-marginBottom10" name="field[]" placeholder="Name">

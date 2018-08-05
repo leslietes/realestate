@@ -25,6 +25,7 @@ class Property < ApplicationRecord
   validates_uniqueness_of :permalink
 
   belongs_to :developer
+  has_many :feedbacks
 
   # include hidden - index page logged in user
   def self.show_all
