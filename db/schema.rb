@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180805055524) do
+ActiveRecord::Schema.define(version: 20180815015517) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,28 @@ ActiveRecord::Schema.define(version: 20180805055524) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+  end
+
+  create_table "apartment_types", force: :cascade do |t|
+    t.string "title"
+    t.string "short_title"
+  end
+
+  create_table "apartments", force: :cascade do |t|
+    t.integer  "apartment_type_id"
+    t.integer  "property_id"
+    t.string   "layout_image_file_name"
+    t.string   "layout_image_content_type"
+    t.integer  "layout_image_file_size"
+    t.datetime "layout_image_updated_at"
+    t.string   "layout_text"
+    t.integer  "size"
+    t.float    "price"
+    t.float    "price_monthly"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.index ["apartment_type_id"], name: "index_apartments_on_apartment_type_id", using: :btree
+    t.index ["property_id"], name: "index_apartments_on_property_id", using: :btree
   end
 
   create_table "articles", force: :cascade do |t|
@@ -139,13 +161,13 @@ ActiveRecord::Schema.define(version: 20180805055524) do
   end
 
   create_table "properties", force: :cascade do |t|
-    t.integer  "developer_id",                      default: 0
+    t.integer  "developer_id",                 default: 0
     t.string   "name"
     t.string   "permalink"
     t.text     "address"
     t.string   "location"
     t.string   "status"
-    t.boolean  "completed",                         default: false
+    t.boolean  "completed",                    default: false
     t.string   "target_completion_date"
     t.text     "description"
     t.text     "unit_types"
@@ -163,24 +185,18 @@ ActiveRecord::Schema.define(version: 20180805055524) do
     t.string   "penthouse_size"
     t.string   "loft_size"
     t.text     "price_range"
-    t.float    "studio_price",                      default: 0.0
-    t.float    "one_bedroom_price",                 default: 0.0
-    t.float    "two_bedroom_price",                 default: 0.0
-    t.float    "three_bedroom_price",               default: 0.0
-    t.float    "penthouse_price",                   default: 0.0
-    t.float    "loft_price",                        default: 0.0
-    t.float    "studio_monthly",                    default: 0.0
-    t.float    "one_bedroom_monthly",               default: 0.0
-    t.float    "two_bedroom_monthly",               default: 0.0
-    t.float    "three_bedroom_monthly",             default: 0.0
-    t.float    "penthouse_monthly",                 default: 0.0
-    t.float    "loft_monthly",                      default: 0.0
-    t.string   "studio_layout_caption"
-    t.string   "one_bedroom_layout_caption"
-    t.string   "two_bedroom_layout_caption"
-    t.string   "three_bedroom_layout_caption"
-    t.string   "penthouse_layout_caption"
-    t.string   "loft_layout_caption"
+    t.float    "studio_price",                 default: 0.0
+    t.float    "one_bedroom_price",            default: 0.0
+    t.float    "two_bedroom_price",            default: 0.0
+    t.float    "three_bedroom_price",          default: 0.0
+    t.float    "penthouse_price",              default: 0.0
+    t.float    "loft_price",                   default: 0.0
+    t.float    "studio_monthly",               default: 0.0
+    t.float    "one_bedroom_monthly",          default: 0.0
+    t.float    "two_bedroom_monthly",          default: 0.0
+    t.float    "three_bedroom_monthly",        default: 0.0
+    t.float    "penthouse_monthly",            default: 0.0
+    t.float    "loft_monthly",                 default: 0.0
     t.text     "amenities"
     t.text     "features"
     t.text     "unit_specifications"
@@ -189,18 +205,18 @@ ActiveRecord::Schema.define(version: 20180805055524) do
     t.string   "as_low_as_label"
     t.string   "reservation_fee"
     t.string   "property_type"
-    t.boolean  "featured",                          default: false
-    t.boolean  "hidden",                            default: false
+    t.boolean  "featured",                     default: false
+    t.boolean  "hidden",                       default: false
     t.float    "latitude"
     t.float    "longitude"
-    t.boolean  "sold_out",                          default: false
-    t.boolean  "preselling",                        default: false
+    t.boolean  "sold_out",                     default: false
+    t.boolean  "preselling",                   default: false
     t.string   "no_of_floors"
     t.string   "no_of_bldgs"
-    t.string   "no_of_units",                       default: "0"
+    t.string   "no_of_units",                  default: "0"
     t.float    "starting_price"
-    t.datetime "created_at",                                        null: false
-    t.datetime "updated_at",                                        null: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
     t.boolean  "elevators"
     t.boolean  "swimming_pool"
     t.boolean  "fitness_gym"
@@ -229,30 +245,8 @@ ActiveRecord::Schema.define(version: 20180805055524) do
     t.string   "location_map_content_type"
     t.integer  "location_map_file_size"
     t.datetime "location_map_updated_at"
-    t.string   "studio_layout_file_name"
-    t.string   "studio_layout_content_type"
-    t.integer  "studio_layout_file_size"
-    t.datetime "studio_layout_updated_at"
-    t.string   "one_bedroom_layout_file_name"
-    t.string   "one_bedroom_layout_content_type"
-    t.integer  "one_bedroom_layout_file_size"
-    t.datetime "one_bedroom_layout_updated_at"
-    t.string   "two_bedroom_layout_file_name"
-    t.string   "two_bedroom_layout_content_type"
-    t.integer  "two_bedroom_layout_file_size"
-    t.datetime "two_bedroom_layout_updated_at"
-    t.string   "three_bedroom_layout_file_name"
-    t.string   "three_bedroom_layout_content_type"
-    t.integer  "three_bedroom_layout_file_size"
-    t.datetime "three_bedroom_layout_updated_at"
-    t.string   "penthouse_layout_file_name"
-    t.string   "penthouse_layout_content_type"
-    t.integer  "penthouse_layout_file_size"
-    t.datetime "penthouse_layout_updated_at"
-    t.string   "loft_layout_file_name"
-    t.string   "loft_layout_content_type"
-    t.integer  "loft_layout_file_size"
-    t.datetime "loft_layout_updated_at"
+    t.integer  "price_from"
+    t.integer  "price_to"
   end
 
   create_table "settings", force: :cascade do |t|

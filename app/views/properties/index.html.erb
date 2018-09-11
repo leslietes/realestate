@@ -50,21 +50,21 @@
     <ul class="list-inline list-unstyled pull-right ct-u-paddingBoth15">
         <li>
             <form>
-                <select class="ct-js-select">
+                <select class="ct-js-select" id="sort_by">
                     <option value="price">Sort by</option>
-                    <option value="price">Price</option>
-                    <option value="newness">Newness</option>
+                    <option value="price" <% if params[:sort_by].present? && params[:sort_by] == "price" %>selected<% end %>>Price</option>
+                    <option value="newness" <% if params[:sort_by].present? && params[:sort_by] == "newness" %>selected<% end %>>Newness</option>
                 </select>
             </form>
         </li>
-        <li>
+        <li class="sort_count">
             <form>
-                <select class="ct-js-select">
-                    <option value="nine">12 items</option>
-                    <option value="eighteen">18 items</option>
-                    <option value="twentyseven">27 items</option>
-                    <option value="fourtyfive">45 items</option>
-                    <option value="ninety">90 items</option>
+                <select class="ct-js-select" id="per_page">
+                    <option value="12" <% if params[:per_page].present? && params[:per_page] == "12" %>selected<% end %>>12 items</option>
+                    <option value="18" <% if params[:per_page].present? && params[:per_page] == "18" %>selected<% end %>>18 items</option>
+                    <option value="27" <% if params[:per_page].present? && params[:per_page] == "27" %>selected<% end %>>27 items</option>
+                    <option value="45" <% if params[:per_page].present? && params[:per_page] == "45" %>selected<% end %>>45 items</option>
+                    <option value="90" <% if params[:per_page].present? && params[:per_page] == "90" %>selected<% end %>>90 items</option>
                 </select>
             </form>
         </li>

@@ -1,6 +1,6 @@
 <div class="widget">
     <div class="widget-inner">
-        <%= form_tag search_properties_url, class: "ct-formSearch--extended ct-u-marginBottom50" do %>
+        <form action="<%= search_properties_path %>" method="get"  class="ct-formSearch--extended ct-u-marginBottom50">
             <div class="ct-form--label--type3">
                 <div class="ct-u-displayTableVertical">
                     <div class="ct-u-displayTableCell">
@@ -18,26 +18,34 @@
             <div class="form-group ">
                 <div class="ct-form--item ct-u-marginBoth10">
                     <label>Developer</label>
-                    <%= select_tag "developer_id", options_for_select(@option_developers.collect{ |d| [d.developer, d.id] }), {class:'ct-js-select ct-select-lg', include_blank: true,  multiple: false} %>
+                    <%= select_tag "developer_id", options_for_select(@option_developers.collect{ |d| [d.developer, d.id] }, params[:developer_id]), {class:'ct-js-select ct-select-lg', include_blank: true,  multiple: false} %>
                 </div>
                 <div class="ct-form--item ct-u-marginBottom10">
                     <label>Location</label>
-                    <%= select_tag "location", options_for_select(@option_locations.collect{ |l| [l.area, l.area] }), {class:'ct-js-select ct-select-lg', include_blank: true,  multiple: false} %>
+                    <%= select_tag "location", options_for_select(@option_locations.collect{ |l| [l.area, l.area] }, params[:location]), {class:'ct-js-select ct-select-lg', include_blank: true,  multiple: false} %>
                 </div>
 
                 <div class="ct-form--item ct-u-marginBottom10">
                     <label>Property Status</label>
-                    <%= select_tag "status", options_for_select(['Completed','Preselling','Preowned']), class: "ct-js-select ct-select-lg", include_blank: true, multiple: false %>
+                    <%= select_tag "status", options_for_select(['Completed','Preselling','Preowned'], params[:status]), class: "ct-js-select ct-select-lg", include_blank: true, multiple: false %>
                 </div>
                 <div class="ct-form--item ct-u-marginBottom10">
                     <label>Unit type </label>
-                    <%= select_tag "unit_type", options_for_select(['Studio','1 bedroom','2 bedroom','3 bedroom','Loft','Penthouse']), class: "ct-js-select ct-select-lg", include_blank: true, multiple: false %>
+                    <%= select_tag "unit_type", options_for_select(ApartmentType.all.collect{ |d| [d.title, d.id] }, params[:unit_type]), class: "ct-js-select ct-select-lg", include_blank: true, multiple: false %>
                 </div>
                 <div class="ct-u-displayTableVertical ct-slider--row ct-u-marginBottom10">
                     <div class="ct-u-displayTableCell">
                         <div class="ct-form--item">
                             <label>Price Range</label>
-                            <%= select_tag "price", options_for_select(@option_price_range.collect{ |d| [d.range, d.id] }), {class:'ct-js-select ct-select-lg', include_blank: true,  multiple: false} %>
+                            <select name="price" class="ct-js-select ct-select-lg">
+                                <option value=""></option>
+                                <option value="1" <% if params[:price] == "1" %>selected<% end %>>up to 1,000,000</option>
+                                <option value="2" <% if params[:price] == "2" %>selected<% end %>>1,000,000...2,000,000</option>
+                                <option value="3" <% if params[:price] == "3" %>selected<% end %>>2,000,000...3,000,000</option>
+                                <option value="4" <% if params[:price] == "4" %>selected<% end %>>3,000,000...4,000,000</option>
+                                <option value="5" <% if params[:price] == "5" %>selected<% end %>>4,000,000...5,000,000</option>
+                                <option value="6" <% if params[:price] == "6" %>selected<% end %>>5,000,000 +</option>
+                            </select>
                         </div>
                     </div>
 
@@ -46,7 +54,7 @@
 
                 <button type="submit" class="btn btn-warning ct-u-marginTop10">Search Now</button>
             </div>
-        <% end %>
+        </form>
     </div>
 </div>
 </div>

@@ -32,6 +32,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 gem 'paperclip', '~> 6.0.0'
 gem 'devise'
+gem 'cocoon'
+gem 'faker'
 
 # start estato theme
 # for bootstrap.min.css

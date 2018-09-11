@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html'
   resources :developers
+
+  get 'properties/search', to: 'properties#search', as: 'search_properties'
+
   resources :properties
   resources :articles
   resources :feedbacks, only: :create
@@ -22,7 +25,8 @@ Rails.application.routes.draw do
   get 'remove_featured4', to: 'admin#remove_featured4', as: 'remove_featured4'
   get 'remove_featured5', to: 'admin#remove_featured5', as: 'remove_featured5'
 
-  post 'properties/search', to: 'properties#search', as: 'search_properties'
+  
+
   post 'preowned_properties/search', to: 'preowned_properties#search', as: 'search_preowned'
   post 'home/subscribe',    to: 'home#subscribe',    as: 'subscribe'
 

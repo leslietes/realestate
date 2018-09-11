@@ -6,6 +6,7 @@
 //= require estato/bootstrap-slider
 //= require estato/contact-form
 //= require jquery.stellar
+//= require cocoon
 //= require OwlCarousel/owl-carousel/owl.carousel
 //= require_tree ./components
 //= require_self

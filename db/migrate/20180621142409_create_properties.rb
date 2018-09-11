@@ -43,25 +43,6 @@ class CreateProperties < ActiveRecord::Migration[5.0]
       t.float :penthouse_monthly, :default => 0
       t.float :loft_monthly, :default => 0
 
-      # floor plans
-
-      t.string :studio_layout_caption
-
-
-      t.string :one_bedroom_layout_caption
-
-
-      t.string :two_bedroom_layout_caption
-
-
-      t.string :three_bedroom_layout_caption
-
-
-      t.string :penthouse_layout_caption
-
-
-      t.string :loft_layout_caption
-
       t.text :amenities
       t.text :features
       t.text :unit_specifications

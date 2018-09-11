@@ -1,0 +1,31 @@
+<div class="nested-fields cx-apt">
+  <p>
+    <label>Apartment Type</label><br>
+    <%= f.collection_select(:apartment_type_id, ApartmentType.all, :id, :title) %>
+  </p>
+  <div class="row">
+    <p class="col-xs-4">
+      <label>Apartment Layout</label>
+      <%= f.file_field :layout_image %>
+    </p>
+    <p class="col-xs-8">
+      <label>Apartment Layout Text</label>
+      <%= f.text_field :layout_text %>
+    </p>
+  </div>
+  <div class="row">
+    <p class="col-xs-4">
+      <label>Size</label>
+      <%= f.text_field :size %>
+    </p>
+    <p class="col-xs-4">
+      <label>Price</label>
+      <%= f.text_field :price %>
+    </p>
+    <p class="col-xs-4">
+      <label>Price Monthly</label>
+      <%= f.text_field :price_monthly %>
+    </p>
+  </div>
+  <%= link_to_remove_association "remove apartment", f %>
+</div>

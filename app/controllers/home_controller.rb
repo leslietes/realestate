@@ -2,7 +2,7 @@ class HomeController < ApplicationController
 
   def index
     @articles = Article.show_latest
-    @featured = Property.show_featured_listings
+    @featured = Property.show_featured_listings.limit(3)
     @latest   = Property.show_latest_listings
     @preowned = PreownedProperty.limit(5)
   end

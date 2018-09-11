@@ -247,6 +247,11 @@ html, body{
   }
   .ct-icons{
     float: left;
+    max-width: 120px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border: 1px solid red;
   }
   .ct-text{
     float: none!important;
@@ -2172,6 +2177,10 @@ a[href^=tel] {
     line-height: 18px;
     font-size: 16px;
     font-weight: bold;
+    max-width: 96%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
   }
 
   .ct-product--price{
@@ -2193,15 +2202,23 @@ a[href^=tel] {
     padding: 5px 20px;
     background-color: #333333;
     border-radius: 0 0 4px 4px;
-    text-align: right;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+
     .ct-icons, .ct-text{
       display: inline-block;
     }
     .ct-icons{
-      float: left;
+      max-width: 130px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
       span{
         margin-right: 10px;
         color: #f3f3f3;
+
         .ct-m-transition(all, 0.2s, ease);
         i{
           color: #cccccc;
@@ -2216,7 +2233,8 @@ a[href^=tel] {
       }
     }
     .ct-text{
-      //      float: right;
+      white-space: nowrap;
+      text-align: right;
       span{
         color: #cccccc;
         font-weight: bold;
@@ -2798,6 +2816,70 @@ a[href^=tel] {
   }
 }
 
+.c-box {
+  position: relative;
+  display: inline-block;
+  margin: 0 19px 0 0;
+  padding-left: 19px;
+
+  input {
+    position: absolute;
+    top: 2px;
+    left: 0;
+  }
+}
+
+.c-select-container {
+  select {
+    width: 100%;
+  }
+}
+
+.cb-links {
+  margin: 10px 0;
+
+  a {
+    display: inline-block;
+    border: 1px solid #ccc;
+    background: #fff;
+    padding: 2px 16px;
+  }
+}
+
+.cx-apt {
+  border: 1px solid #ccc;
+  padding: 16px;
+  margin: 0 0 10px 0;
+  position: relative;
+
+  .remove_fields {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-size: 12px;
+    color: #fc0000
+  }
+}
+
+.c-list-cols {
+  display: block;
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0 0;
+
+  li {
+    float: left;
+    width: 50%;
+    padding: 0 0 12px 0;
+  }
+}
+
+.c-textarea {
+  width: 100%;
+  height: 100px;
+  border: 1px solid #ccc;
+}
+
 .ct-itemProducts--small-type1{
   background-color: #fff;
   a{
@@ -3240,6 +3322,41 @@ a[href^=tel] {
   label{
     color: #333333;
   }
+  .form-control{
+    background-color: #fff;
+    border: 2px solid #e6e6e6;
+    color: #333;
+    &:focus{
+      border: 2px solid @ct-motive;
+      box-shadow: none;
+    }
+  }
+  .ct-form--item{
+    padding: 0;
+  }
+  .ct-image--section{
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    img{
+      width: 100%;
+    }
+  }
+}
+
+.ct-property--small {
+  padding: 50px 30px 30px 30px;
+  background-color: #fff;
+  border: transparent;
+  -webkit-box-shadow: 0 0 3px 0 rgba(4, 4, 4, 0.3);
+  -moz-box-shadow:    0 0 3px 0 rgba(4, 4, 4, 0.3);
+  box-shadow:         0 0 3px 0 rgba(4, 4, 4, 0.3);
+  border: 2px solid red;
+  
+  label{
+    color: #333333;
+  }
+  
   .form-control{
     background-color: #fff;
     border: 2px solid #e6e6e6;
@@ -4357,4 +4474,14 @@ a[href^=tel] {
   .ct-itemProducts--small.ct-itemProducts--small-type1 .ct-main-text .ct-product--price {
     line-height: 20px;
   }
+}
+
+
+.select2-container .select2-choice .select2-chosen {
+  width: 82%;
+  min-width: 120px;
+}
+
+.sort_count .select2-container .select2-choice .select2-chosen {
+  min-width: 150px;
 }
