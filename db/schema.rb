@@ -163,6 +163,8 @@ ActiveRecord::Schema.define(version: 20180805055524) do
     t.string   "penthouse_size"
     t.string   "loft_size"
     t.text     "price_range"
+    t.float    "price_from",                        default: 0.0
+    t.float    "price_to",                          default: 0.0
     t.float    "studio_price",                      default: 0.0
     t.float    "one_bedroom_price",                 default: 0.0
     t.float    "two_bedroom_price",                 default: 0.0

@@ -1,4 +1,4 @@
-<%= form_tag search_properties_url, class: "ct-formSearch--extended ct-u-marginBottom50" do %>
+<form action="<%= search_properties_path %>" method="get" class="ct-formSearch--extended ct-u-marginBottom50">
   <div class="form-group ">
     <div class="ct-form--label--type1">
       <div class="ct-u-displayTableVertical">
@@ -40,13 +40,29 @@
       <div class="ct-u-displayTableCell">
         <div class="ct-form--item">
           <label>Unit Type</label>
-          <%= select_tag "unit_type", options_for_select(['Studio','1 bedroom','2 bedroom','3 bedroom','Loft','Penthouse']), class: "ct-js-select ct-select-lg", include_blank: true, multiple: false %>
+          <select name="unit_type" class="ct-js-select ct-select-lg">
+            <option value=""></option>
+            <option value="Studio">Studio</option>
+            <option value="1Br">1 Bedroom</option>
+            <option value="2Br">2 Bedroom</option>
+            <option value="3Br">3 Bedroom</option>
+            <option value="Penthouse">Penthouse</option>
+            <option value="Loft">Loft</option>
+          </select>
         </div>
       </div>
       <div class="ct-u-displayTableCell">
         <div class="ct-form--item">
           <label>Price Range</label>
-          <%= select_tag "price", options_for_select(@option_price_range.collect{ |d| [d.range, d.id] }), {class:'ct-js-select ct-select-lg', include_blank: true,  multiple: false} %>
+          <select name="price" class="ct-js-select ct-select-lg">
+            <option value=""></option>
+            <option value="1">up to 1,000,000</option>
+            <option value="2">1,000,000...2,000,000</option>
+            <option value="3">2,000,000...3,000,000</option>
+            <option value="4">3,000,000...4,000,000</option>
+            <option value="5">4,000,000...5,000,000</option>
+            <option value="6">5,000,000 +</option>
+          </select>
         </div>
       </div>
 
@@ -55,4 +71,4 @@
       </div>
     </div>
   </div>
-<% end %>
+</form>

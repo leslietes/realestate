@@ -1,5 +1,5 @@
 
-<header class="ct-mediaSection" data-stellar-background-ratio="0.3" data-height="140" data-type="parallax" data-bg-image="assets/images/content/agency-parallax.jpg" data-bg-image-mobile="assets/images/content/agency-parallax.jpg">
+<header class="ct-mediaSection" data-stellar-background-ratio="0.3" data-height="140" data-type="parallax" data-bg-image="<%= asset_url("assets/images/content/agency-parallax.jpg") %>" data-bg-image-mobile="<%= asset_url("assets/images/content/agency-parallax.jpg") %>">
     <div class="ct-mediaSection-inner">
         <div class="container">
             <div class="ct-u-displayTableVertical">
@@ -23,7 +23,7 @@
         </div>
     </div>
 </header>
-<section>
+<section id="property_page">
     <div class="container">
         <div class="ct-productMeta--single text-uppercase">
             <div class="row">
@@ -38,7 +38,7 @@
                             </div>
                         </div>
                         <div class="ct-u-displayTableCell text-right">
-
+                           
                         </div>
                     </div>
                 </div>
@@ -46,27 +46,98 @@
         </div>
     </div>
     <div class="ct-sectionGmap">
-        <div class="ct-js-googleMap ct-googleMap ct-js-googleMap--single" data-location="Richmond" data-icon="assets/images/marker-house.png" data-zoom="14" data-height="500" data-offset="-400" id="map">
-        </div>
         <div class="container" data-snap-ignore="true">
             <div class="">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-8">
+                        <div class="col-md-8 col-xs-12">
                             <div class="ct-owl-controls--type2" data-single="true" data-pagination="false" data-navigation="false" data-snap-ignore="true" id="sync1">
                                 <div class="item">
                                   <%= image_tag @property.photo.url(:large) %>
                                 </div>
-
+                                <% if @property.location_map.present? %>
+                                    <div class="item">
+                                    <%= image_tag @property.location_map.url(:large) %>
+                                    </div>
+                                <% end %>
+                                <% if @property.studio_layout.present? %>
+                                  <div class="item">
+                                    <%= image_tag @property.studio_layout.url(:large) %>
+                                  </div>
+                                <% end %>
+                                <% if @property.one_bedroom_layout.present? %>
+                                  <div class="item">
+                                    <%= image_tag @property.one_bedroom_layout.url(:large) %>
+                                  </div>
+                                <% end %>
+                                <% if @property.two_bedroom_layout.present? %>
+                                  <div class="item">
+                                    <%= image_tag @property.two_bedroom_layout.url(:large) %>
+                                  </div>
+                                <% end %>
+                                <% if @property.three_bedroom_layout.present? %>
+                                  <div class="item">
+                                    <%= image_tag @property.three_bedroom_layout.url(:large) %>
+                                  </div>
+                                <% end %>
+                                <% if @property.penthouse_layout.present? %>
+                                  <div class="item">
+                                    <%= image_tag @property.penthouse_layout.url(:large) %>
+                                  </div>
+                                <% end %>
+                                <% if @property.loft_layout.present? %>
+                                  <div class="item">
+                                    <%= image_tag @property.loft_layout.url(:large) %>
+                                  </div>
+                                <% end %>
                             </div>
                             <div class="ct-navigationThumbnail">
                                 <div class="ct-owl-controls--type3" data-single="false" data-items="5" data-pagination="false" data-snap-ignore="true" id="sync2">
                                     <div class="item">
                                       <%= image_tag @property.photo.url(:medium) %>
                                     </div>
+                                    <% if @property.location_map.present? %>
+                                        <div class="item">
+                                        <%= image_tag @property.location_map.url(:medium) %>
+                                        </div>
+                                    <% end %>
+                                    <% if @property.studio_layout.present? %>
+                                    <div class="item">
+                                        <%= image_tag @property.studio_layout.url(:medium) %>
+                                    </div>
+                                    <% end %>
+                                    <% if @property.one_bedroom_layout.present? %>
+                                    <div class="item">
+                                        <%= image_tag @property.one_bedroom_layout.url(:medium) %>
+                                    </div>
+                                    <% end %>
+                                    <% if @property.two_bedroom_layout.present? %>
+                                    <div class="item">
+                                        <%= image_tag @property.two_bedroom_layout.url(:medium) %>
+                                    </div>
+                                    <% end %>
+                                    <% if @property.three_bedroom_layout.present? %>
+                                    <div class="item">
+                                        <%= image_tag @property.three_bedroom_layout.url(:medium) %>
+                                    </div>
+                                    <% end %>
+                                    <% if @property.penthouse_layout.present? %>
+                                    <div class="item">
+                                        <%= image_tag @property.penthouse_layout.url(:medium) %>
+                                    </div>
+                                    <% end %>
+                                    <% if @property.loft_layout.present? %>
+                                    <div class="item">
+                                        <%= image_tag @property.loft_layout.url(:medium) %>
+                                    </div>
+                                    <% end %>
                                 </div>
                             </div>
                         </div>
+                         <div class="col-md-4 col-xs-12">
+                            <div class="map" id="map" data-lat="<%= @property.latitude %>" data-lng="<%= @property.longitude %>" data-icon="<%= asset_url('marker-house.png') %>" style="height: 390px;">
+        </div>
+                         </div>
                     </div>
                 </div>
             </div>
@@ -78,6 +149,8 @@
         <div class="ct-section--products">
             <div class="row">
                 <div class="col-md-8 col-lg-8">
+                    
+
                     <div class="ct-heading ct-u-marginBottom20">
                         <h3 class="text-uppercase">Description</h3>
                     </div>
@@ -95,45 +168,51 @@
                             <th>Unit Type</th>
                             <th>Size</th>
                             <th>Price Starts At</th>
-
                         </tr>
                         </thead>
                         <tbody>
-                          <% if @property.studio? %>
-                            <tr>
-                              <td>Studio</td>
-                              <td><%= @property.studio_size %></td>
-                              <td><%= number_to_currency(@property.studio_price, unit: 'P') %></td>
-                            </tr>
-                          <% end %>
-                          <% if @property.one_bedroom? %>
-                            <tr>
-                              <td>One bedroom</td>
-                              <td><%= @property.one_bedroom_size %></td>
-                              <td><%= number_to_currency(@property.one_bedroom_price, unit: 'P') %></td>
-                            </tr>
-                          <% end %>
-                          <% if @property.two_bedroom? %>
-                            <tr>
-                              <td>Two bedroom</td>
-                              <td><%= @property.two_bedroom_size %></td>
-                              <td><%= number_to_currency(@property.two_bedroom_price, unit: 'P') %></td>
-                            </tr>
-                          <% end %>
-                          <% if @property.three_bedroom? %>
-                            <tr>
-                              <td>Three bedroom</td>
-                              <td><%= @property.three_bedroom_size %></td>
-                              <td><%= number_to_currency(@property.three_bedroom_price, unit: 'P') %></td>
-                            </tr>
-                          <% end %>
-                          <% if @property.penthouse? %>
-                            <tr>
-                              <td>Penthouse</td>
-                              <td><%= @property.penthouse_size %></td>
-                              <td><%= number_to_currency(@property.penthouse_price) %></td>
-                            </tr>
-                          <% end %>
+                            <% if @property.studio %>
+                                <tr>
+                                    <td>Studio</td>
+                                    <td><%= @property.studio_size %>m²</td>
+                                    <td><%= number_to_currency(@property.studio_price, unit: 'P') %></td>
+                                </tr>
+                            <% end %>
+                            <% if @property.one_bedroom %>
+                                <tr>
+                                    <td>1 Bedroom</td>
+                                    <td><%= @property.one_bedroom_size %>m²</td>
+                                    <td><%= number_to_currency(@property.one_bedroom_price, unit: 'P') %></td>
+                                </tr>
+                            <% end %>
+                            <% if @property.two_bedroom %>
+                                <tr>
+                                    <td>2 Bedroom</td>
+                                    <td><%= @property.two_bedroom_size %>m²</td>
+                                    <td><%= number_to_currency(@property.two_bedroom_price, unit: 'P') %></td>
+                                </tr>
+                            <% end %>
+                            <% if @property.three_bedroom %>
+                                <tr>
+                                    <td>3 Bedroom</td>
+                                    <td><%= @property.three_bedroom_size %>m²</td>
+                                    <td><%= number_to_currency(@property.three_bedroom_price, unit: 'P') %></td>
+                                </tr>
+                            <% end %>
+                            <% if @property.penthouse %>
+                                <tr>
+                                    <td>Penthouse</td>
+                                    <td><%= @property.penthouse_size %>m²</td>
+                                    <td><%= number_to_currency(@property.penthouse_price, unit: 'P') %></td>
+                                </tr>
+                            <% end %>
+                            <% if @property.loft %>
+                                <tr>
+                                    <td>Loft</td>
+                                    <td><%= @property.loft_size %>m²</td>
+                                    <td><%= number_to_currency(@property.loft_price, unit: 'P') %></td>
+                                </tr>
+                            <% end %>
                         </tbody>
                     </table>
                     <div class="ct-heading ct-u-marginBottom30">
@@ -349,6 +428,7 @@
                         <div class="ct-heading ct-u-marginBottom20">
                             <h3 class="text-uppercase">Summary</h3>
                         </div>
+
                         <div class="ct-u-displayTableVertical ct-productDetails">
                            <div class="ct-u-displayTableRow">
                               <div class="ct-u-displayTableCell">
@@ -363,7 +443,11 @@
                                    <span class="ct-fw-600">Price</span>
                                </div>
                                <div class="ct-u-displayTableCell text-right">
-                                   <span class="ct-price"><%= @property.price_range %></span>
+                                   <span class="ct-price">
+                                    
+                                    <%= number_to_currency(@property.price_from, unit: 'P') %>&hellip;<%= number_to_currency(@property.price_to, unit: 'P') %>
+                                    
+                                    </span>
                                </div>
                            </div>
                            <div class="ct-u-displayTableRow">
@@ -371,7 +455,10 @@
                                    <span class="ct-fw-600">Area</span>
                                </div>
                                <div class="ct-u-displayTableCell text-right">
-                                   <span><%= @property.unit_sizes %></span>
+                                        <span>
+                                        <%= @property.unit_sizes %>
+                                        
+                                </span>
                                </div>
                            </div>
                            <div class="ct-u-displayTableRow">

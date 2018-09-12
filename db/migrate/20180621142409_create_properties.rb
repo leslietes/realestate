@@ -29,6 +29,8 @@ class CreateProperties < ActiveRecord::Migration[5.0]
       t.string :loft_size
 
       t.text :price_range #P 100,000 - 200,000
+      t.float :price_from, :default => 0
+      t.float :price_to, :default => 0
       t.float :studio_price, :default => 0
       t.float :one_bedroom_price, :default => 0
       t.float :two_bedroom_price, :default => 0

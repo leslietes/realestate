@@ -16,9 +16,9 @@ class PropertiesController < ApplicationController
 
   	#@page_title = "CebuCondoListings | Cebu Condominium Listings - #{proj}"
     #if logged_in?
-      @properties = Property.show_all
+      @properties = Property.order('properties.created_at DESC')
       @count      = @properties.size
-      @properties = @properties.paginate(page: params[:page], per_page: 1)
+      @properties = @properties.paginate(page: params[:page], per_page: 12)
 
 
     #else
@@ -73,17 +73,44 @@ class PropertiesController < ApplicationController
   end
 
   def search
-    #developer, location, property status, unit type, price range
-      @properties = Property.where(nil)
-      @properties = @properties.where("developer_id = ?", params[:developer_id]) if params[:developer_id].present?
-      @properties = @properties.where("location = ?", params[:location]) if params[:location].present?
-      @properties = @properties.where("status = ?", params[:status]) if params[:status].present?
-      @properties = @properties.where("price_range = ?", params[:price_range]) if params[:price_range].present?
+    if params[:sort_by].present?
+      if params[:sort_by] == "newness"
+        @properties = Property.order('properties.created_at DESC')
+      else
+        @properties = Property.order('properties.price_from DESC')
+      end
+    else
+      @properties = Property.order('properties.price_from DESC')
+    end
+    @properties = Property.order('properties.created_at DESC')
+    if params[:developer_id].present?
+      properties_add = Property.where(developer_id: params[:developer_id])
+      @properties = @properties.merge(properties_add)
+    end
+    if params[:location].present?
+      properties_add = Property.where(location: params[:location])
+      @properties = @properties.merge(properties_add)
+    end
+    if params[:status].present?
+      properties_add = Property.where(status: params[:status])
+      @properties = @properties.merge(properties_add)
+    end
+    if params[:unit_type].present?
+      properties_add = Property.where('unit_types LIKE ?', "%#{params[:unit_type]}%")
+      @properties = @properties.merge(properties_add)
+    end
+    @count = @properties.count
+    if params[:per_page].present?
+      if params[:per_page].to_i < 2
+        @properties = @properties.paginate(page: params[:page], per_page: 12)
+      else
+        @properties = @properties.paginate(page: params[:page], per_page: params[:per_page])
+      end
+    else
+      @properties = @properties.paginate(page: params[:page], per_page: 12)
+    end
+    render "index"
 
-      @count      = @properties.size
-      @properties = @properties.paginate(page: params[:page], per_page: 1)
-
-      render "index"
   end
 
   private
@@ -126,7 +153,7 @@ class PropertiesController < ApplicationController
     :studio_price, :one_bedroom_price, :two_bedroom_price, :three_bedroom_price, :penthouse_price, :loft_price,
     :elevators, :swimming_pool, :fitness_gym, :parking, :function_room, :retail_area, :childrens_play_area,
     :garden, :shooting_court, :laundry_room, :mail_room, :security, :lobby, :property_management_services,
-    :clubhouse, :back_up_power, :preselling
+    :clubhouse, :back_up_power, :preselling, :price_from, :price_to
     )
   end
 
