@@ -1,143 +1,113 @@
-
-
-
 <%= render partial: "/properties/search_form_mobile" %>
 
 <div id="ct-js-wrapper" class="ct-pageWrapper">
 
-  <div class="ct-navbarMobile">
-      <button type="button" class="navbar-toggle">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="index.html"><img src="assets/images/content/logo.png" alt="Estato"> </a>
-      <button type="button" class="searchForm-toggle">
-          <span class="sr-only">Toggle navigation</span>
-          <span><i class="fa fa-search"></i></span>
-      </button>
-  </div>
+    <div class="ct-navbarMobile">
+        <button type="button" class="navbar-toggle">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html"><img src="assets/images/content/logo.png" alt="Estato"> </a>
+        <button type="button" class="searchForm-toggle">
+            <span class="sr-only">Toggle navigation</span>
+            <span><i class="fa fa-search"></i></span>
+        </button>
+    </div>
 
 
-  <div class="ct-site--map">
-      <div class="container">
-
-      </div>
-  </div>
-<section class="ct-u-paddingTop50 ct-u-paddingBottom60">
-<div class="container">
-<div class="ct-section--products">
-<div class="row">
-<div class="col-md-4 col-lg-3">
-    <div class="ct-js-sidebar">
-        <div class="row">
-            <div class="col-sm-6 col-md-12">
-
-						<%= render partial: "/properties/search_form" %>
-
-            <%= render partial: "/properties/preselling" %>
-
+    <div class="ct-site--map">
+        <div class="container">
 
         </div>
     </div>
-</div>
-<div class="col-md-8 col-lg-9">
-<div class="ct-sortingBar ct-u-paddingRight10 ct-u-paddingLeft10 ct-u-marginBottom30">
-    <div class="ct-sortingTitle pull-left">
-        <h4 class="text-uppercase">Search Results<span> (<%= @count %>)</span></h4>
-    </div>
-    <ul class="list-inline list-unstyled pull-right ct-u-paddingBoth15">
-        <li>
-            <form>
-                <select class="ct-js-select" id="sort_by">
-                    <option value="price">Sort by</option>
-                    <option value="price" <% if params[:sort_by].present? && params[:sort_by] == "price" %>selected<% end %>>Price</option>
-                    <option value="newness" <% if params[:sort_by].present? && params[:sort_by] == "newness" %>selected<% end %>>Newness</option>
-                </select>
-            </form>
-        </li>
-        <li class="sort_count">
-            <form>
-                <select class="ct-js-select" id="per_page">
-                    <option value="12" <% if params[:per_page].present? && params[:per_page] == "12" %>selected<% end %>>12 items</option>
-                    <option value="18" <% if params[:per_page].present? && params[:per_page] == "18" %>selected<% end %>>18 items</option>
-                    <option value="27" <% if params[:per_page].present? && params[:per_page] == "27" %>selected<% end %>>27 items</option>
-                    <option value="45" <% if params[:per_page].present? && params[:per_page] == "45" %>selected<% end %>>45 items</option>
-                    <option value="90" <% if params[:per_page].present? && params[:per_page] == "90" %>selected<% end %>>90 items</option>
-                </select>
-            </form>
-        </li>
-    </ul>
-    <ul class="ct-showPages list-inline list-unstyled pull-right ct-u-paddingBoth15">
-        <li class="ct-showElements is-active" id="ct-js-showTiles">
-            <a href="#">
-                <i class="fa fa-th fa-fw"></i>
-            </a>
-        </li>
-        <li class="ct-showElements" id="ct-js-showList">
-            <a href="#">
-                <i class="fa fa-th-list fa-fw"></i>
-            </a>
-        </li>
-    </ul>
-    <div class="clearfix"></div>
-</div>
-<div class="row ct-js-search-results ct-showProducts--default">
+    <section class="ct-u-paddingTop50 ct-u-paddingBottom60">
+        <div class="container">
+            <div class="ct-section--products">
+                <div class="row">
+                    <div class="col-md-4 col-lg-3">
+                        <div class="ct-js-sidebar">
+                            <div class="row">
+                                <div class="col-sm-6 col-md-12">
 
-	  <% @properties.each do |property| %>
-    <div class="mcol-sm-6 col-md-6 col-lg-4">
-        <div class="ct-itemProducts ct-u-marginBottom30 ct-hover">
-            <label class="control-label sale">
-                <%= property.status %>
-            </label>
+                                    <%= render partial: "/properties/search_form" %>
 
-                <div class="ct-main-content">
-                    <div class="ct-imageBox">
-                      <% if property.photo? %>
-                        <%= link_to (image_tag property.photo.url(:medium)), property_url(property) %>
-                      <% else %>
-                        <%= image_tag 'content/property-1.jpg' %>
-                      <% end %>
-                    </div>
-                    <div class="ct-main-text">
-                        <div class="ct-product--tilte">
-                            <%= link_to property.name, property_url(property) %>
+                                    <%= render partial: "/properties/preselling" %>
+
+
+                                </div>
+                            </div>
                         </div>
-                        <div class="ct-product--price">
-                            <span><%= property.price_range %></span>
-                        </div>
-                        <div class="ct-product--description">
-                            <%= property.address %><br/>
-                            <%= property.location %><br/>
+                        <div class="col-md-8 col-lg-9">
+                            <div class="ct-sortingBar ct-u-paddingRight10 ct-u-paddingLeft10 ct-u-marginBottom30">
+                                <div class="ct-sortingTitle pull-left">
+                                    <h4 class="text-uppercase">Search Results<span> (
+                                            <%= @count %>)</span></h4>
+                                </div>
+                                <ul class="list-inline list-unstyled pull-right ct-u-paddingBoth15">
+                                    <li>
+                                        <form>
+                                            <select class="ct-js-select" id="sort_by">
+                                                <option value="price">Sort by</option>
+                                                <option value="price" <% if params[:sort_by].present? &&
+                                                    params[:sort_by]=="price" %>selected
+                                                    <% end %>>Price</option>
+                                                <option value="newness" <% if params[:sort_by].present? &&
+                                                    params[:sort_by]=="newness" %>selected
+                                                    <% end %>>Newness</option>
+                                            </select>
+                                        </form>
+                                    </li>
+                                    <li class="sort_count">
+                                        <form>
+                                            <select class="ct-js-select" id="per_page">
+                                                <option value="12" <% if params[:per_page].present? &&
+                                                    params[:per_page]=="12" %>selected
+                                                    <% end %>>12 items</option>
+                                                <option value="18" <% if params[:per_page].present? &&
+                                                    params[:per_page]=="18" %>selected
+                                                    <% end %>>18 items</option>
+                                                <option value="27" <% if params[:per_page].present? &&
+                                                    params[:per_page]=="27" %>selected
+                                                    <% end %>>27 items</option>
+                                                <option value="45" <% if params[:per_page].present? &&
+                                                    params[:per_page]=="45" %>selected
+                                                    <% end %>>45 items</option>
+                                                <option value="90" <% if params[:per_page].present? &&
+                                                    params[:per_page]=="90" %>selected
+                                                    <% end %>>90 items</option>
+                                            </select>
+                                        </form>
+                                    </li>
+                                </ul>
+                                <ul class="ct-showPages list-inline list-unstyled pull-right ct-u-paddingBoth15">
+                                    <li class="ct-showElements is-active" id="ct-js-showTiles">
+                                        <a href="#">
+                                            <i class="fa fa-th fa-fw"></i>
+                                        </a>
+                                    </li>
+                                    <li class="ct-showElements" id="ct-js-showList">
+                                        <a href="#">
+                                            <i class="fa fa-th-list fa-fw"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="row ct-js-search-results ct-showProducts--default" id="search_results">
+
+                                <%= render @properties %>
+
+                            </div>
+
+                            <div class="ct-pagination text-center js-properties-paginator" id="search_paginate">
+                                <%= will_paginate @properties, renderer: BootstrapPagination::Rails %>
+                            </div>
+
+                            <%= link_to 'New', new_property_url %>
                         </div>
                     </div>
                 </div>
-                <div class="ct-product--meta">
-                    <div class="ct-icons">
-                        <span>
-                            <i class="fa fa-bed"></i> <%= property.unit_types %>
-                        </span>
-                    </div>
-                    <div class="ct-text">
-                        <span><span><%= property.unit_sizes %></span></span>
-                    </div>
-                </div>
-
-        </div>
-    </div>
-		<div class="clearfix visible-md"></div>
-		<% end %>
-
-</div>
-
-<div class="ct-pagination text-center">
-  <%= will_paginate @properties, renderer: BootstrapPagination::Rails %>
-</div>
-
-<%= link_to 'New', new_property_url %>
-</div>
-</div>
-</div>
-</div>
-</section>
+            </div>
+    </section>

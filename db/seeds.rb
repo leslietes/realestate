@@ -123,6 +123,9 @@ counter = 1
   if unit_types[:loft]
     uts.push 'Loft'
   end
+  if uts.length == 0
+    uts.push 'Studio'
+  end
   property = Property.new(
     developer_id: Developer.order('RANDOM()').first.id,
     name: title,
@@ -167,6 +170,62 @@ counter = 1
     three_bedroom_layout: unit_types[:three_bedroom] ? File.new(Rails.root.join('db', 'data', 'apartments', rand(1..18).to_s+".jpg")) : nil,
     penthouse_layout: unit_types[:penthouse] ? File.new(Rails.root.join('db', 'data', 'apartments', rand(1..18).to_s+".jpg")) : nil,
     loft_layout: unit_types[:loft] ? File.new(Rails.root.join('db', 'data', 'apartments', rand(1..18).to_s+".jpg")) : nil,
+    photo: File.new(Rails.root.join('db', 'data', 'apartments', rand(1..18).to_s+".jpg")),
+    logo: File.new(Rails.root.join('db', 'data', 'logo', rand(1..6).to_s+".png")),
+    location_map: File.new(Rails.root.join('db', 'data', 'apartments', rand(1..18).to_s+".jpg"))
+  )
+  property.save!
+  counter = counter + 1
+end
+
+
+# create preowned locations
+counter = 1
+30.times do
+  title = titles_1.sample + " " + titles_2.sample
+  from = rand(12..25)
+  to = rand(40..130)
+
+  unit_type = ['Studio', '1 Bedroom', '2 Bedroom', '3 Bedroom', 'Penthouse', 'Loft'].sample
+  
+  property = PreownedProperty.new(
+    name: title = titles_1.sample + " " + titles_2.sample,
+    permalink: title.parameterize+"-"+counter.to_s,
+    address: 'I.T. Park, Lahug, Cebu City',
+    location: titles_1.sample,
+    project_name: titles_1.sample,
+    developer_id: Developer.order('RANDOM()').first.id,
+    view: ["Mountain","Sea","City"].sample,
+    orientation: ["East Facing","West Facing","South Facing","North Facing"].sample,
+    unit_type: ['Studio', '1Br', '2Br', '3Br', 'Penthouse', 'Loft'].sample,
+    unit_size: 23,
+    bedrooms: 2,
+    bathrooms: 1,
+    parking_slot: 1,
+    furnished: [true, false].sample,
+    monthly_dues: prices_from.sample,
+    price: prices_to.sample,
+    latitude: rand(10.24546...10.447344),
+    longitude: rand(123.754043...124.003295),
+    elevators: [true, false].sample,
+    swimming_pool: [true, false].sample,
+    fitness_gym: [true, false].sample,
+    parking: [true, false].sample,
+    function_room: [true, false].sample,
+    retail_area: [true, false].sample,
+    childrens_play_area: [true, false].sample,
+    garden: [true, false].sample,
+    shooting_court: [true, false].sample,
+    laundry_room: [true, false].sample,
+    mail_room: [true, false].sample,
+    security: [true, false].sample,
+    lobby: [true, false].sample,
+    property_management_services: [true, false].sample,
+    clubhouse: [true, false].sample,
+    back_up_power: [true, false].sample,
+    status: ["Sold","New"].sample,
+    hidden: false,
+    rent_or_sale: ["Rent","Sale"].sample,
     photo: File.new(Rails.root.join('db', 'data', 'apartments', rand(1..18).to_s+".jpg")),
     logo: File.new(Rails.root.join('db', 'data', 'logo', rand(1..6).to_s+".png")),
     location_map: File.new(Rails.root.join('db', 'data', 'apartments', rand(1..18).to_s+".jpg"))

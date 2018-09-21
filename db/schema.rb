@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180805055524) do
+ActiveRecord::Schema.define(version: 20180920030915) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,7 +94,7 @@ ActiveRecord::Schema.define(version: 20180805055524) do
     t.string   "address"
     t.string   "location"
     t.string   "project_name"
-    t.string   "developer"
+    t.integer  "developer_id"
     t.string   "view"
     t.string   "orientation"
     t.string   "unit_type"
@@ -104,7 +104,7 @@ ActiveRecord::Schema.define(version: 20180805055524) do
     t.integer  "parking_slot"
     t.boolean  "furnished"
     t.float    "monthly_dues"
-    t.string   "price"
+    t.float    "price"
     t.float    "latitude"
     t.float    "longitude"
     t.boolean  "elevators"
@@ -125,9 +125,22 @@ ActiveRecord::Schema.define(version: 20180805055524) do
     t.boolean  "back_up_power"
     t.string   "status"
     t.boolean  "hidden"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
+    t.string   "location_map_file_name"
+    t.string   "location_map_content_type"
+    t.integer  "location_map_file_size"
+    t.datetime "location_map_updated_at"
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
     t.string   "rent_or_sale"
+    t.index ["developer_id"], name: "index_preowned_properties_on_developer_id", using: :btree
   end
 
   create_table "price_ranges", force: :cascade do |t|
@@ -326,6 +339,15 @@ ActiveRecord::Schema.define(version: 20180805055524) do
     t.boolean  "show_topic3",            default: true
     t.boolean  "show_topic4",            default: true
     t.boolean  "show_topic5",            default: true
+  end
+
+  create_table "subscribers", force: :cascade do |t|
+    t.string   "email"
+    t.string   "name"
+    t.datetime "subscribed_at"
+    t.string   "unsubscribe_token"
+    t.index ["email"], name: "index_subscribers_on_email", using: :btree
+    t.index ["unsubscribe_token"], name: "index_subscribers_on_unsubscribe_token", using: :btree
   end
 
   create_table "users", force: :cascade do |t|

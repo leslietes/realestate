@@ -25,12 +25,17 @@ $ ->
               property_id = $('#contact_property_id').val()
             else
               property_id = ""
+            if $('#contact_preowned_property_id').length
+              preowned_property_id = $('#contact_preowned_property_id').val()
+            else
+              preowned_property_id = ""
             payload =
               feedback:
                 name: $('#contact_name').val()
                 email: $('#contact_email').val()
                 phone: $('#contact_phone').val()
                 message: $('#contact_message').val()
+                preowned_property_id: preowned_property_id
                 property_id: property_id
             $.post '/feedbacks.json', payload, (data) ->
               if data.success == true

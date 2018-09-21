@@ -1,0 +1,3 @@
+$("#pp_search_results").html("<%= escape_javascript(render @preowned) %>");
+$("html, body").animate({ scrollTop: 0 }, "slow");
+$("#pp_search_paginate").html("<%= escape_javascript(will_paginate @preowned, renderer: BootstrapPagination::Rails) %>");

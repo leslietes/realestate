@@ -1,24 +1,23 @@
-<header class="ct-mediaSection" data-stellar-background-ratio="0.3" data-height="140" data-type="parallax" data-bg-image="content/agency-parallax.jpg" data-bg-image-mobile="content/agency-parallax.jpg">
+<header class="ct-mediaSection" data-stellar-background-ratio="0.3" data-height="140" data-type="parallax"
+    data-bg-image="content/agency-parallax.jpg" data-bg-image-mobile="content/agency-parallax.jpg">
     <div class="ct-mediaSection-inner">
         <div class="container">
             <div class="ct-u-displayTableVertical">
                 <div class="ct-textBox ct-u-text--white ct-u-displayTableCell text-left">
-                    <h2 class="text-uppercase"><%= @property.name %></h2>
-                    <h4 class="text-uppercase"><%= @property.address %> <%= @property.location %></h4>
+                    <h2 class="text-uppercase">
+                        <%= @property.name %>
+                    </h2>
+                    <h4 class="text-uppercase">
+                        <%= @property.address %>
+                        <%= @property.location %>
+                    </h4>
                     <span class="ct-productID ct-fw-600">
-
-                      <% if @property.rent_or_sale == 'Sale' %>
-                        Sale
-                      <% elsif @property.rent_or_sale == 'Rent' %>
-                        Rent
-                      <% end %>
-                    </span>
+                        <%= @property.rent_or_sale %></span>
                 </div>
                 <div class="ct-u-displayTableCell text-right">
-                    <div >
+                    <div>
                         <%= link_to 'Edit Preowned Property', edit_preowned_property_url(@property), class: 'btn btn-default btn-transparent--border btn-hoverWhite ct-u-text--white' %>
                         <%= link_to 'Preowend Property Listing', preowned_properties_url, class: 'btn btn-default btn-transparent--border btn-hoverWhite ct-u-text--white' %>
-
                     </div>
                 </div>
             </div>
@@ -33,10 +32,16 @@
                 <div class="col-md-8 col-lg-9">
                     <div class="ct-u-displayTableVertical">
                         <div class="ct-u-displayTableCell text-left">
-                            <i class="fa fa-calendar"></i><h6>published on <%= format_date(@property.created_at) %></h6>
+                            <i class="fa fa-calendar"></i>
+                            <h6>published on
+                                <%= format_date(@property.created_at) %>
+                            </h6>
                         </div>
                         <div class="ct-u-displayTableCell text-left">
-                            <i class="fa fa-pencil-square-o"></i><h6>updated on <%= format_date(@property.updated_at) %></h6>
+                            <i class="fa fa-pencil-square-o"></i>
+                            <h6>updated on
+                                <%= format_date(@property.updated_at) %>
+                            </h6>
                         </div>
                     </div>
                 </div>
@@ -46,40 +51,58 @@
             <div class="row">
                 <div class="col-md-8 col-lg-9">
                     <div class="ct-gallery ct-u-marginBottom30">
-                        <div class="ct-owl-controls--type2" data-single="true" data-pagination="false" data-navigation="false" data-snap-ignore="true" id="sync1">
+                        <div class="ct-owl-controls--type2" data-single="true" data-pagination="false" data-navigation="false"
+                            data-snap-ignore="true" id="sync1">
                             <div class="item">
-                                <%#= image_tag @property.photo.url(:medium) %>
+                                <%= image_tag @property.photo.url(:medium) %>
                             </div>
+                            <% if @property.location_map.present? %>
+                            <div class="item">
+                                <%= image_tag @property.location_map.url(:medium) %>
+                            </div>
+                            <% end %>
                         </div>
                         <div class="ct-navigationThumbnail">
-                            <div class="ct-owl-controls--type3" data-single="false" data-items="5" data-pagination="false" data-snap-ignore="true" id="sync2">
+                            <div class="ct-owl-controls--type3" data-single="false" data-items="5" data-pagination="false"
+                                data-snap-ignore="true" id="sync2">
                                 <div class="item">
-                                    <%#= image_tag @property.photo.url(:medium) %>
+                                    <%= image_tag @property.photo.url(:large) %>
                                 </div>
+                                <% if @property.location_map.present? %>
+                                <div class="item">
+                                    <%= image_tag @property.location_map.url(:large) %>
+                                </div>
+                                <% end %>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-12">
                             <div class="ct-heading ct-u-marginBottom20">
                                 <h3 class="text-uppercase">Summary</h3>
                             </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
                             <div class="ct-u-displayTableVertical ct-productDetails">
-                              <div class="ct-u-displayTableRow">
-                                  <div class="ct-u-displayTableCell">
-                                      <span class="ct-fw-600">Status</span>
-                                  </div>
-                                  <div class="ct-u-displayTableCell text-right">
-                                      <span><%= @property.rent_or_sale %></span>
-                                  </div>
-                              </div>
+                                <div class="ct-u-displayTableRow">
+                                    <div class="ct-u-displayTableCell">
+                                        <span class="ct-fw-600">Status</span>
+                                    </div>
+                                    <div class="ct-u-displayTableCell text-right">
+                                        <span>
+                                            <%= @property.rent_or_sale %></span>
+                                    </div>
+                                </div>
 
                                 <div class="ct-u-displayTableRow">
                                     <div class="ct-u-displayTableCell">
                                         <span class="ct-fw-600">Price</span>
                                     </div>
                                     <div class="ct-u-displayTableCell text-right">
-                                        <span class="ct-price"><%= @property.price %></span>
+                                        <span class="ct-price">
+                                            <%= @property.price %></span>
                                     </div>
                                 </div>
                                 <div class="ct-u-displayTableRow">
@@ -87,7 +110,8 @@
                                         <span class="ct-fw-600">Developer</span>
                                     </div>
                                     <div class="ct-u-displayTableCell text-right">
-                                        <span><%= @property.developer %></span>
+                                        <span>
+                                            <%= @property.developer.developer %></span>
                                     </div>
                                 </div>
                                 <div class="ct-u-displayTableRow">
@@ -95,7 +119,8 @@
                                         <span class="ct-fw-600">Project Name</span>
                                     </div>
                                     <div class="ct-u-displayTableCell text-right">
-                                        <span><%= @property.project_name %></span>
+                                        <span>
+                                            <%= @property.project_name %></span>
                                     </div>
                                 </div>
                                 <div class="ct-u-displayTableRow">
@@ -103,7 +128,8 @@
                                         <span class="ct-fw-600">Address</span>
                                     </div>
                                     <div class="ct-u-displayTableCell text-right">
-                                        <span><%= @property.address %></span>
+                                        <span>
+                                            <%= @property.address %></span>
                                     </div>
                                 </div>
                                 <div class="ct-u-displayTableRow">
@@ -111,7 +137,8 @@
                                         <span class="ct-fw-600">Location</span>
                                     </div>
                                     <div class="ct-u-displayTableCell text-right">
-                                        <span><%= @property.location %></span>
+                                        <span>
+                                            <%= @property.location %></span>
                                     </div>
                                 </div>
                                 <div class="ct-u-displayTableRow">
@@ -119,7 +146,8 @@
                                         <span class="ct-fw-600">Area</span>
                                     </div>
                                     <div class="ct-u-displayTableCell text-right">
-                                        <span><%= @property.unit_size %></span>
+                                        <span>
+                                            <%= @property.unit_size %></span>
                                     </div>
                                 </div>
 
@@ -128,17 +156,22 @@
                                         <span class="ct-fw-600">Type</span>
                                     </div>
                                     <div class="ct-u-displayTableCell text-right">
-                                        <span><%= @property.unit_type %></span>
+                                        <span>
+                                            <%= @property.unit_type %></span>
                                     </div>
                                 </div>
+                            </div>
 
-
+                        </div>
+                        <div class="col-md-6">
+                            <div class="ct-u-displayTableVertical ct-productDetails">
                                 <div class="ct-u-displayTableRow">
                                     <div class="ct-u-displayTableCell">
                                         <span class="ct-fw-600">Orientation</span>
                                     </div>
                                     <div class="ct-u-displayTableCell text-right">
-                                        <span><%= @property.orientation %></span>
+                                        <span>
+                                            <%= @property.orientation %></span>
                                     </div>
                                 </div>
                                 <div class="ct-u-displayTableRow">
@@ -146,7 +179,8 @@
                                         <span class="ct-fw-600">View</span>
                                     </div>
                                     <div class="ct-u-displayTableCell text-right">
-                                        <span><%= @property.view %></span>
+                                        <span>
+                                            <%= @property.view %></span>
                                     </div>
                                 </div>
                                 <div class="ct-u-displayTableRow">
@@ -154,7 +188,8 @@
                                         <span class="ct-fw-600">Bedrooms</span>
                                     </div>
                                     <div class="ct-u-displayTableCell text-right">
-                                        <span><%= @property.bedrooms %></span>
+                                        <span>
+                                            <%= @property.bedrooms %></span>
                                     </div>
                                 </div>
                                 <div class="ct-u-displayTableRow">
@@ -162,7 +197,8 @@
                                         <span class="ct-fw-600">Bathrooms</span>
                                     </div>
                                     <div class="ct-u-displayTableCell text-right">
-                                        <span><%= @property.bathrooms %></span>
+                                        <span>
+                                            <%= @property.bathrooms %></span>
                                     </div>
                                 </div>
                                 <div class="ct-u-displayTableRow">
@@ -170,7 +206,8 @@
                                         <span class="ct-fw-600">Parking Slot</span>
                                     </div>
                                     <div class="ct-u-displayTableCell text-right">
-                                        <span><%= @property.parking_slot %></span>
+                                        <span>
+                                            <%= @property.parking_slot %></span>
                                     </div>
                                 </div>
                                 <div class="ct-u-displayTableRow">
@@ -178,7 +215,8 @@
                                         <span class="ct-fw-600">Furnished</span>
                                     </div>
                                     <div class="ct-u-displayTableCell text-right">
-                                        <span><%= @property.furnished %></span>
+                                        <span>
+                                            <%= @property.furnished %></span>
                                     </div>
                                 </div>
                                 <div class="ct-u-displayTableRow">
@@ -186,82 +224,86 @@
                                         <span class="ct-fw-600">Monthly Dues</span>
                                     </div>
                                     <div class="ct-u-displayTableCell text-right">
-                                        <span><%= @property.monthly_dues %></span>
+                                        <span>
+                                            <%= @property.monthly_dues %></span>
                                     </div>
                                 </div>
                             </div>
+
+
                         </div>
-
-                        <div class="col-md-8">
-
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <br>
                             <div class="ct-heading ct-u-marginBottom20">
                                 <h3 class="text-uppercase">Amenities & Facilities</h3>
                             </div>
                             <div class="ct-u-displayTableVertical ct-productDetails--type2 ct-u-marginBottom20">
                                 <div class="ct-u-displayTableCell">
                                     <ul class="list-unstyled">
-                                      <li>
-                                        <% if @property.back_up_power? %>
-                                          <i class="fa fa-check-circle"></i>
-                                        <% else %>
-                                          <i class="fa fa-times-circle negative"></i>
-                                        <% end %>
-                                          <span class="text-capitalize">Back Up Power</span>
-                                      </li>
-                                      <li>
-                                          <% if @property.security? %>
+                                        <li>
+                                            <% if @property.back_up_power? %>
                                             <i class="fa fa-check-circle"></i>
-                                          <% else %>
+                                            <% else %>
                                             <i class="fa fa-times-circle negative"></i>
-                                          <% end %>
-                                          <span class="text-capitalize">security</span>
-                                      </li>
+                                            <% end %>
+                                            <span class="text-capitalize">Back Up Power</span>
+                                        </li>
+                                        <li>
+                                            <% if @property.security? %>
+                                            <i class="fa fa-check-circle"></i>
+                                            <% else %>
+                                            <i class="fa fa-times-circle negative"></i>
+                                            <% end %>
+                                            <span class="text-capitalize">security</span>
+                                        </li>
                                         <li>
                                             <% if @property.elevators? %>
-                                              <i class="fa fa-check-circle"></i>
+                                            <i class="fa fa-check-circle"></i>
                                             <% else %>
-                                              <i class="fa fa-times-circle negative"></i>
+                                            <i class="fa fa-times-circle negative"></i>
                                             <% end %>
                                             <span class="text-capitalize">elevators</span>
                                         </li>
                                         <li>
                                             <% if @property.lobby? %>
-                                              <i class="fa fa-check-circle"></i>
+                                            <i class="fa fa-check-circle"></i>
                                             <% else %>
-                                              <i class="fa fa-times-circle negative"></i>
+                                            <i class="fa fa-times-circle negative"></i>
                                             <% end %>
                                             <span class="text-capitalize">lobby</span>
                                         </li>
                                         <li>
-                                          <% if @property.parking? %>
+                                            <% if @property.parking? %>
                                             <i class="fa fa-check-circle"></i>
-                                          <% else %>
+                                            <% else %>
                                             <i class="fa fa-times-circle negative"></i>
-                                          <% end %>
+                                            <% end %>
                                             <span class="text-capitalize">Parking</span>
                                         </li>
                                         <li>
-                                          <% if @property.swimming_pool? %>
+                                            <% if @property.swimming_pool? %>
                                             <i class="fa fa-check-circle"></i>
-                                          <% else %>
+                                            <% else %>
                                             <i class="fa fa-times-circle negative"></i>
-                                          <% end %>
+                                            <% end %>
                                             <span class="text-capitalize">Swimming Pool</span>
                                         </li>
                                         <li>
                                             <% if @property.fitness_gym? %>
-                                              <i class="fa fa-check-circle"></i>
+                                            <i class="fa fa-check-circle"></i>
                                             <% else %>
-                                              <i class="fa fa-times-circle negative"></i>
+                                            <i class="fa fa-times-circle negative"></i>
                                             <% end %>
                                             <span class="text-capitalize">Fitness Gym</span>
                                         </li>
                                         <li>
-                                          <% if @property.function_room? %>
+                                            <% if @property.function_room? %>
                                             <i class="fa fa-check-circle"></i>
-                                          <% else %>
+                                            <% else %>
                                             <i class="fa fa-times-circle negative"></i>
-                                          <% end %>
+                                            <% end %>
                                             <span class="text-capitalize">Function Room</span>
                                         </li>
 
@@ -269,62 +311,62 @@
                                 </div>
                                 <div class="ct-u-displayTableCell">
                                     <ul class="list-unstyled">
-                                      <li>
-                                        <% if @property.garden? %>
-                                          <i class="fa fa-check-circle"></i>
-                                        <% else %>
-                                          <i class="fa fa-times-circle negative"></i>
-                                        <% end %>
-                                          <span class="text-capitalize">Garden</span>
-                                      </li>
-                                      <li>
-                                        <% if @property.clubhouse? %>
-                                          <i class="fa fa-check-circle"></i>
-                                        <% else %>
-                                          <i class="fa fa-times-circle negative"></i>
-                                        <% end %>
-                                          <span class="text-capitalize">Clubhouse</span>
-                                      </li>
                                         <li>
-                                          <% if @property.childrens_play_area? %>
+                                            <% if @property.garden? %>
                                             <i class="fa fa-check-circle"></i>
-                                          <% else %>
+                                            <% else %>
                                             <i class="fa fa-times-circle negative"></i>
-                                          <% end %>
+                                            <% end %>
+                                            <span class="text-capitalize">Garden</span>
+                                        </li>
+                                        <li>
+                                            <% if @property.clubhouse? %>
+                                            <i class="fa fa-check-circle"></i>
+                                            <% else %>
+                                            <i class="fa fa-times-circle negative"></i>
+                                            <% end %>
+                                            <span class="text-capitalize">Clubhouse</span>
+                                        </li>
+                                        <li>
+                                            <% if @property.childrens_play_area? %>
+                                            <i class="fa fa-check-circle"></i>
+                                            <% else %>
+                                            <i class="fa fa-times-circle negative"></i>
+                                            <% end %>
                                             <span class="text-capitalize">Children's Play Area</span>
                                         </li>
 
                                         <li>
-                                          <% if @property.shooting_court? %>
+                                            <% if @property.shooting_court? %>
                                             <i class="fa fa-check-circle"></i>
-                                          <% else %>
+                                            <% else %>
                                             <i class="fa fa-times-circle negative"></i>
-                                          <% end %>
+                                            <% end %>
                                             <span>Shooting Court</span>
                                         </li>
                                         <li>
-                                          <% if @property.laundry_room? %>
+                                            <% if @property.laundry_room? %>
                                             <i class="fa fa-check-circle"></i>
-                                          <% else %>
+                                            <% else %>
                                             <i class="fa fa-times-circle negative"></i>
-                                          <% end %>
+                                            <% end %>
                                             <span class="text-capitalize">Laundry Room</span>
                                         </li>
                                         <li>
-                                          <% if @property.mail_room? %>
+                                            <% if @property.mail_room? %>
                                             <i class="fa fa-check-circle"></i>
-                                          <% else %>
+                                            <% else %>
                                             <i class="fa fa-times-circle negative"></i>
-                                          <% end %>
+                                            <% end %>
                                             <span class="text-capitalize">Mail Room</span>
                                         </li>
 
                                         <li>
-                                          <% if @property.retail_area? %>
+                                            <% if @property.retail_area? %>
                                             <i class="fa fa-check-circle"></i>
-                                          <% else %>
+                                            <% else %>
                                             <i class="fa fa-times-circle negative"></i>
-                                          <% end %>
+                                            <% end %>
                                             <span class="text-capitalize">Retail Area</span>
                                         </li>
                                     </ul>
@@ -333,8 +375,8 @@
                             <div class="ct-heading ct-u-marginBottom20">
                                 <h3 class="text-uppercase">Map</h3>
                             </div>
-                            <%= image_tag "http://maps.google.com/maps/api/staticmap?size=600x405&sensor=false&zoom=16&markers=#{@property.latitude}%2C#{@property.longitude}" %>
-                            <div class="ct-js-googleMap ct-googleMap ct-js-googleMap--single" data-offset="1" data-location="Cebu" data-icon="assets/images/marker-flat.png" data-zoom="14" data-height="260" id="map"></div>
+                            <div class="map" id="map" data-lat="<%= @property.latitude %>" data-lng="<%= @property.longitude %>"
+                                data-icon="<%= asset_url('marker-house.png') %>" style="height: 390px;"></div>
                         </div>
                     </div>
                 </div>
@@ -352,46 +394,70 @@
                                             <div class="ct-imagePerson">
                                                 <%= image_tag 'content/agents-1.jpg' %>
                                                 <ul class="ct-panel--socials list-inline list-unstyled">
-                                                    <li><a href="https://www.facebook.com/createITpl"><div class="ct-socials ct-socials--circle"><i class="fa fa-facebook"></i></div></a></li>
-                                                    <li><a href="https://twitter.com/createitpl"><div class="ct-socials ct-socials--circle"><i class="fa fa-twitter"></i></div></a></li>
-                                                    <li><a href="#"><div class="ct-socials ct-socials--circle"><i class="fa fa-instagram"></i></div></a></li>
+                                                    <li><a href="https://www.facebook.com/createITpl">
+                                                            <div class="ct-socials ct-socials--circle"><i class="fa fa-facebook"></i></div>
+                                                        </a></li>
+                                                    <li><a href="https://twitter.com/createitpl">
+                                                            <div class="ct-socials ct-socials--circle"><i class="fa fa-twitter"></i></div>
+                                                        </a></li>
+                                                    <li><a href="#">
+                                                            <div class="ct-socials ct-socials--circle"><i class="fa fa-instagram"></i></div>
+                                                        </a></li>
                                                 </ul>
                                             </div>
                                             <div class="ct-personContent">
                                                 <div class="ct-personName ct-u-paddingBottom10 ct-u-marginBottom20">
-                                                    <h5 class="ct-fw-600"><%= @setting.agent_name %></h5>
+                                                    <h5 class="ct-fw-600">
+                                                        <%= @setting.agent_name %>
+                                                    </h5>
                                                 </div>
                                                 <div class="ct-personDescription  ct-u-paddingBottom10 ct-u-marginBottom20">
                                                     <ul class="list-unstyled ct-contactPerson">
                                                         <li>
                                                             <i class="fa fa-phone"></i>
-                                                            <span><%= @setting.office_no %></span>
+                                                            <span>
+                                                                <%= @setting.office_no %></span>
                                                         </li>
                                                         <li>
                                                             <i class="fa fa-mobile"></i>
-                                                            <span><%= @setting.mobile_no %></span>
+                                                            <span>
+                                                                <%= @setting.mobile_no %></span>
                                                         </li>
 
                                                     </ul>
                                                 </div>
                                                 <div class="ct-personContact">
-                                                    <div class="successMessage alert alert-success" style="display: none">
-                                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                                    <div id="feedback_success" class="successMessage alert alert-success"
+                                                        style="display: none">
+                                                        <button type="button" class="close" data-dismiss="alert"
+                                                            aria-hidden="true">&times;</button>
                                                         Thank You!
                                                     </div>
-                                                    <div class="errorMessage alert alert-danger" style="display: none">
-                                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                                    <div id="feedback_errors" class="errorMessage alert alert-danger"
+                                                        style="display: none">
+                                                        <button type="button" class="close" data-dismiss="alert"
+                                                            aria-hidden="true">&times;</button>
                                                         Ups! An error occured. Please try again later.
                                                     </div>
-                                                    <form role="form" action="assets/form/send.php" method="post" class="contactForm validateIt" data-email-subject="Contact Form" data-show-errors="true">
+                                                    <form role="form" id="feedback_form" action="/feedbacks.json"
+                                                        method="post" class="contactForm validateIt" data-email-subject="Contact Form"
+                                                        data-show-errors="true">
+                                                        <input type="hidden" name="feedback_preowned_property_id" id="contact_preowned_property_id"
+                                                            value="<%= @property.id %>">
                                                         <div class="form-group">
-                                                            <div class="ct-form--item">
-                                                                <input id="contact_name" type="text" required class="form-control input-lg ct-u-marginBottom10" name="field[]" placeholder="Name">
-                                                                <input id="contact_email" type="email" required class="form-control input-lg ct-u-marginBottom10" name="field[]" placeholder="Email">
-                                                                <input id="contact_phone" type="tel" required class="form-control input-lg ct-u-marginBottom10" name="field[]" placeholder="Phone">
-                                                                <textarea id="contact_message" placeholder="Message" class="form-control input-lg" rows="4" name="field[]" required=""></textarea>
+                                                            <div class="ct-form--item ct-u-marginBottom20">
+                                                                <input id="contact_name" type="text" required class="form-control input-lg ct-u-marginBottom10"
+                                                                    name="field[]" placeholder="Name">
+                                                                <input id="contact_email" type="email" required class="form-control input-lg ct-u-marginBottom10"
+                                                                    name="field[]" placeholder="Email">
+                                                                <input id="contact_phone" type="tel" required class="form-control input-lg ct-u-marginBottom10"
+                                                                    name="field[]" placeholder="Phone">
+                                                                <textarea id="contact_message" placeholder="Message"
+                                                                    class="form-control input-lg" rows="4" name="field[]"
+                                                                    required=""></textarea>
                                                             </div>
-                                                            <button type="submit" class="btn btn-warning text-capitalize center-block">Send Message</button>
+                                                            <button type="submit" class="btn btn-warning text-capitalize center-block">Send
+                                                                Message</button>
                                                         </div>
                                                     </form>
                                                 </div>

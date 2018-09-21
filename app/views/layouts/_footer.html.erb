@@ -63,11 +63,15 @@
         </div>
         <div class="col-sm-6 col-md-6 col-lg-3">
           <h4 class="text-uppercase ct-u-marginBottom30">Join Our Newsletter</h4>
-          <%= form_tag subscribe_url do %>
-            <%= text_field_tag "email", nil, {placeholder: "Your E-mail Address", class: "form-control input-lg ct-u-marginBottom10"} %>
-            <%= text_field_tag "name", nil, {placeholder: "Your Name", class: "form-control input-lg ct-u-marginBottom10"} %>
-            <%= submit_tag "Subscribe", class: "btn btn-primary btn-transparent--border ct-u-text--motive text-capitalize" %>
-          <% end %>
+          <div class="subscribe-container">
+            <div class="subscribe-container--errors" id="subs_errors"></div>
+            <div class="subscribe-container--success" id="subs_success"></div>
+            <%= form_tag '/subscibers', id: 'subscriber_form' do %>
+              <%= email_field_tag "subscriber[email]", nil, {placeholder: "Your E-mail Address", class: "form-control input-lg ct-u-marginBottom10", required: "required"} %>
+              <%= text_field_tag "subscriber[name]", nil, {placeholder: "Your Name", class: "form-control input-lg ct-u-marginBottom10"} %>
+              <%= submit_tag "Subscribe", class: "btn btn-primary btn-transparent--border ct-u-text--motive text-capitalize" %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>

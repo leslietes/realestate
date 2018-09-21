@@ -6,7 +6,7 @@ class CreatePreownedProperties < ActiveRecord::Migration[5.0]
       t.string :address
       t.string :location
       t.string :project_name
-      t.string :developer
+      t.references :developer
       t.string :view #mountain/sea/city
       t.string :orientation #east/west facing
       t.string :unit_type
@@ -16,7 +16,7 @@ class CreatePreownedProperties < ActiveRecord::Migration[5.0]
       t.integer :parking_slot
       t.boolean :furnished
       t.float   :monthly_dues
-      t.string  :price
+      t.float  :price
 
       t.float   :latitude
       t.float   :longitude
@@ -41,7 +41,9 @@ class CreatePreownedProperties < ActiveRecord::Migration[5.0]
       t.string  :status #sold/New
       t.boolean :hidden
 
-
+      t.attachment :photo
+      t.attachment :logo
+      t.attachment :location_map
 
       t.timestamps
     end

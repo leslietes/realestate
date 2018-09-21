@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html'
 
   get 'properties/search', to: 'properties#search', as: 'search_properties'
+  get 'preowned_properties/search', to: 'preowned_properties#search', as: 'search_preowned'
 
   resources :developers
   resources :properties
@@ -10,6 +11,7 @@ Rails.application.routes.draw do
   resources :feedbacks, only: :create
   #resources :agents - not used
   resources :preowned_properties
+  resources :subscribers, only: :create
 
   match 'admin', to: 'admin#settings', via: [:get,:post,:put]
   match 'admin/subscriptions', to: 'admin#subscriptions', via: [:get]
@@ -25,7 +27,7 @@ Rails.application.routes.draw do
   get 'remove_featured4', to: 'admin#remove_featured4', as: 'remove_featured4'
   get 'remove_featured5', to: 'admin#remove_featured5', as: 'remove_featured5'
 
-  post 'preowned_properties/search', to: 'preowned_properties#search', as: 'search_preowned'
+  
   post 'home/subscribe',    to: 'home#subscribe',    as: 'subscribe'
 
   #get 'contact_us', to: 'home#contact_us', as: 'contact_us'

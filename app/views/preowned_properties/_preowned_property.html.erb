@@ -1,0 +1,49 @@
+<div class="col-sm-6 col-md-6 col-lg-4">
+  <div class="ct-itemProducts ct-u-marginBottom30 ct-hover">
+    <% if preowned_property.rent_or_sale == 'Sale' %>
+    <label class="control-label sale">Sale</label>
+    <% elsif preowned_property.rent_or_sale == 'Rent' %>
+    <label class="control-label new">Rent</label>
+    <% end %>
+    <a href="product-single.html">
+      <div class="ct-main-content">
+        <div class="ct-imageBox">
+          <%= image_tag preowned_property.photo.url(:medium) %>
+        </div>
+        <div class="ct-main-text">
+          <div class="ct-product--tilte">
+            <%= link_to preowned_property.name, preowned_property_url(preowned_property) %>
+          </div>
+          <div class="ct-product--price">
+            <span class="ct-price--Old"></span>
+            <span><%= number_to_human(preowned_property.price, format:"%n%u", units: {unit: "$", thousand: "k$", billion: "m$"}) %></span>
+          </div>
+          <div class="ct-product--description">
+            <%= preowned_property.project_name %> |
+            <%= preowned_property.address %>
+          </div>
+        </div>
+      </div>
+      <div class="ct-product--meta">
+        <div class="ct-icons">
+          <span>
+            <i class="fa fa-bed"></i>
+            <%= preowned_property.bedrooms %>
+          </span>
+          <span>
+            <i class="fa fa-shower"></i>
+            <%= preowned_property.bathrooms %>
+          </span>
+          <span>
+            <i class="fa fa-car"></i>
+            <%= preowned_property.parking_slot %>
+          </span>
+        </div>
+        <div class="ct-text">
+          <span> Area: <span>
+          <%= preowned_property.unit_size %></span></span>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>

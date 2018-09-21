@@ -1,168 +1,153 @@
 <section class="ct-u-paddingTop50 ct-u-paddingBottom60">
-<div class="container">
-<div class="ct-section--products">
-<div class="row">
-<div class="col-md-4 col-lg-3">
-<div class="ct-js-sidebar ct-mobileMarginTopFix">
-<div class="row">
-<div class="col-sm-6 col-md-12">
-    <div class="widget">
-        <div class="widget-inner">
-            <%= form_tag search_preowned_url, class: "ct-formSearch--extended ct-u-marginBottom50" do %>
-                <div class="ct-form--label--type3">
-                    <div class="ct-u-displayTableVertical">
-                        <div class="ct-u-displayTableCell">
-                            <div class="ct-input-group-btn">
-                                <button class="btn btn-primary">
-                                    <i class="fa fa-search"></i>
-                                </button>
+    <div class="container">
+        <div class="ct-section--products">
+            <div class="row">
+                <div class="col-md-4 col-lg-3">
+                    <div class="ct-js-sidebar ct-mobileMarginTopFix">
+                        <div class="row">
+                            <div class="col-sm-6 col-md-12">
+                                <div class="widget">
+                                    <div class="widget-inner">
+                                        <%= form_tag search_preowned_path, method: 'get', class: "ct-formSearch--extended ct-u-marginBottom50" do %>
+                                        <div class="ct-form--label--type3">
+                                            <div class="ct-u-displayTableVertical">
+                                                <div class="ct-u-displayTableCell">
+                                                    <div class="ct-input-group-btn">
+                                                        <button class="btn btn-primary">
+                                                            <i class="fa fa-search"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="ct-u-displayTableCell text-center">
+                                                    <span class="text-uppercase">Search for preowned</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+
+                                            <div class="ct-form--item ct-u-marginBottom10">
+                                                <label>Developer</label>
+                                                <%= select_tag "developer_id", options_for_select(@option_developers.collect{ |d| [d.developer, d.id] }, params[:developer_id]), {class:'ct-js-select ct-select-lg', include_blank: true,  multiple: false} %>
+                                            </div>
+
+                                            <div class="ct-form--item ct-u-marginBottom10">
+                                                <label>Location</label>
+                                                <%= select_tag "location", options_for_select(@option_locations.collect{ |l| [l.area, l.area] }, params[:location]), {class:'ct-js-select ct-select-lg', include_blank: true,  multiple: false} %>
+                                            </div>
+
+                                            <div class="ct-form--item ct-u-marginBottom10">
+                                                <label>For Rent or Sale </label>
+                                                <%= select_tag "rent_or_sale", options_for_select(['Sale','Rent'], params[:rent_or_sale]), class: "ct-js-select ct-select-lg", include_blank: true, multiple: false %>
+                                            </div>
+                                            <div class="ct-form--item ct-u-marginBottom10">
+                                                <label>Unit Type</label>
+                                                <select name="unit_type" class="ct-js-select ct-select-lg">
+                                                    <option value=""></option>
+                                                    <option value="Studio" <% if params[:unit_type] == "Studio" %>selected<% end %>>Studio</option>
+                                                    <option value="1Br" <% if params[:unit_type] == "1Br" %>selected<% end %>>1 Bedroom</option>
+                                                    <option value="2Br" <% if params[:unit_type] == "2Br" %>selected<% end %>>2 Bedroom</option>
+                                                    <option value="3Br" <% if params[:unit_type] == "3Br" %>selected<% end %>>3 Bedroom</option>
+                                                    <option value="Penthouse" <% if params[:unit_type] == "Penthouse" %>selected<% end %>>Penthouse</option>
+                                                    <option value="Loft" <% if params[:unit_type] == "Loft" %>selected<% end %>>Loft</option>
+                                                </select>
+                                            </div>
+                                            <div class="ct-form--item ct-u-marginBottom10">
+                                                <label>Price Range</label>
+                                                <select name="price" class="ct-js-select ct-select-lg">
+                                                    <option value=""></option>
+                                                    <option value="1" <% if params[:price] == "1" %>selected<% end %>>up to 1,000,000</option>
+                                                    <option value="2" <% if params[:price] == "2" %>selected<% end %>>1,000,000...2,000,000</option>
+                                                    <option value="3" <% if params[:price] == "3" %>selected<% end %>>2,000,000...3,000,000</option>
+                                                    <option value="4" <% if params[:price] == "4" %>selected<% end %>>3,000,000...4,000,000</option>
+                                                    <option value="5" <% if params[:price] == "5" %>selected<% end %>>4,000,000...5,000,000</option>
+                                                    <option value="6" <% if params[:price] == "6" %>selected<% end %>>5,000,000 +</option>
+                                                </select>
+                                            </div>
+
+                                            <button type="submit" class="btn btn-warning">Search Now</button>
+                                        </div>
+                                        <% end %>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="ct-u-displayTableCell text-center">
-                            <span class="text-uppercase">Search for preowned</span>
+
+
                         </div>
                     </div>
                 </div>
-                <div class="form-group ">
+                <div class="col-md-8 col-lg-9">
+                    <div class="ct-sortingBar ct-u-paddingRight10 ct-u-paddingLeft10 ct-u-marginBottom30">
+                        <div class="ct-sortingTitle pull-left">
+                            <h4 class="text-uppercase">Search Results<span> (
+                                    <%= @count %>)</span></h4>
+                        </div>
+                        <ul class="list-inline list-unstyled pull-right ct-u-paddingBoth15">
+                            <li>
+                                <form>
+                                    <select class="ct-js-select" id="pp_sort_by">
+                                        <option value="price">Sort by</option>
+                                        <option value="price" <% if params[:sort_by].present? && params[:sort_by]=="price"
+                                            %>selected
+                                            <% end %>>Price</option>
+                                        <option value="newness" <% if params[:sort_by].present? && params[:sort_by]=="newness"
+                                            %>selected
+                                            <% end %>>Newness</option>
+                                    </select>
+                                </form>
+                            </li>
+                            <li>
+                                <form>
+                                    <select class="ct-js-select" id="pp_per_page">
+                                        <option value="12" <% if params[:per_page].present? && params[:per_page]=="12"
+                                            %>selected
+                                            <% end %>>12 items</option>
+                                        <option value="18" <% if params[:per_page].present? && params[:per_page]=="18"
+                                            %>selected
+                                            <% end %>>18 items</option>
+                                        <option value="27" <% if params[:per_page].present? && params[:per_page]=="27"
+                                            %>selected
+                                            <% end %>>27 items</option>
+                                        <option value="45" <% if params[:per_page].present? && params[:per_page]=="45"
+                                            %>selected
+                                            <% end %>>45 items</option>
+                                        <option value="90" <% if params[:per_page].present? && params[:per_page]=="90"
+                                            %>selected
+                                            <% end %>>90 items</option>
+                                    </select>
+                                </form>
+                            </li>
+                        </ul>
+                        <ul class="ct-showPages list-inline list-unstyled pull-right ct-u-paddingBoth15">
+                            <li class="ct-showElements" id="ct-js-showTiles">
+                                <a href="#">
+                                    <i class="fa fa-th fa-fw"></i>
+                                </a>
+                            </li>
+                            <li class="ct-showElements is-active" id="ct-js-showList">
+                                <a href="#">
+                                    <i class="fa fa-th-list fa-fw"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="row ct-js-search-results ct-showProducts--list" id="pp_search_results">
 
-                    <div class="ct-form--item ct-u-marginBottom10">
-                        <label>Developer</label>
-                        <%= select_tag "developer_id", options_for_select(@option_developers.collect{ |d| [d.developer, d.id] }), {class:'ct-js-select ct-select-lg', include_blank: true,  multiple: false} %>
+                        <%= render @preowned %>
+
                     </div>
 
-                    <div class="ct-form--item ct-u-marginBottom10">
-                        <label>Location</label>
-                        <%= select_tag "location", options_for_select(@option_locations.collect{ |l| [l.area, l.area] }), {class:'ct-js-select ct-select-lg', include_blank: true,  multiple: false} %>
-                    </div>
-
-                    <div class="ct-form--item ct-u-marginBottom10">
-                        <label>For Rent or Sale </label>
-                        <%= select_tag "rent_or_sale", options_for_select(['Rent','Sale']), class: "ct-js-select ct-select-lg", include_blank: true, multiple: false %>
-                    </div>
-                    <div class="ct-form--item ct-u-marginBottom10">
-                        <label>Unit Type</label>
-                        <%= select_tag "unit_type", options_for_select(['Studio','1 bedroom','2 bedroom','3 bedroom','Loft','Penthouse']), class: "ct-js-select ct-select-lg", include_blank: true, multiple: false %>
-                    </div>
-                    <div class="ct-form--item ct-u-marginBottom10">
-                        <label>Price Range</label>
-                        <%= select_tag "price", options_for_select(@option_price_range.collect{ |d| [d.range, d.id] }), {class:'ct-js-select ct-select-lg', include_blank: true,  multiple: false} %>
-                    </div>
-
-                    <button type="submit" class="btn btn-warning">Search Now</button>
                 </div>
-            <% end %>
+                <div class="ct-pagination text-center js-properties-paginator" id="pp_search_paginate">
+                    <%= will_paginate @preowned, renderer: BootstrapPagination::Rails %>
+                </div>
+
+
+                <%= link_to 'New Preowned Property', new_preowned_property_url %>
+
+            </div>
+
         </div>
     </div>
-</div>
-
-
-</div>
-</div>
-</div>
-<div class="col-md-8 col-lg-9">
-<div class="ct-sortingBar ct-u-paddingRight10 ct-u-paddingLeft10 ct-u-marginBottom30">
-    <div class="ct-sortingTitle pull-left">
-        <h4 class="text-uppercase">Search Results<span> (<%= @count %>)</span></h4>
     </div>
-    <ul class="list-inline list-unstyled pull-right ct-u-paddingBoth15">
-        <li>
-            <form>
-                <select class="ct-js-select">
-                    <option value="price">Sort by</option>
-                    <option value="price">Price</option>
-                    <option value="newness">Newness</option>
-                </select>
-            </form>
-        </li>
-        <li>
-            <form>
-                <select class="ct-js-select">
-                    <option value="nine">12 items</option>
-                    <option value="eighteen">15 items</option>
-                    <option value="eighteen">21 items</option>
-                    <option value="twentyseven">36 items</option>
-                    <option value="fourtyfive">45 items</option>
-                    <option value="ninety">90 items</option>
-                </select>
-            </form>
-        </li>
-    </ul>
-    <ul class="ct-showPages list-inline list-unstyled pull-right ct-u-paddingBoth15">
-        <li class="ct-showElements" id="ct-js-showTiles">
-            <a href="#">
-                <i class="fa fa-th fa-fw"></i>
-            </a>
-        </li>
-        <li class="ct-showElements is-active" id="ct-js-showList">
-            <a href="#">
-                <i class="fa fa-th-list fa-fw"></i>
-            </a>
-        </li>
-    </ul>
-    <div class="clearfix"></div>
-</div>
-<div class="row ct-js-search-results ct-showProducts--list">
-  <% @preowned.each do |preowned| %>
-    <div class="col-sm-6 col-md-6 col-lg-4">
-    <div class="ct-itemProducts ct-u-marginBottom30 ct-hover">
-        <% if preowned.rent_or_sale == 'Sale' %>
-          <label class="control-label sale">Sale</label>
-        <% elsif preowned.rent_or_sale == 'Rent' %>
-          <label class="control-label new">Rent</label>
-        <% end %>
-        <a href="product-single.html">
-            <div class="ct-main-content">
-                <div class="ct-imageBox">
-
-                  <%= image_tag "content/property-10.jpg" %>
-                </div>
-                <div class="ct-main-text">
-                    <div class="ct-product--tilte">
-                        <%= link_to preowned.name, preowned_property_url(preowned) %>
-                    </div>
-                    <div class="ct-product--price">
-                        <span class="ct-price--Old"></span>
-                        <span><%= preowned.price %></span>
-                    </div>
-                    <div class="ct-product--description">
-                        <%= preowned.project_name %> | <%= preowned.address %>
-                    </div>
-                </div>
-            </div>
-            <div class="ct-product--meta">
-                <div class="ct-icons">
-                        <span>
-                            <i class="fa fa-bed"></i> <%= preowned.bedrooms %>
-                        </span>
-                        <span>
-                            <i class="fa fa-shower"></i> <%= preowned.bathrooms %>
-                        </span>
-                        <span>
-                            <i class="fa fa-car"></i> <%= preowned.parking_slot %>
-                        </span>
-                </div>
-                <div class="ct-text">
-                    <span> Area: <span><%= preowned.unit_size %></span></span>
-                </div>
-            </div>
-        </a>
-    </div>
-</div>
-  <% end %>
-
-</div>
-
-</div>
-<div class="ct-pagination text-center">
-  <%= will_paginate @preowned, renderer: BootstrapPagination::Rails %>
-</div>
-
-
-<%= link_to 'New Preowned Property', new_preowned_property_url %>
-
-</div>
-
-</div>
-</div>
-</div>
 </section>

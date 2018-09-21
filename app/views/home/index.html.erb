@@ -170,9 +170,10 @@
                             <div class="widget ct-widget--recentlyReduced">
                                 <div class="widget-inner">
                                     <h4 class="text-uppercase">Preowned</h4>
+
                                     <% @preowned.each do |preowned| %>
                                       <div class="ct-itemProducts--small ct-itemProducts--small-type1">
-                                        <a href="product-single.html">
+                                        <%= link_to preowned_property_path(preowned.id) do %>
                                             <div class="ct-main-content">
                                                 <div class="ct-imageBox">
                                                   <%= image_tag preowned.photo.url(:medium) %>
@@ -183,11 +184,11 @@
                                                     </div>
                                                     <div class="ct-product--price">
                                                         <span><%= preowned.unit_type %></span>
-                                                        <span><%= preowned.price %></span>
+                                                        <span><%= number_to_human(preowned.price, format:"%n%u", units: {unit: "$", thousand: "k$", billion: "m$"}) %></span>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </a>
+                                        <% end %>
                                     </div>
                                     <% end %>
                                     <%= link_to 'View More Preowned Properties', preowned_properties_url, class: "btn btn-primary btn-transparent--border ct-u-text--motive" %>

@@ -5,9 +5,25 @@ class PreownedPropertiesController < ApplicationController
   before_filter :select_locations,      :only => [:new, :create, :edit, :update]
 
   def index
-    @preowned = PreownedProperty.show_all
-    @count    = @preowned.size
-    @preowned = @preowned.paginate(page: params[:page], per_page: 1)
+    if params[:sort_by].present?
+      if params[:sort_by] == "newness"
+        @preowned = PreownedProperty.order('preowned_properties.created_at DESC')
+      else
+        @preowned = PreownedProperty.order('preowned_properties.price DESC')
+      end
+    else
+      @preowned = PreownedProperty.order('preowned_properties.created_at DESC')
+    end
+    @count      = @preowned.size
+    if params[:per_page].present?
+      if params[:per_page].to_i < 2
+        @preowned = @preowned.paginate(page: params[:page], per_page: 12)
+      else
+        @preowned = @preowned.paginate(page: params[:page], per_page: params[:per_page])
+      end
+    else
+      @preowned = @preowned.paginate(page: params[:page], per_page: 12)
+    end
   end
 
   def show
@@ -56,29 +72,76 @@ class PreownedPropertiesController < ApplicationController
   end
 
   def search
-    #developer, location, property status, unit type, price range
-
-
-      @preowned = PreownedProperty.where(nil)
-      @preowned = @preowned.where("developer_id = ?", params[:developer_id]) if params[:developer_id].present?
-      @preowned = @preowned.where("location = ?", params[:location]) if params[:location].present?
-      @preowend = @preowned.where("price_range = ?", params[:price_range]) if params[:price_range].present?
-      @preowned = @preowned.where("rent_or_sale = ?", params[:rent_or_sale]) if params[:rent_or_sale].present?
-
-      @count    = @preowned.size
-      @preowned = @preowned.paginate(page: params[:page], per_page: 1)
-
-      render "preowned_properties/index"
+    if params[:sort_by].present?
+      if params[:sort_by] == "newness"
+        @preowned = PreownedProperty.order('preowned_properties.created_at DESC')
+      else
+        @preowned = PreownedProperty.order('preowned_properties.price DESC')
+      end
+    else
+      @preowned = PreownedProperty.order('preowned_properties.created_at DESC')
     end
+    @count = @preowned.size
+    if params[:developer_id].present?
+      properties_add = PreownedProperty.where(developer_id: params[:developer_id])
+      @preowned = @preowned.merge(properties_add)
+    end
+    if params[:location].present?
+      properties_add = PreownedProperty.where(location: params[:location])
+      @preowned = @preowned.merge(properties_add)
+    end
+    if params[:rent_or_sale].present?
+      properties_add = PreownedProperty.where(rent_or_sale: params[:rent_or_sale])
+      @preowned = @preowned.merge(properties_add)
+    end
+    if params[:unit_type].present?
+      properties_add = PreownedProperty.where(unit_type: params[:unit_type])
+      @preowned = @preowned.merge(properties_add)
+    end
+    if params[:price].present?
+      if params[:price] == "1"
+        properties_add = PreownedProperty.where('preowned_properties.price <= ?', 1000000)
+        @preowned = @preowned.merge(properties_add)
+      end
+      if params[:price] == "2"
+        properties_add = PreownedProperty.where('preowned_properties.price >= ?', 1000000).where('preowned_properties.price <= ?', 2000000)
+        @preowned = @preowned.merge(properties_add)
+      end
+      if params[:price] == "3"
+        properties_add = PreownedProperty.where('preowned_properties.price >= ?', 2000000).where('preowned_properties.price <= ?', 3000000)
+        @preowned = @preowned.merge(properties_add)
+      end
+      if params[:price] == "4"
+        properties_add = PreownedProperty.where('preowned_properties.price > ?', 3000000).where('preowned_properties.price < ?', 4000000)
+        @preowned = @preowned.merge(properties_add)
+      end
+      if params[:price] == "5"
+        properties_add = PreownedProperty.where('preowned_properties.price > ?', 4000000).where('preowned_properties.price < ?', 5000000)
+        @preowned = @preowned.merge(properties_add)
+      end
+      if params[:price] == "6"
+        properties_add = PreownedProperty.where('preowned_properties.price > ?', 5000000)
+        @preowned = @preowned.merge(properties_add)
+      end
+    end
+    @count = @preowned.count
+    if params[:per_page].present?
+      if params[:per_page].to_i < 2
+        @preowned = @preowned.paginate(page: params[:page], per_page: 12)
+      else
+        @preowned = @preowned.paginate(page: params[:page], per_page: params[:per_page])
+      end
+    else
+      @preowned = @preowned.paginate(page: params[:page], per_page: 12)
+    end
+    render "index"
+
+  end
 
   private
 
     def preowned_params
-      params.require(:preowned_property).permit(:name, :permalink, :address, :location, :project_name, :developer, :view, :orientation,
-        :unit_type, :unit_size, :bedrooms, :bathrooms, :parking, :furnished, :monthly_dues, :price, :latitude, :longitude,
-        :elevators, :swimming_pool, :fitness_gym, :parking, :function_room, :retail_area, :childrens_play_area, :garden,
-        :shooting_court, :laundry_room, :mail_room, :security, :lobby, :property_management_services, :clubhouse, :back_up_power,
-        :status, :hidden, :rent_or_sale )
+      params.require(:preowned_property).permit(:name, :permalink, :address, :location, :project_name, :developer_id, :view, :orientation, :unit_type, :unit_size, :bedrooms, :bathrooms, :parking, :furnished, :monthly_dues, :price, :latitude, :longitude, :elevators, :swimming_pool, :fitness_gym, :parking, :function_room, :retail_area, :childrens_play_area, :garden, :shooting_court, :laundry_room, :mail_room, :security, :lobby, :property_management_services, :clubhouse, :back_up_power, :status, :hidden, :rent_or_sale, :photo, :logo, :location_map )
     end
 
     def select_locations

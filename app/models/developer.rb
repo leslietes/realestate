@@ -1,5 +1,6 @@
 class Developer < ApplicationRecord
   has_many :properties
+  has_many :preowned_properties
 
   has_attached_file :image, :styles => { :medium => "264x194#"}
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/

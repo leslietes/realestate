@@ -262,43 +262,46 @@
               <br>
               <p>
                 <label class="c-box is-header">
-                  <%= f.check_box :studio %>
+                  <%= f.check_box :studio, class: 'js-enabler' %>
                   <span>Studio</span>
                 </label>
               </p>
-              <div class="row">
-                <p class="col-xs-4">
-                  <%= f.label :studio_size %>
-                  <%= f.text_field :studio_size %>
-                </p>
-                <p class="col-xs-4">
-                  <%= f.label :studio_price %>
-                  <%= f.text_field :studio_price %>
-                </p>
-                <p class="col-xs-4">
-                  <%= f.label :studio_monthly %>
-                  <%= f.text_field :studio_monthly %>
-                </p>
-              </div>
-              <div class="row">
-                <p class="col-xs-4">
-                  <%= f.label :studio_layout %>
-                  <%= f.file_field :studio_layout %>
-                </p>
-                <p class="col-xs-8">
-                  <%= f.label :studio_layout_caption %>
-                  <%= f.text_field :studio_layout_caption %>
-                </p>
+              <div class="apt-block <% if !@property.studio %>is-disabled<% end %>">
+                <div class="row">
+                  <p class="col-xs-4">
+                    <%= f.label :studio_size %>
+                    <%= f.text_field :studio_size %>
+                  </p>
+                  <p class="col-xs-4">
+                    <%= f.label :studio_price %>
+                    <%= f.text_field :studio_price %>
+                  </p>
+                  <p class="col-xs-4">
+                    <%= f.label :studio_monthly %>
+                    <%= f.text_field :studio_monthly %>
+                  </p>
+                </div>
+                <div class="row">
+                  <p class="col-xs-4">
+                    <%= f.label :studio_layout %>
+                    <%= f.file_field :studio_layout %>
+                  </p>
+                  <p class="col-xs-8">
+                    <%= f.label :studio_layout_caption %>
+                    <%= f.text_field :studio_layout_caption %>
+                  </p>
+                </div>
               </div>
 
               <hr>
 
               <p>
                 <label class="c-box is-header">
-                  <%= f.check_box :one_bedroom %>
+                  <%= f.check_box :one_bedroom, class: 'js-enabler' %>
                   <span>1 bedroom</span>
                 </label>
               </p>
+              <div class="apt-block <% if !@property.one_bedroom %>is-disabled<% end %>">
               <div class="row">
                 <p class="col-xs-4">
                   <%= f.label :one_bedroom_size %>
@@ -322,16 +325,17 @@
                   <%= f.label :one_bedroom_layout_caption %>
                   <%= f.text_field :one_bedroom_layout_caption %>
                 </p>
-              </div>
+              </div></div>
 
               <hr>
 
               <p>
                 <label class="c-box is-header">
-                  <%= f.check_box :two_bedroom %>
+                  <%= f.check_box :two_bedroom, class: 'js-enabler' %>
                   <span>2 bedroom</span>
                 </label>
               </p>
+              <div class="apt-block <% if !@property.two_bedroom %>is-disabled<% end %>">
               <div class="row">
                 <p class="col-xs-4">
                   <%= f.label :two_bedroom_size %>
@@ -355,16 +359,17 @@
                   <%= f.label :two_bedroom_layout_caption %>
                   <%= f.text_field :two_bedroom_layout_caption %>
                 </p>
-              </div>
+              </div></div>
 
               <hr>
 
               <p>
                 <label class="c-box is-header">
-                  <%= f.check_box :three_bedroom %>
+                  <%= f.check_box :three_bedroom, class: 'js-enabler' %>
                   <span>3 bedroom</span>
                 </label>
               </p>
+              <div class="apt-block <% if !@property.three_bedroom %>is-disabled<% end %>">
               <div class="row">
                 <p class="col-xs-4">
                   <%= f.label :three_bedroom_size %>
@@ -388,16 +393,17 @@
                   <%= f.label :three_bedroom_layout_caption %>
                   <%= f.text_field :three_bedroom_layout_caption %>
                 </p>
-              </div>
+              </div></div>
 
               <hr>
 
               <p>
                 <label class="c-box is-header">
-                  <%= f.check_box :penthouse %>
+                  <%= f.check_box :penthouse, class: 'js-enabler' %>
                   <span>Penthouse</span>
                 </label>
               </p>
+              <div class="apt-block <% if !@property.penthouse %>is-disabled<% end %>">
               <div class="row">
                 <p class="col-xs-4">
                   <%= f.label :penthouse_size %>
@@ -421,16 +427,17 @@
                   <%= f.label :penthouse_layout_caption %>
                   <%= f.text_field :penthouse_layout_caption %>
                 </p>
-              </div>
+              </div></div>
 
               <hr>
 
               <p>
                 <label class="c-box is-header">
-                  <%= f.check_box :loft %>
+                  <%= f.check_box :loft, class: 'js-enabler' %>
                   <span>Loft</span>
                 </label>
               </p>
+              <div class="apt-block <% if !@property.loft %>is-disabled<% end %>">
               <div class="row">
                 <p class="col-xs-4">
                   <%= f.label :loft_size %>
@@ -454,14 +461,14 @@
                   <%= f.label :loft_layout_caption %>
                   <%= f.text_field :loft_layout_caption %>
                 </p>
-              </div>
+              </div></div>
 
                <hr>
 
               <div class="row">
                 <p class="col-xs-4">
                   <%= f.label :target_completion_date %>
-                  <%= f.text_field :target_completion_date %>
+                  <%= f.text_field :target_completion_date, class: 'js-date' %>
                 </p>
                 <p class="col-xs-4">
                   <label class="c-box">

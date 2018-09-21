@@ -11,7 +11,7 @@ $ ->
       return
 
     module:
-      property:
+      preowned_property:
         updateUrlParameter: (uri, key, value) ->
           i = uri.indexOf('#')
           hash = if i == -1 then '' else uri.substr(i)
@@ -27,30 +27,16 @@ $ ->
         init: ->
           self = this
 
-          $('body').on 'change', '#per_page', (e) ->
+          $('body').on 'change', '#pp_per_page', (e) ->
             new_uri = self.updateUrlParameter(window.location.href, 'per_page', $(@).val())
             new_uri = self.updateUrlParameter(window.location.href, 'page', 1)
             window.location.href = new_uri
 
-          $('body').on 'change', '#sort_by', (e) ->
+          $('body').on 'change', '#pp_sort_by', (e) ->
             new_uri = self.updateUrlParameter(window.location.href, 'sort_by', $(@).val())
             new_uri = self.updateUrlParameter(window.location.href, 'page', 1)
             window.location.href = new_uri
-
-          $('body').on 'click', '.js-properties-paginator a', (e) ->
-            e.preventDefault()
-            $.get @href, null, null, 'script'
-            false
-
-          $('.js-date').flatpickr()
-        
-          $('.js-enabler').on 'change', (e) ->
-            p = $(@).closest('p').next()
-            if $(@).is(':checked')
-              p.removeClass('is-disabled')
-            else
-              p.addClass('is-disabled')
-
+          
           return
   )
   app.init()
