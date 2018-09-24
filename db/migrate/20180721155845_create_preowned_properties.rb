@@ -6,7 +6,7 @@ class CreatePreownedProperties < ActiveRecord::Migration[5.0]
       t.string :address
       t.string :location
       t.string :project_name
-      t.references :developer
+      t.integer :developer_id
       t.string :view #mountain/sea/city
       t.string :orientation #east/west facing
       t.string :unit_type
