@@ -16,7 +16,7 @@
           </div>
           <div class="ct-product--price">
             <span class="ct-price--Old"></span>
-            <span><%= number_to_human(preowned_property.price, format:"%n%u", units: {unit: "$", thousand: "k$", billion: "m$"}) %></span>
+            <span><%= number_to_human(preowned_property.price, format:"%n%u", units: {unit: "P", thousand: "kP", billion: "mP"}) %></span>
           </div>
           <div class="ct-product--description">
             <%= preowned_property.project_name %> |

@@ -141,7 +141,7 @@ class PreownedPropertiesController < ApplicationController
   private
 
     def preowned_params
-      params.require(:preowned_property).permit(:name, :permalink, :address, :location, :project_name, :developer_id, :view, :orientation, :unit_type, :unit_size, :bedrooms, :bathrooms, :parking, :furnished, :monthly_dues, :price, :latitude, :longitude, :elevators, :swimming_pool, :fitness_gym, :parking, :function_room, :retail_area, :childrens_play_area, :garden, :shooting_court, :laundry_room, :mail_room, :security, :lobby, :property_management_services, :clubhouse, :back_up_power, :status, :hidden, :rent_or_sale, :photo, :logo, :location_map )
+      params.require(:preowned_property).permit(:name, :permalink, :address, :location, :project_name, :developer_id, :view, :orientation, :unit_type, :unit_size, :bedrooms, :bathrooms, :parking_slot, :furnished, :monthly_dues, :price, :latitude, :longitude, :elevators, :swimming_pool, :fitness_gym, :parking, :function_room, :retail_area, :childrens_play_area, :garden, :shooting_court, :laundry_room, :mail_room, :security, :lobby, :property_management_services, :clubhouse, :back_up_power, :status, :hidden, :rent_or_sale, :photo, :logo, :location_map )
     end
 
     def select_locations
