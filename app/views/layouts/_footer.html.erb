@@ -53,7 +53,12 @@
                 <%= link_to 'Contact Us', contact_us_url, class: "text-capitalize" %>
               </div>
               <div class="col-md-6">
-                <%= link_to 'Login', new_user_session_url, class: "text-capitalize" %>
+                <% if user_signed_in? %>
+                  <%= link_to 'Logout', destroy_user_session_path, method:  'delete', class: "text-capitalize" %>
+                <% else %>
+                  <%= link_to 'Login', new_user_session_url, class: "text-capitalize" %>
+                <% end %>
+
                 <%= link_to 'Property Management', property_management_url, class: "text-capitalize" %>
                 <a class="text-capitalize" href="#">Terms & Conditions</a>
                 <a class="text-capitalize" href="#">Privacy Policy</a>
