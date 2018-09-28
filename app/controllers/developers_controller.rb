@@ -1,5 +1,5 @@
 class DevelopersController < ApplicationController
-  #before_filter :login_required, :except => [:index, :show]
+  before_action :login_required, except: [:index,:show]
 
   def index
   	#developers = Developer.show_all_visible

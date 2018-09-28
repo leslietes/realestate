@@ -1,5 +1,7 @@
 class AdminController < ApplicationController
 
+  before_action :login_required
+
   def settings
     @setting = Setting.first || Setting.new
 

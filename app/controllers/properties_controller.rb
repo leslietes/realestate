@@ -2,13 +2,15 @@ require 'will_paginate/array'
 
 class PropertiesController < ApplicationController
 
-  before_filter :select_property_types, :only => [:new,:create,:edit,:update]
-  before_filter :select_locations,      :only => [:new, :create, :edit, :update]
-  before_filter :select_unit_types,     :only => [:new, :create, :edit, :update]
-  before_filter :developers,            :only => [:new,:create,:edit,:update]
-  before_filter :inquiry_form,          :only => [:show]
+  before_action :login_required, except: [:index,:show,:search]
 
-  before_filter :show_preselling,       :only => [:index,:search]
+  before_action :select_property_types, only: [:new,:create,:edit,:update]
+  before_action :select_locations,      only: [:new, :create, :edit, :update]
+  before_action :select_unit_types,     only: [:new, :create, :edit, :update]
+  before_action :developers,            only: [:new,:create,:edit,:update]
+  before_action :inquiry_form,          only: [:show]
+
+  before_action :show_preselling,       only: [:index,:search]
 
   def index
   	#_projects = Property.show_all_visible

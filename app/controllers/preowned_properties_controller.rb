@@ -2,7 +2,9 @@ require 'will_paginate/array'
 
 class PreownedPropertiesController < ApplicationController
 
-  before_filter :select_locations,      :only => [:new, :create, :edit, :update]
+  before_action :login_required, except: [:index,:show,:search]
+
+  before_action :select_locations, only: [:new, :create, :edit, :update]
 
   def index
     if params[:sort_by].present?

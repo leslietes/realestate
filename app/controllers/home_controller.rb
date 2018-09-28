@@ -16,11 +16,4 @@ class HomeController < ApplicationController
     @agents   = Agent.all
   end
 
-  def subscribe
-    if params[:email].present?
-      NewsletterSubscription.create!(email: params[:email], name: params[:name])
-    end
-    #todo: display message
-    redirect_to root_url
-  end
 end
