@@ -105,7 +105,7 @@
                                 <%= will_paginate @properties, renderer: BootstrapPagination::Rails %>
                             </div>
 
-                            <%= link_to 'New', new_property_url %>
+                            <%= link_to 'New', new_property_url if user_signed_in? %>
                         </div>
                     </div>
                 </div>

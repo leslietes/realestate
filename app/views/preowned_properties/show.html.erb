@@ -16,7 +16,9 @@
                 </div>
                 <div class="ct-u-displayTableCell text-right">
                     <div>
+                      <% if user_signed_in? %>
                         <%= link_to 'Edit Preowned Property', edit_preowned_property_url(@property), class: 'btn btn-default btn-transparent--border btn-hoverWhite ct-u-text--white' %>
+                        <% end %>
                         <%= link_to 'Preowend Property Listing', preowned_properties_url, class: 'btn btn-default btn-transparent--border btn-hoverWhite ct-u-text--white' %>
                     </div>
                 </div>

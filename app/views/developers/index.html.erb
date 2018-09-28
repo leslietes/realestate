@@ -29,9 +29,11 @@
                     </div>
                     <div class="ct-product--description">
                         <%= pluralize(developer.properties.size, 'property') %>
-												<br/><br/>
+                        <br/><br/>
+                        <% if user_signed_in? %>
 												<%= link_to 'Edit', edit_developer_url(developer) %>
 												<%= link_to 'Delete', developer_url(developer), :method => :delete, :confirm => "Are you sure?" %>
+                        <% end %>
                     </div>
                 </div>
             </div>
@@ -41,7 +43,7 @@
   <% end %>
   <div class="clearfix visible-sm visible-md"></div>
 </div>
-<%= link_to 'New', new_developer_url %>
+<%= link_to 'New', new_developer_url if user_signed_in? %>
 </div>
 </div>
 </div>
