@@ -22,19 +22,19 @@ $ ->
             uri = uri.replace(re, '$1' + key + '=' + value + '$2')
           else
             uri = uri + separator + key + '=' + value
-          uri + hash
+          return uri + hash
 
         init: ->
           self = this
 
           $('body').on 'change', '#per_page', (e) ->
             new_uri = self.updateUrlParameter(window.location.href, 'per_page', $(@).val())
-            new_uri = self.updateUrlParameter(window.location.href, 'page', 1)
+            new_uri = self.updateUrlParameter(new_uri, 'page', 1)
             window.location.href = new_uri
 
           $('body').on 'change', '#sort_by', (e) ->
             new_uri = self.updateUrlParameter(window.location.href, 'sort_by', $(@).val())
-            new_uri = self.updateUrlParameter(window.location.href, 'page', 1)
+            new_uri = self.updateUrlParameter(new_uri, 'page', 1)
             window.location.href = new_uri
 
           $('body').on 'click', '.js-properties-paginator a', (e) ->

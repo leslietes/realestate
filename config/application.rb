@@ -6,6 +6,8 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+MAP_TOKEN = 'pk.eyJ1Ijoic2tpcGZpc2giLCJhIjoiY2prdW85Y2hmMDBoMjNwbzh4ZzQ2ZHJ1aCJ9.jwkFDUKT4UKlrGSziLNTRw'
+
 module Realestate
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.

@@ -16,8 +16,8 @@ $ ->
           self = this
 
           if $('#map').length
-
-            mapboxgl.accessToken = 'pk.eyJ1Ijoic2tpcGZpc2giLCJhIjoiY2prdW85Y2hmMDBoMjNwbzh4ZzQ2ZHJ1aCJ9.jwkFDUKT4UKlrGSziLNTRw'
+            access_token = $('#map').data('token')
+            mapboxgl.accessToken = access_token
             map = new (mapboxgl.Map)(
               container: 'map'
               style: 'mapbox://styles/mapbox/streets-v9'
