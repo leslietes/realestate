@@ -20,7 +20,7 @@ class PropertiesController < ApplicationController
     #if logged_in?
       @properties = Property.order('properties.created_at DESC')
       @count      = @properties.size
-      @properties = @properties.paginate(page: params[:page], per_page: 12)
+      @properties = @properties.paginate(page: params[:page], per_page: params[:per_page])
 
 
     #else
@@ -155,7 +155,7 @@ class PropertiesController < ApplicationController
     :studio_price, :one_bedroom_price, :two_bedroom_price, :three_bedroom_price, :penthouse_price, :loft_price,
     :elevators, :swimming_pool, :fitness_gym, :parking, :function_room, :retail_area, :childrens_play_area,
     :garden, :shooting_court, :laundry_room, :mail_room, :security, :lobby, :property_management_services,
-    :clubhouse, :back_up_power, :preselling, :price_from, :price_to
+    :clubhouse, :back_up_power, :preselling, :price_from, :price_to, :latitude, :longitude
     )
   end
 
