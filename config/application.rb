@@ -6,7 +6,8 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-MAP_TOKEN = 'pk.eyJ1Ijoic2tpcGZpc2giLCJhIjoiY2prdW85Y2hmMDBoMjNwbzh4ZzQ2ZHJ1aCJ9.jwkFDUKT4UKlrGSziLNTRw'
+# MAP_TOKEN = 'pk.eyJ1Ijoic2tpcGZpc2giLCJhIjoiY2prdW85Y2hmMDBoMjNwbzh4ZzQ2ZHJ1aCJ9.jwkFDUKT4UKlrGSziLNTRw'
+MAP_TOKEN = 'pk.eyJ1IjoibGVzbGlldGVzIiwiYSI6ImNqbXhpdmtqcjBiM3czcnIycm1pbmV1cTQifQ.YNKzvOsN-yUMLwXGCob4mA'
 
 module Realestate
   class Application < Rails::Application
