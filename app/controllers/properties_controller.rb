@@ -110,6 +110,33 @@ class PropertiesController < ApplicationController
       properties_add = Property.where('unit_types LIKE ?', "%#{params[:unit_type]}%")
       @properties = @properties.merge(properties_add)
     end
+    if params[:price].present?
+      if params[:price] == "1"
+        properties_add = Property.where('properties.price_to <= ?', 1000000)
+        @properties = @properties.merge(properties_add)
+      end
+      if params[:price] == "2"
+        properties_add = Property.where('properties.price_from >= ?', 1000000).where('properties.price_to <= ?', 2000000)
+        @properties = @properties.merge(properties_add)
+      end
+      if params[:price] == "3"
+        properties_add = Property.where('properties.price_from >= ?', 2000000).where('properties.price_to <= ?', 3000000)
+        @properties = @properties.merge(properties_add)
+      end
+      if params[:price] == "4"
+        properties_add = Property.where('properties.price_from > ?', 3000000).where('properties.price_to < ?', 4000000)
+        @properties = @properties.merge(properties_add)
+      end
+      if params[:price] == "5"
+        properties_add = Property.where('properties.price_from > ?', 4000000).where('properties.price_to < ?', 5000000)
+        @properties = @properties.merge(properties_add)
+      end
+      if params[:price] == "6"
+        properties_add = Property.where('properties.price_from > ?', 5000000)
+        @properties = @properties.merge(properties_add)
+      end
+    end
+
     @count = @properties.count
     if params[:per_page].present?
       if params[:per_page].to_i < 2
