@@ -49,12 +49,12 @@
                                     <li>
                                         <form>
                                             <select class="ct-js-select" id="sort_by">
-                                                <option value="price">Sort by</option>
+                                                <option value="">Sort by</option>
                                                 <option value="price" <% if params[:sort_by].present? &&
-                                                    params[:sort_by]=="price" %>selected
+                                                    params[:sort_by] =="price" %>selected
                                                     <% end %>>Price</option>
                                                 <option value="newness" <% if params[:sort_by].present? &&
-                                                    params[:sort_by]=="newness" %>selected
+                                                    params[:sort_by] =="newness" %>selected
                                                     <% end %>>Newness</option>
                                             </select>
                                         </form>

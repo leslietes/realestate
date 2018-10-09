@@ -16,7 +16,7 @@ class PreownedPropertiesController < ApplicationController
     else
       @preowned = PreownedProperty.order('preowned_properties.created_at DESC')
     end
-    @count      = @preowned.size
+    @count = @preowned.size
     if params[:per_page].present?
       if params[:per_page].to_i < 2
         @preowned = @preowned.paginate(page: params[:page], per_page: 12)

@@ -84,7 +84,6 @@ class PropertiesController < ApplicationController
     else
       @properties = Property.order('properties.price_from DESC')
     end
-    @properties = Property.order('properties.created_at DESC')
     if params[:developer_id].present?
       properties_add = Property.where(developer_id: params[:developer_id])
       @properties = @properties.merge(properties_add)
