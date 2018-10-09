@@ -18,7 +18,17 @@ class PropertiesController < ApplicationController
 
   	#@page_title = "CebuCondoListings | Cebu Condominium Listings - #{proj}"
     #if logged_in?
-      @properties = Property.order('properties.created_at DESC')
+    if params[:sort_by].present?
+      if params[:sort_by] == "newness"
+        @properties = Property.order('properties.created_at DESC')
+      else
+        @properties = Property.order('properties.price_from ASC')
+      end
+    else
+      @properties = Property.order('properties.price_from ASC')
+    end
+
+
       @count      = @properties.size
       @properties = @properties.paginate(page: params[:page], per_page: params[:per_page])
 
