@@ -1,142 +1,22 @@
-
-
-<section class="ct-u-paddingTop50 ct-u-paddingBottom100">
+<header class="ct-mediaSection" data-stellar-background-ratio="0.3" data-height="140" data-type="parallax" data-bg-image="assets/images/content/agency-parallax.jpg" data-bg-image-mobile="assets/images/content/agency-parallax.jpg">
+    <div class="ct-mediaSection-inner">
+        <div class="container">
+            <div class="ct-heading--main text-center">
+                <h3 class="text-uppercase ct-u-text--white">Admin Dashboard</h3>
+            </div>
+        </div>
+    </div>
+</header>
+<section class="ct-u-paddingBoth60">
     <div class="container">
-        <div class="ct-headerText--normal text-uppercase ct-u-marginBottom40">
-            <h2>Edit Settings</h2>
-        </div>
         <div class="row">
-            <div class="col-md-6">
-              <%= form_for :setting, :url => admin_url(@setting), :html => {:method => :put, :multipart => true, class: 'ct-formSubmission'} do |f| %>
-                <label class="ct-fw-600 text-uppercase ct-u-marginBottom10">Production Email</label>
-                <%= f.text_field :production_email %>
-
-                <label class="ct-fw-600 text-uppercase ct-u-marginBottom10">Office No</label>
-              	<%= f.text_field :office_no %>
-
-                <label class="ct-fw-600 text-uppercase ct-u-marginBottom10">Office Address</label>
-              	<%= f.text_field :office_address %>
-
-                <label class="ct-fw-600 text-uppercase ct-u-marginBottom10">Facebook</label>
-                <%= f.text_field :facebook %>
-
-                <label class="ct-fw-600 text-uppercase ct-u-marginBottom10">Twitter</label>
-              	<%= f.text_field :twitter %>
-
-                <label class="ct-fw-600 text-uppercase ct-u-marginBottom10">Instagram</label>
-              	<%= f.text_field :instagram %>
-
-                <label class="ct-fw-600 text-uppercase ct-u-marginBottom10">About Us  </label><br/>
-              	<%= f.text_area :about_us %>
-
-                <br/><label class="ct-fw-600 text-uppercase ct-u-marginBottom10">Property Management  </label><br/>
-              	<%= f.text_area :management_text %>
-
-                <br/><label class="ct-fw-600 text-uppercase ct-u-marginBottom10">Property Management Topic 1  </label><br/>
-                <%= f.check_box  :show_topic1 %>
-                <%= f.text_field :topic1 %>
-                <%= f.text_area  :answer1 %>
-
-                <br/><label class="ct-fw-600 text-uppercase ct-u-marginBottom10">Property Management Topic 2  </label><br/>
-                <%= f.check_box  :show_topic2 %>
-                <%= f.text_field :topic2 %>
-                <%= f.text_area  :answer2 %>
-
-                <br/><label class="ct-fw-600 text-uppercase ct-u-marginBottom10">Property Management Topic 3  </label><br/>
-                <%= f.check_box  :show_topic3 %>
-                <%= f.text_field :topic3 %>
-                <%= f.text_area  :answer3 %>
-
-                <br/><label class="ct-fw-600 text-uppercase ct-u-marginBottom10">Property Management Topic 4  </label><br/>
-                <%= f.check_box  :show_topic4 %>
-                <%= f.text_field :topic4 %>
-                <%= f.text_area  :answer4 %>
-
-                <br/><label class="ct-fw-600 text-uppercase ct-u-marginBottom10">Property Management Topic 5  </label><br/>
-                <%= f.check_box  :show_topic5 %>
-                <%= f.text_field :topic5 %>
-                <%= f.text_area  :answer5 %>
-
-              	<%= f.submit 'Update' %>
-              <% end %>
+            <div class="col-sm-4 col-md-3">
+                <%= render partial: 'menu' %>
             </div>
-            <div class="col-md-6">
-              <%= form_for :setting, :url => admin_url(@setting), :html => {:method => :put, :multipart => true} do |f| %>
-                <label class="ct-fw-600 text-uppercase ct-u-marginBottom10">Featured 1</label>
-                <br/><%= image_tag @setting.featured1.url(:thumb) %><%= link_to 'Delete', remove_featured1_url(f) %><br/>
-                Caption: <%= f.text_field :featured1_caption %>
-                Text: <%= f.text_field :featured1_link_text %>
-                URL: <%= f.text_field  :featured1_link_url %>
-                <%= f.file_field :featured1 %>
-
-                <label class="ct-fw-600 text-uppercase ct-u-marginBottom10">Featured 2</label>
-                <br/><%= image_tag @setting.featured2.url(:thumb) %><%= link_to 'Delete', remove_featured2_url(f) %><br/>
-                <%= f.text_field :featured2_caption %>
-                <%= f.file_field :featured2 %>
-
-                <label class="ct-fw-600 text-uppercase ct-u-marginBottom10">Featured 3</label>
-                <br/><%= image_tag @setting.featured3.url(:thumb) %><%= link_to 'Delete', remove_featured3_url(f) %><br/>
-                <%= f.text_field :featured3_caption %>
-                <%= f.file_field :featured3 %>
-
-                <label class="ct-fw-600 text-uppercase ct-u-marginBottom10">Featured 4</label>
-                <br/><%= image_tag @setting.featured4.url(:thumb) %><%= link_to 'Delete', remove_featured4_url(f) %><br/>
-                <%= f.text_field :featured4_caption %>
-                <%= f.file_field :featured4 %>
-
-                <label class="ct-fw-600 text-uppercase ct-u-marginBottom10">Featured 5</label>
-                <br/><%= image_tag @setting.featured5.url(:thumb) %><%= link_to 'Delete', remove_featured5_url(f) %><br/>
-                <%= f.text_field :featured5_caption %>
-                <%= f.file_field :featured5 %>
-
-                <%= f.submit 'Update' %>
-              <% end %>
-            </div>
-        </div>
-
-       <div class="row">
-           <div class="col-md-6">
-             <%= form_tag add_location_url do  %>
-               <label class="ct-fw-600 text-uppercase ct-u-marginBottom10">Location</label>
-       	       <%= text_field_tag :area %>
-       	       <%= submit_tag 'Add' %>
-             <% end %>
-
-             <% @locations.each do |location| %>
-       	       <p><%= location.area %> <%= link_to '[remove]', remove_location_url(location) %></p>
-             <% end %>
-           </div>
-           <div class="col-md-6">
-             <%= form_tag add_price_range_url do  %>
-       	       <label class="ct-fw-600 text-uppercase ct-u-marginBottom10">Price Range</label>><%= text_field_tag :range %><br><br>
-       	       <label class="ct-fw-600 text-uppercase ct-u-marginBottom10">Value From</label><%= text_field_tag :value_from %><br><br>
-       	       <label class="ct-fw-600 text-uppercase ct-u-marginBottom10">Value To</label><%= text_field_tag :value_to %><br><br>
-       	       <%= submit_tag 'Add' %><br><br>
-             <% end %>
-
-             <table id="price_range">
-             	<thead>
-             		<tr>
-             			<th>Range</th>
-             			<th>From</th>
-             			<th>To</th>
-             			<th></th>
-             		</tr>
-             	</thead>
-             	<tbody>
-             		<% @price_range.each do |pr| %>
-             			<tr>
-             				<td><%= pr.range %></td>
-             				<td><%= number_to_currency(pr.value_from, :precision => 0, :unit => "")  %></td>
-             				<td><%= number_to_currency(pr.value_to,   :precision => 0, :unit => "")  %></td>
-             				<td><%= link_to 'remove', remove_price_range_url(pr) %></td>
-             			</tr>
-             		<% end %>
-             	</tbody>
-             </table>
+            <div class="col-sm-8 col-md-9">
+              <%= render partial: 'settings' %>
 
           </div>
-      </div>
-
+        </div>
     </div>
 </section>

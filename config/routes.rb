@@ -15,8 +15,11 @@ Rails.application.routes.draw do
 
   match 'admin', to: 'admin#settings', via: [:get,:post,:put]
   match 'admin/subscriptions', to: 'admin#subscriptions', via: [:get]
+  match 'admin/developers', to: 'admin#developers', via: [:get]
+  match 'admin/properties', to: 'admin#properties', via: [:get]
   match 'add_location', to: 'admin#add_location', via: [:post]
   match 'add_price_range', to: 'admin#add_price_range', via: [:post]
+  match 'admin/users', to: 'admin#users', via: [:get]
   match 'contact_us',      to: 'home#contact_us', via: [:get,:post]
   get 'remove_location/:id', to: 'admin#remove_location', as: 'remove_location'
   get 'remove_price_range/:id', to: 'admin#remove_price_range', as: 'remove_price_range'
@@ -27,7 +30,7 @@ Rails.application.routes.draw do
   get 'remove_featured4', to: 'admin#remove_featured4', as: 'remove_featured4'
   get 'remove_featured5', to: 'admin#remove_featured5', as: 'remove_featured5'
 
-  
+
   post 'home/subscribe',    to: 'home#subscribe',    as: 'subscribe'
 
   #get 'contact_us', to: 'home#contact_us', as: 'contact_us'

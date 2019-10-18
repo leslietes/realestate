@@ -118,6 +118,18 @@ class AdminController < ApplicationController
     @subscriptions = NewsletterSubscription.all
   end
 
+  def users
+    @users = User.all
+  end
+
+  def properties
+    @properties = Property.all
+  end
+
+  def developers
+    @developers = Developer.all
+  end
+
   private
 
   def settings_params
